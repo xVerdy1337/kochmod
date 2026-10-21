@@ -1,0 +1,4 @@
+Art: user-provided illustration (2026-10-21).
+Scene: Mark P (curly dark hair, black suit) stands at a dark wooden podium with microphones, addressing a vast hall; behind him giant red banners bearing the white podik-device emblem; on the podium a small glass case with a glowing podik relic. Cinematic black-and-white reportage style with red accents, film grain, solemn-absurd totalitarian-sacral atmosphere.
+Source PNG: 1448x1086, center-cropped to 570x392 for the panel DDS (uncompressed A8R8G8B8, 893888 bytes, same as koch_moscow_civil_war_panel.dds).
+Replaces the earlier AI-generated panel (kept in git history, commit 1aaff92).
