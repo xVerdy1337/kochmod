@@ -815,7 +815,7 @@ focus_tree = {
     focus = {
         id = KOCH_B11_LAST_SHIRT
         icon = GFX_goal_generic_propaganda
-        x = 13 y = 8
+        x = 13 y = 7
         prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
         cost = 3
         ai_will_do = { factor = 1 }
@@ -889,7 +889,7 @@ focus_tree = {
     focus = {
         id = KOCH_B11_GIVE_INFO
         icon = GFX_goal_generic_propaganda
-        x = 24 y = 8
+        x = 24 y = 7
         prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
         cost = 3
         ai_will_do = { factor = 1 }
