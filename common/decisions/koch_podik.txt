@@ -60,7 +60,7 @@ koch_podik_cult = {
         visible = { has_country_flag = KOCH_B11_podik_path }
         available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_device_access_tt NOT = { has_country_flag = KOCH_B11_device_confiscated } } custom_override_tooltip = { tooltip = KOCH_B11_condition_charge_at_least_30_tt check_variable = { var = KOCH_podik_charge value = 30 compare = greater_than_or_equals } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_broken_tt not_tooltip = KOCH_B11_condition_device_broken_tt_NOT has_country_flag = KOCH_B11_device_broken } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_missing_tt not_tooltip = KOCH_B11_condition_device_missing_tt_NOT has_country_flag = KOCH_B11_device_missing } } }
         complete_effect = { KOCH_B11_suspicion_10 = yes add_to_variable = { KOCH_podik_charge = -10 } custom_effect_tooltip = KOCH_B11_charge_cost_10_tt KOCH_B11_update_charge = yes country_event = { id = KOCH_PODIK.11005 days = 1 } }
-        ai_will_do = { factor = 1 }
+        ai_will_do = { factor = 0 }
     }
     KOCH_B11_replace_cartridge = {
         icon = generic_construction
@@ -243,12 +243,12 @@ koch_podik_government = {
     }
     KOCH_B11_imperial_supply = {
         icon = generic_military
-        cost = 60
+        cost = 45
         fire_only_once = no
         days_re_enable = 180
         visible = { has_country_flag = KOCH_B11_empire }
         available = { has_war = yes }
-        complete_effect = { add_manpower = 1500 army_experience = 10 }
+        complete_effect = { add_manpower = 2500 army_experience = 10 }
         ai_will_do = { factor = 1 }
     }
     KOCH_B11_imperial_mandate = {
@@ -284,14 +284,14 @@ koch_podik_household = {
         cost = 25
         fire_only_once = no
         days_re_enable = 45
-        complete_effect = { add_to_variable = { KOCH_mother_suspicion = -20 } KOCH_B11_update_suspicion = yes custom_effect_tooltip = KOCH_B11_suspicion_down_tt }
+        complete_effect = { add_to_variable = { KOCH_mother_suspicion = -30 } KOCH_B11_update_suspicion = yes custom_effect_tooltip = KOCH_B11_suspicion_down_tt }
         ai_will_do = { factor = 1 }
     }
     KOCH_B11_quiet_charge = {
         icon = generic_decision
         visible = { NOT = { has_country_flag = KOCH_B11_printer_resolved } }
         available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_8 NOT = { has_country_flag = KOCH_B11_printer_resolved } NOT = { has_country_flag = KOCH_B11_quiet_charging } } }
-        cost = 15
+        cost = 10
         fire_only_once = no
         days_re_enable = 30
         complete_effect = { set_country_flag = { flag = KOCH_B11_quiet_charging days = 30 } custom_effect_tooltip = KOCH_B11_quiet_charge_tt }
