@@ -89,7 +89,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PODIK_PATH }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { add_ideas = KOCH_B11_podik_catechism add_stability = 0.03 }
+        completion_reward = { add_ideas = KOCH_B11_podik_catechism add_stability = 0.03 add_political_power = 20 }
     }
     focus = {
         id = KOCH_B11_MASS_WORSHIP
@@ -98,7 +98,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PODIK_EVERYTHING }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { add_war_support = 0.04 country_event = { id = KOCH_PODIK.11005 days = 1 } }
+        completion_reward = { add_war_support = 0.04 add_political_power = 20 country_event = { id = KOCH_PODIK.11005 days = 1 } }
     }
     focus = {
         id = KOCH_B11_SACRED_CARTRIDGE
@@ -116,7 +116,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PODIK_EVERYTHING }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }  country_event = { id = KOCH_PODIK.11098 days = 1 } }
+        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 } }  country_event = { id = KOCH_PODIK.11098 days = 1 } }
     }
     focus = {
         id = KOCH_B11_ONE_PEOPLE_ONE_PODIK
@@ -135,7 +135,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_MINISTRY_VAPOR }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } } add_ideas = KOCH_B11_pilgrim_industry }
+        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 } } add_ideas = KOCH_B11_pilgrim_industry }
     }
     focus = {
         id = KOCH_B11_BAN_DOUBT
@@ -182,7 +182,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_EMPTY_TREASON focus = KOCH_B11_PILGRIMAGE_CHARGER }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { add_ideas = KOCH_B11_evaporation_revolution add_war_support = 0.05 add_to_variable = { KOCH_podik_charge = 30 } KOCH_B11_update_charge = yes }
+        completion_reward = { add_ideas = KOCH_B11_evaporation_revolution add_war_support = 0.05 add_political_power = 30 add_to_variable = { KOCH_podik_charge = 30 } KOCH_B11_update_charge = yes }
     }
     focus = {
         id = KOCH_B11_MARK_HEARS_CARTRIDGE
@@ -191,7 +191,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_EVAPORATION_REVOLUTION }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11008 days = 1 } }
+        completion_reward = { add_political_power = 25 country_event = { id = KOCH_PODIK.11008 days = 1 } }
     }
     focus = {
         id = KOCH_B11_MARK_PROPHET
@@ -201,7 +201,7 @@ focus_tree = {
         available = { custom_override_tooltip = { tooltip = KOCH_B11_condition_mark_recognized_tt not_tooltip = KOCH_B11_condition_mark_recognized_tt_NOT has_country_flag = KOCH_B11_mark_recognized } }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { set_country_flag = KOCH_B11_mark_prophet add_ideas = KOCH_B11_mark_prophet add_country_leader_trait = KOCH_podik_prophet add_political_power = -35 }
+        completion_reward = { set_country_flag = KOCH_B11_mark_prophet add_ideas = KOCH_B11_mark_prophet add_country_leader_trait = KOCH_podik_prophet add_political_power = -20 if = { limit = { NOT = { has_global_flag = KOCH_podik_prophet_superevent_started } } set_global_flag = KOCH_podik_prophet_superevent_started sound_effect = KOCH_podik_prophet_superevent_audio every_country = { country_event = { id = koch_podik_superevent.1 days = 5 } country_event = { id = koch_podik_superevent.2 days = 10 } } } }
     }
     focus = {
         id = KOCH_B11_ETERNAL_EMPIRE
@@ -211,7 +211,7 @@ focus_tree = {
         mutually_exclusive = { focus = KOCH_B11_PODIK_ABOVE_STATE }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { KOCH_B11_empire_transition = yes add_war_support = 0.05 country_event = { id = KOCH_PODIK.11009 days = 1 } }
+        completion_reward = { KOCH_B11_empire_transition = yes add_war_support = 0.05 add_stability = 0.03 country_event = { id = KOCH_PODIK.11009 days = 1 } }
     }
     focus = {
         id = KOCH_B11_PODIK_ABOVE_STATE
@@ -277,7 +277,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_MINISTRY_NONDECISIONS }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 2 category = industry } country_event = { id = KOCH_PODIK.11013 days = 1 }  country_event = { id = KOCH_PODIK.11099 days = 1 } }
+        completion_reward = { add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 2 category = industry } add_extra_state_shared_building_slots = 1 country_event = { id = KOCH_PODIK.11013 days = 1 }  country_event = { id = KOCH_PODIK.11099 days = 1 } }
     }
     focus = {
         id = KOCH_B11_WHO_IS_BOSS
@@ -286,7 +286,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_COMMISSION_COMMISSION }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11041 days = 1 } }
+        completion_reward = { add_political_power = 20 country_event = { id = KOCH_PODIK.11041 days = 1 } }
     }
     focus = {
         id = KOCH_B11_NAPKIN_CONSTITUTION
@@ -384,7 +384,7 @@ focus_tree = {
         available = { country_exists = B09 NOT = { has_war_with = B09 } }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11018 days = 1 } }
+        completion_reward = { add_political_power = 15 country_event = { id = KOCH_PODIK.11018 days = 1 } }
     }
     focus = {
         id = KOCH_B11_RELATIONS_GRODNO
@@ -466,7 +466,7 @@ focus_tree = {
         available = { country_exists = B09 NOT = { has_war_with = B09 } }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11021 days = 1 } }
+        completion_reward = { add_war_support = 0.02 country_event = { id = KOCH_PODIK.11021 days = 1 } }
     }
     focus = {
         id = KOCH_B11_CONDEMN_ACE
@@ -516,7 +516,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_EMERGENCY_LOGISTICS }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } } if = { limit = { has_country_flag = KOCH_B11_podik_path } add_ideas = KOCH_B11_pilgrim_industry } else = { add_ideas = KOCH_B11_double_contracts } }
+        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 } } if = { limit = { has_country_flag = KOCH_B11_podik_path } add_ideas = KOCH_B11_pilgrim_industry } else = { add_ideas = KOCH_B11_double_contracts } }
     }
     focus = {
         id = KOCH_B11_NATIONAL_MILITIA
@@ -543,7 +543,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PROPAGANDA_CIRCUS }
         cost = 10
         ai_will_do = { factor = 1 }
-        completion_reward = { add_research_slot = 1 add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 1 category = industry }  country_event = { id = KOCH_PODIK.11100 days = 1 } }
+        completion_reward = { add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 1 category = industry } add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 1 category = electronics }  country_event = { id = KOCH_PODIK.11100 days = 1 } }
     }
     focus = {
         id = KOCH_B11_BORDER_COMMITTEE
@@ -572,7 +572,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PODIK_PATH }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { set_country_flag = KOCH_B11_printer_active country_event = { id = KOCH_PODIK.11051 days = 1 } }
+        completion_reward = { set_country_flag = KOCH_B11_printer_active add_political_power = 10 country_event = { id = KOCH_PODIK.11051 days = 1 } }
     }
     focus = {
         id = KOCH_B11_PRINTER_CACHE
@@ -581,7 +581,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_DEAD_PRINTER }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { add_ideas = KOCH_B11_printer_cache country_event = { id = KOCH_PODIK.11052 days = 1 } }
+        completion_reward = { add_ideas = KOCH_B11_printer_cache add_political_power = 10 country_event = { id = KOCH_PODIK.11052 days = 1 } }
     }
     focus = {
         id = KOCH_B11_OPERATION_XROS
@@ -590,7 +590,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PRINTER_CACHE }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { KOCH_B11_suspicion_10 = yes add_political_power = 25 country_event = { id = KOCH_PODIK.11053 days = 1 } }
+        completion_reward = { KOCH_B11_suspicion_10 = yes add_political_power = 25 army_experience = 10 country_event = { id = KOCH_PODIK.11053 days = 1 } }
     }
     focus = {
         id = KOCH_B11_MOTHER_SUSPECTS
@@ -599,7 +599,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_OPERATION_XROS }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { KOCH_B11_suspicion_10 = yes country_event = { id = KOCH_PODIK.11054 days = 1 } }
+        completion_reward = { KOCH_B11_suspicion_10 = yes add_political_power = 10 country_event = { id = KOCH_PODIK.11054 days = 1 } }
     }
     focus = {
         id = KOCH_B11_SEALED_LID
@@ -608,7 +608,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_MOTHER_SUSPECTS }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { add_political_power = -20 add_to_variable = { KOCH_mother_suspicion = -15 } KOCH_B11_update_suspicion = yes }
+        completion_reward = { add_political_power = -20 add_political_power = 10 add_to_variable = { KOCH_mother_suspicion = -15 } KOCH_B11_update_suspicion = yes }
     }
     focus = {
         id = KOCH_B11_CARTRIDGE_INSPECTION
@@ -617,7 +617,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_SEALED_LID }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11055 days = 1 } }
+        completion_reward = { army_experience = 10 country_event = { id = KOCH_PODIK.11055 days = 1 } }
     }
     focus = {
         id = KOCH_B11_PRINT_DOCUMENT
@@ -626,7 +626,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_CARTRIDGE_INSPECTION }
         cost = 2
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11056 days = 1 } }
+        completion_reward = { add_political_power = 15 country_event = { id = KOCH_PODIK.11056 days = 1 } }
     }
     focus = {
         id = KOCH_B11_PRINTER_STRATEGIC
@@ -635,7 +635,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_PRINT_DOCUMENT }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { add_ideas = KOCH_B11_printer_guard KOCH_B11_suspicion_10 = yes }
+        completion_reward = { add_ideas = KOCH_B11_printer_guard add_political_power = 20 army_experience = 10 KOCH_B11_suspicion_10 = yes }
     }
     focus = {
         id = KOCH_B11_SHE_FOUND_IT
@@ -657,7 +657,7 @@ focus_tree = {
         mutually_exclusive = { focus = KOCH_B11_PRINTER_REVOLUTION focus = KOCH_B11_MOTHER_TREATY }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { add_stability = 0.02 country_event = { id = KOCH_PODIK.11059 days = 1 } }
+        completion_reward = { add_stability = 0.04 add_ideas = KOCH_B11_underground_cult country_event = { id = KOCH_PODIK.11059 days = 1 } }
     }
     focus = {
         id = KOCH_B11_PRINTER_REVOLUTION
@@ -668,7 +668,7 @@ focus_tree = {
         mutually_exclusive = { focus = KOCH_B11_MATERNAL_CONTROL focus = KOCH_B11_MOTHER_TREATY }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { add_stability = 0.02 country_event = { id = KOCH_PODIK.11059 days = 1 } }
+        completion_reward = { add_war_support = 0.06 add_ideas = KOCH_B11_holy_printer country_event = { id = KOCH_PODIK.11059 days = 1 } }
     }
     focus = {
         id = KOCH_B11_MOTHER_TREATY
@@ -679,7 +679,7 @@ focus_tree = {
         mutually_exclusive = { focus = KOCH_B11_MATERNAL_CONTROL focus = KOCH_B11_PRINTER_REVOLUTION }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { add_stability = 0.02 country_event = { id = KOCH_PODIK.11059 days = 1 } }
+        completion_reward = { add_stability = 0.03 add_political_power = 25 country_event = { id = KOCH_PODIK.11059 days = 1 } }
     }
     focus = {
         id = KOCH_B11_HOUSEHOLD_CONSTITUTION
@@ -724,7 +724,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_FALLING_MINISTRY }
         cost = 3
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11062 days = 1 } }
+        completion_reward = { country_event = { id = KOCH_PODIK.11062 days = 1 } army_experience = 10  }
     }
     focus = {
         id = KOCH_B11_GRAVITY_TRIAL
@@ -733,7 +733,7 @@ focus_tree = {
         prerequisite = { focus = KOCH_B11_AUDIT_BALCONIES }
         cost = 5
         ai_will_do = { factor = 1 }
-        completion_reward = { country_event = { id = KOCH_PODIK.11063 days = 1 } }
+        completion_reward = { country_event = { id = KOCH_PODIK.11063 days = 1 } add_stability = 0.02  }
     }
     focus = {
         id = KOCH_B11_BAN_BALCONIES
@@ -815,7 +815,7 @@ focus_tree = {
     focus = {
         id = KOCH_B11_LAST_SHIRT
         icon = GFX_goal_generic_propaganda
-        x = 13 y = 8
+        x = 13 y = 7
         prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
         cost = 3
         ai_will_do = { factor = 1 }
@@ -889,7 +889,7 @@ focus_tree = {
     focus = {
         id = KOCH_B11_GIVE_INFO
         icon = GFX_goal_generic_propaganda
-        x = 24 y = 8
+        x = 24 y = 7
         prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
         cost = 3
         ai_will_do = { factor = 1 }

@@ -1,0 +1,6 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_KOCH_podik_prophet_panel"
+        texturefile = "gfx/interface/superevents/koch_podik_prophet_panel.dds"
+    }
+}

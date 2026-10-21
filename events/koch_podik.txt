@@ -81,7 +81,7 @@ country_event = {
     option = {
         name = KOCH_PODIK.11005.b
         ai_chance = { factor = 1 }
-        add_political_power = -20 add_war_support = 0.04
+        add_political_power = -10 add_war_support = 0.05
     }
 }
 

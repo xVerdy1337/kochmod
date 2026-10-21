@@ -1,0 +1,78 @@
+guiTypes = {
+    containerWindowType = {
+        name = "koch_podik_prophet_superevent_window"
+        orientation = center
+        position = { x = -296 y = -239 }
+        size = { width = 592 height = 478 }
+        moveable = yes
+        clipping = no
+
+        # Audio is emitted once by the prophet announcement, not by this window:
+        # changing player country can rebuild the GUI and replay show_sound.
+
+        background = {
+            name = "koch_podik_prophet_superevent_frame"
+            spriteType = "GFX_KOCH_moscow_superevent_frame"
+        }
+
+        iconType = {
+            name = "koch_podik_prophet_superevent_title_plate"
+            position = { x = 92 y = 8 }
+            spriteType = "GFX_KOCH_moscow_superevent_title_plate"
+            alwaystransparent = yes
+        }
+
+        instantTextBoxType = {
+            name = "koch_podik_prophet_superevent_title"
+            position = { x = 102 y = 11 }
+            font = "KOCH_superevent_title"
+            text = "KOCH_podik_prophet_superevent_title"
+            maxWidth = 388
+            maxHeight = 24
+            format = centre
+        }
+
+        iconType = {
+            name = "koch_podik_prophet_superevent_picture"
+            position = { x = 11 y = 43 }
+            spriteType = "GFX_KOCH_podik_prophet_panel"
+            alwaystransparent = yes
+        }
+
+        iconType = {
+            name = "koch_podik_prophet_superevent_quote_plate"
+            position = { x = 337 y = 320 }
+            spriteType = "GFX_KOCH_moscow_superevent_quote_plate"
+            alwaystransparent = yes
+        }
+
+        instantTextBoxType = {
+            name = "koch_podik_prophet_superevent_quote"
+            position = { x = 345 y = 326 }
+            font = "hoi_16mbs"
+            text = "KOCH_podik_prophet_superevent_quote"
+            maxWidth = 226
+            maxHeight = 36
+            format = right
+        }
+
+        instantTextBoxType = {
+            name = "koch_podik_prophet_superevent_author"
+            position = { x = 345 y = 365 }
+            font = "hoi_16mbs"
+            text = "KOCH_podik_prophet_superevent_author"
+            maxWidth = 226
+            maxHeight = 20
+            format = right
+        }
+
+        buttonType = {
+            name = "koch_podik_prophet_superevent_close"
+            position = { x = 183 y = 443 }
+            spriteType = "GFX_KOCH_moscow_superevent_close_button"
+            buttonText = "KOCH_podik_prophet_superevent_close"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+    }
+}

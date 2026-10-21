@@ -1,0 +1,22 @@
+category = {
+    name = UI
+    soundeffects = { KOCH_podik_prophet_superevent_audio }
+}
+
+sound = {
+    name = "KOCH_podik_prophet_superevent_sample"
+    file = "koch_moscow_civil_war_superevent.wav"
+    volume = 1.0
+    always_load = yes
+}
+
+# sound_effect resolves a soundeffect, not a raw sound sample.
+soundeffect = {
+    name = "KOCH_podik_prophet_superevent_audio"
+    volume = 1.0
+    loop = no
+    is3d = no
+    sounds = {
+        sound = "KOCH_podik_prophet_superevent_sample"
+    }
+}

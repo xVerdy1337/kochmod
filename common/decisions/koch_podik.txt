@@ -60,7 +60,7 @@ koch_podik_cult = {
         visible = { has_country_flag = KOCH_B11_podik_path }
         available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_device_access_tt NOT = { has_country_flag = KOCH_B11_device_confiscated } } custom_override_tooltip = { tooltip = KOCH_B11_condition_charge_at_least_30_tt check_variable = { var = KOCH_podik_charge value = 30 compare = greater_than_or_equals } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_broken_tt not_tooltip = KOCH_B11_condition_device_broken_tt_NOT has_country_flag = KOCH_B11_device_broken } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_missing_tt not_tooltip = KOCH_B11_condition_device_missing_tt_NOT has_country_flag = KOCH_B11_device_missing } } }
         complete_effect = { KOCH_B11_suspicion_10 = yes add_to_variable = { KOCH_podik_charge = -10 } custom_effect_tooltip = KOCH_B11_charge_cost_10_tt KOCH_B11_update_charge = yes country_event = { id = KOCH_PODIK.11005 days = 1 } }
-        ai_will_do = { factor = 1 }
+        ai_will_do = { factor = 0 }
     }
     KOCH_B11_replace_cartridge = {
         icon = generic_construction
@@ -104,9 +104,9 @@ koch_podik_cult = {
     }
     KOCH_B11_holy_assembly = {
         icon = generic_political_rally
-        cost = 50
+        cost = 75
         fire_only_once = no
-        days_re_enable = 180
+        days_re_enable = 240
         visible = { has_country_flag = KOCH_B11_theocracy }
         available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_device_access_tt NOT = { has_country_flag = KOCH_B11_device_confiscated } } custom_override_tooltip = { tooltip = KOCH_B11_condition_charge_at_least_50_tt check_variable = { var = KOCH_podik_charge value = 50 compare = greater_than_or_equals } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_broken_tt not_tooltip = KOCH_B11_condition_device_broken_tt_NOT has_country_flag = KOCH_B11_device_broken } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_missing_tt not_tooltip = KOCH_B11_condition_device_missing_tt_NOT has_country_flag = KOCH_B11_device_missing } } }
         complete_effect = { add_to_variable = { KOCH_podik_charge = -15 } custom_effect_tooltip = KOCH_B11_charge_cost_15_tt KOCH_B11_update_charge = yes add_timed_idea = { idea = KOCH_B11_assembly_fervor days = 120 } }
@@ -147,9 +147,9 @@ koch_podik_council = {
     }
     KOCH_B11_council_tender = {
         icon = generic_industry
-        cost = 60
+        cost = 75
         fire_only_once = no
-        days_re_enable = 180
+        days_re_enable = 240
         visible = { has_completed_focus = KOCH_B11_MINISTRY_NONDECISIONS }
         available = { NOT = { has_idea = KOCH_B11_council_sabotage } }
         complete_effect = { add_timed_idea = { idea = KOCH_B11_double_contracts days = 120 } }
@@ -213,9 +213,9 @@ koch_podik_diplomacy = {
 koch_podik_government = {
     KOCH_B11_civil_compromise = {
         icon = generic_construction
-        cost = 55
+        cost = 75
         fire_only_once = no
-        days_re_enable = 180
+        days_re_enable = 240
         visible = { has_country_flag = KOCH_B11_compromise }
         available = { always = yes }
         complete_effect = { add_timed_idea = { idea = KOCH_B11_civil_contract days = 120 } }
@@ -223,9 +223,9 @@ koch_podik_government = {
     }
     KOCH_B11_chair_order = {
         icon = generic_industry
-        cost = 55
+        cost = 75
         fire_only_once = no
-        days_re_enable = 180
+        days_re_enable = 240
         visible = { has_country_flag = KOCH_B11_single_chair }
         available = { always = yes }
         complete_effect = { add_timed_idea = { idea = KOCH_B11_war_contract days = 120 } }
@@ -233,9 +233,9 @@ koch_podik_government = {
     }
     KOCH_B11_dual_shift = {
         icon = generic_research
-        cost = 55
+        cost = 75
         fire_only_once = no
-        days_re_enable = 180
+        days_re_enable = 240
         visible = { has_country_flag = KOCH_B11_two_presidents }
         available = { NOT = { has_idea = KOCH_B11_council_sabotage } }
         complete_effect = { add_timed_idea = { idea = KOCH_B11_presidential_shifts days = 120 } }
@@ -243,12 +243,12 @@ koch_podik_government = {
     }
     KOCH_B11_imperial_supply = {
         icon = generic_military
-        cost = 60
+        cost = 45
         fire_only_once = no
         days_re_enable = 180
         visible = { has_country_flag = KOCH_B11_empire }
         available = { has_war = yes }
-        complete_effect = { add_manpower = 1500 army_experience = 10 }
+        complete_effect = { add_manpower = 2500 army_experience = 10 }
         ai_will_do = { factor = 1 }
     }
     KOCH_B11_imperial_mandate = {
@@ -284,14 +284,14 @@ koch_podik_household = {
         cost = 25
         fire_only_once = no
         days_re_enable = 45
-        complete_effect = { add_to_variable = { KOCH_mother_suspicion = -20 } KOCH_B11_update_suspicion = yes custom_effect_tooltip = KOCH_B11_suspicion_down_tt }
+        complete_effect = { add_to_variable = { KOCH_mother_suspicion = -30 } KOCH_B11_update_suspicion = yes custom_effect_tooltip = KOCH_B11_suspicion_down_tt }
         ai_will_do = { factor = 1 }
     }
     KOCH_B11_quiet_charge = {
         icon = generic_decision
         visible = { NOT = { has_country_flag = KOCH_B11_printer_resolved } }
         available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_8 NOT = { has_country_flag = KOCH_B11_printer_resolved } NOT = { has_country_flag = KOCH_B11_quiet_charging } } }
-        cost = 15
+        cost = 10
         fire_only_once = no
         days_re_enable = 30
         complete_effect = { set_country_flag = { flag = KOCH_B11_quiet_charging days = 30 } custom_effect_tooltip = KOCH_B11_quiet_charge_tt }

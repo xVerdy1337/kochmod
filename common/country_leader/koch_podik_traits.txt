@@ -1,4 +1,6 @@
 leader_traits = {
     KOCH_podik_custodian = { political_power_factor = 0.03 }
     KOCH_podik_prophet = { war_support_factor = 0.03 }
+    KOCH_vamos_momentum = { army_attack_factor = 0.05 }
+    KOCH_gamos_dossier = { political_power_factor = 0.05 }
 }

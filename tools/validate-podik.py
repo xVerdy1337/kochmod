@@ -140,6 +140,10 @@ require(requirements[full('EMERGENCY_LOGISTICS')] == [{full('NEW_EPOCH')}], 'Eco
 event_blocks = values(parsed['events/koch_podik.txt'], 'country_event')
 events = {first(e, 'id'): e for e in event_blocks}
 require(len(events) == len(event_blocks) == 101, 'Expected 101 unique events')
+# Hidden timeout callbacks for the Prophet superevent live in a manual file
+# (not part of the 101 story events); they are valid country_event targets.
+superevent_ids = {first(e, 'id') for e in values(parsed['events/koch_podik_superevent.txt'], 'country_event')}
+require(len(superevent_ids) == 2, 'Expected 2 superevent timeout events')
 ideas = first(first(parsed['common/ideas/koch_podik.txt'], 'ideas'), 'country')
 idea_ids = {k for k, _, _ in ideas}
 require(len(idea_ids) == 53, 'Expected 53 spirits')
@@ -197,7 +201,7 @@ for base in (game, root):
 for filename, block in parsed.items():
     for key, op, value in walk(block):
         if key == 'country_event' and isinstance(value, list):
-            require(first(value, 'id') in events, f'Unknown event in {filename}: {first(value, "id")}')
+            require(first(value, 'id') in events or first(value, 'id') in superevent_ids, f'Unknown event in {filename}: {first(value, "id")}')
         if key in ('add_ideas', 'remove_ideas') and isinstance(value, str) and value.startswith('KOCH_'):
             require(value in idea_ids, f'Unknown spirit: {value}')
         if key == 'add_timed_idea':

@@ -20,12 +20,12 @@ characters = {
     KOCH_B11_vamos = {
         name = KOCH_B11_vamos
         portraits = { civilian = { large = "gfx/leaders/Europe/Portrait_Europe_Generic_1.dds" } }
-        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 }
+        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 traits = { KOCH_vamos_momentum } }
     }
     KOCH_B11_gamos = {
         name = KOCH_B11_gamos
         portraits = { civilian = { large = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds" } }
-        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 }
+        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 traits = { KOCH_gamos_dossier } }
     }
     KOCH_B11_mother = {
         name = KOCH_B11_mother
