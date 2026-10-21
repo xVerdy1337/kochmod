@@ -1,0 +1,11 @@
+# Persistent lookup of the dynamic countries, like SPA/SPB in vanilla Spain.
+# A create_dynamic_country child effect has a separate local event-target context.
+KMF = {
+    original_tag = B07
+    has_country_flag = KOCH_B07_fascist_side
+}
+
+KMA = {
+    original_tag = B07
+    has_country_flag = KOCH_B07_authoritarian_side
+}

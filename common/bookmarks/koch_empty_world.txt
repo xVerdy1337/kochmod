@@ -1,0 +1,182 @@
+bookmarks = {
+    bookmark = {
+        name = "KOCH_EMPTY_WORLD_NAME"
+        desc = "KOCH_EMPTY_WORLD_DESC"
+        date = 2026.1.1.12
+        picture = "GFX_koch_burbulestan_2026"
+        default = yes
+        scrollable_country_list = yes
+        sort_unplayed_first = no
+        "B01" = {
+            history = "KOCH_B01_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B01_trilia_legacy
+                KOCH_B01_political_diversity
+            }
+        }
+        "B02" = {
+            history = "KOCH_B02_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B02_traditional_system
+                KOCH_B02_princely_army
+            }
+        }
+        "B03" = {
+            history = "KOCH_B03_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B03_high_crime
+                KOCH_B03_backwater
+            }
+        }
+        "B04" = {
+            history = "KOCH_B04_DESC"
+            ideology = democratic
+            version = base_game
+            ideas = {
+                KOCH_B04_democratic_bastion
+                KOCH_B04_bureaucratic_machine
+                KOCH_B04_pacifism
+            }
+        }
+        "B05" = {
+            history = "KOCH_B05_DESC"
+            ideology = communism
+            version = base_game
+            ideas = {
+                KOCH_B05_marxist_ideas
+                KOCH_B05_terror
+            }
+        }
+        "B07" = {
+            history = "KOCH_B07_DESC"
+            ideology = democratic
+            version = base_game
+            ideas = {
+                KOCH_B07_mass_civil_protests
+                KOCH_B07_economic_collapse
+            }
+        }
+        "B08" = {
+            history = "KOCH_B08_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B08_state_of_scientists
+            }
+        }
+        "B06" = {
+            minor = yes
+            history = "KOCH_B06_DESC"
+            ideology = neutrality
+            version = base_game
+        }
+        "B09" = {
+            minor = yes
+            history = "KOCH_B09_DESC"
+            ideology = democratic
+            version = base_game
+        }
+        "B11" = {
+            history = "KOCH_B11_DESC"
+            ideology = democratic
+            version = base_game
+        }
+    }
+    # A second entry prevents the engine from skipping scenario selection.
+    # The GUI places this identical fallback outside the visible grid.
+    bookmark = {
+        name = "KOCH_EMPTY_WORLD_NAME"
+        desc = "KOCH_EMPTY_WORLD_DESC"
+        date = 2026.1.1.12
+        picture = "GFX_koch_burbulestan_2026"
+        default = no
+        scrollable_country_list = yes
+        sort_unplayed_first = no
+        "B01" = {
+            history = "KOCH_B01_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B01_trilia_legacy
+                KOCH_B01_political_diversity
+            }
+        }
+        "B02" = {
+            history = "KOCH_B02_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B02_traditional_system
+                KOCH_B02_princely_army
+            }
+        }
+        "B03" = {
+            history = "KOCH_B03_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B03_high_crime
+                KOCH_B03_backwater
+            }
+        }
+        "B04" = {
+            history = "KOCH_B04_DESC"
+            ideology = democratic
+            version = base_game
+            ideas = {
+                KOCH_B04_democratic_bastion
+                KOCH_B04_bureaucratic_machine
+                KOCH_B04_pacifism
+            }
+        }
+        "B05" = {
+            history = "KOCH_B05_DESC"
+            ideology = communism
+            version = base_game
+            ideas = {
+                KOCH_B05_marxist_ideas
+                KOCH_B05_terror
+            }
+        }
+        "B07" = {
+            history = "KOCH_B07_DESC"
+            ideology = democratic
+            version = base_game
+            ideas = {
+                KOCH_B07_mass_civil_protests
+                KOCH_B07_economic_collapse
+            }
+        }
+        "B08" = {
+            history = "KOCH_B08_DESC"
+            ideology = neutrality
+            version = base_game
+            ideas = {
+                KOCH_B08_state_of_scientists
+            }
+        }
+        "B06" = {
+            minor = yes
+            history = "KOCH_B06_DESC"
+            ideology = neutrality
+            version = base_game
+        }
+        "B09" = {
+            minor = yes
+            history = "KOCH_B09_DESC"
+            ideology = democratic
+            version = base_game
+        }
+        "B11" = {
+            history = "KOCH_B11_DESC"
+            ideology = democratic
+            version = base_game
+        }
+    }
+}

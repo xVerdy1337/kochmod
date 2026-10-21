@@ -1,0 +1,17 @@
+# UI eligibility only: minor bookmarks require a non-default focus tree.
+# Intentionally contains no focuses, rewards or gameplay content.
+focus_tree = {
+    id = koch_minor_selection
+    country = {
+        factor = 0
+        modifier = {
+            add = 10
+            OR = {
+                tag = B06
+                tag = B09
+            }
+        }
+    }
+    default = no
+    reset_on_civilwar = no
+}

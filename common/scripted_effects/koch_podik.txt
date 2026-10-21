@@ -1,0 +1,368 @@
+# Always call in B11's country scope.
+KOCH_B11_initialize = {
+    if = {
+        limit = { NOT = { has_country_flag = KOCH_B11_initialized } }
+        set_country_flag = KOCH_B11_initialized
+        set_variable = { KOCH_podik_charge = 0 }
+        set_variable = { KOCH_vamos_influence = 50 }
+        set_variable = { KOCH_gamos_influence = 50 }
+        add_ideas = KOCH_B11_last_percent
+    }
+}
+KOCH_B11_normalize_council = {
+    if = { limit = { has_country_flag = KOCH_B11_single_chair has_country_flag = KOCH_B11_vamos_won } set_variable = { KOCH_vamos_influence = 100 } }
+    if = { limit = { has_country_flag = KOCH_B11_single_chair has_country_flag = KOCH_B11_gamos_won } set_variable = { KOCH_vamos_influence = 0 } }
+    clamp_variable = { var = KOCH_vamos_influence min = 0 max = 100 }
+    set_variable = { KOCH_gamos_influence = 100 }
+    subtract_from_variable = { KOCH_gamos_influence = var:KOCH_vamos_influence }
+}
+KOCH_B11_shift_vamos = {
+    add_to_variable = { KOCH_vamos_influence = 10 }
+    KOCH_B11_normalize_council = yes
+}
+KOCH_B11_shift_gamos = {
+    add_to_variable = { KOCH_vamos_influence = -10 }
+    KOCH_B11_normalize_council = yes
+}
+KOCH_B11_calculate_drain = {
+    hidden_effect = {
+        set_variable = { KOCH_podik_daily_drain = 0.5 }
+        if = { limit = { has_completed_focus = KOCH_B11_SACRED_MANUAL } set_variable = { KOCH_podik_daily_drain = 0.3 } }
+        if = { limit = { has_war = yes } add_to_variable = { KOCH_podik_daily_drain = 0.2 } }
+        if = { limit = { has_country_flag = KOCH_B11_battery_saving } add_to_variable = { KOCH_podik_daily_drain = -0.2 } }
+        clamp_variable = { var = KOCH_podik_daily_drain min = 0.1 max = 1 }
+        set_variable = { KOCH_podik_days_to_crisis = var:KOCH_podik_charge }
+        subtract_from_variable = { KOCH_podik_days_to_crisis = 20 }
+        clamp_variable = { var = KOCH_podik_days_to_crisis min = 0 max = 100 }
+        divide_variable = { KOCH_podik_days_to_crisis = var:KOCH_podik_daily_drain }
+        if = {
+            limit = { OR = { has_country_flag = KOCH_B11_charging has_country_flag = KOCH_B11_device_broken has_country_flag = KOCH_B11_device_missing } }
+            set_variable = { KOCH_podik_days_to_crisis = 0 }
+        }
+    }
+}
+KOCH_B11_start_charging = {
+    set_country_flag = KOCH_B11_charging
+    set_variable = { KOCH_podik_charge_days = 3 }
+}
+KOCH_B11_daily_charge = {
+    if = {
+        limit = { has_country_flag = KOCH_B11_podik_path NOT = { has_country_flag = KOCH_B11_device_confiscated } }
+        KOCH_B11_calculate_drain = yes
+        if = {
+            limit = { NOT = { has_country_flag = KOCH_B11_device_broken } NOT = { has_country_flag = KOCH_B11_device_missing } }
+            if = {
+                limit = { has_country_flag = KOCH_B11_auto_charge NOT = { has_country_flag = KOCH_B11_charging } check_variable = { KOCH_podik_charge < 35 } }
+                KOCH_B11_start_charging = yes
+            }
+            if = {
+                limit = { has_country_flag = KOCH_B11_charging }
+                if = { limit = { has_completed_focus = KOCH_B11_SACRED_MANUAL } add_to_variable = { KOCH_podik_charge = 30 } }
+                else = { add_to_variable = { KOCH_podik_charge = 20 } }
+                subtract_from_variable = { KOCH_podik_charge_days = 1 }
+                if = {
+                    limit = { OR = { check_variable = { var = KOCH_podik_charge_days value = 0 compare = less_than_or_equals } check_variable = { var = KOCH_podik_charge value = 100 compare = greater_than_or_equals } } }
+                    clr_country_flag = KOCH_B11_charging
+                    set_variable = { KOCH_podik_charge_days = 0 }
+                }
+            }
+            else = { subtract_from_variable = { KOCH_podik_charge = var:KOCH_podik_daily_drain } }
+        }
+        KOCH_B11_update_charge = yes
+    }
+}
+KOCH_B11_update_charge = {
+    # Previewing an effect does not simulate earlier variable assignments.
+    hidden_effect = {
+        clamp_variable = { var = KOCH_podik_charge min = 0 max = 100 }
+        if = {
+            limit = { has_country_flag = KOCH_B11_podik_path }
+            if = {
+                limit = { has_country_flag = KOCH_B11_device_confiscated }
+                set_variable = { KOCH_podik_charge = var:KOCH_confiscated_charge }
+                clr_country_flag = KOCH_B11_charging
+                set_variable = { KOCH_podik_charge_days = 0 }
+                remove_ideas = KOCH_B11_golden_charge
+                remove_ideas = KOCH_B11_low_battery
+                remove_ideas = KOCH_B11_brownout
+                remove_ideas = KOCH_B11_empty_battery
+            }
+            else = {
+            remove_ideas = KOCH_B11_low_battery
+            remove_ideas = KOCH_B11_empty_battery
+            if = {
+                limit = { OR = { has_country_flag = KOCH_B11_device_broken has_country_flag = KOCH_B11_device_missing } }
+                set_variable = { KOCH_podik_charge = 0 }
+                clr_country_flag = KOCH_B11_charging
+                set_variable = { KOCH_podik_charge_days = 0 }
+                remove_ideas = KOCH_B11_golden_charge
+                add_ideas = KOCH_B11_brownout
+            }
+            else = {
+                if = {
+                    limit = { check_variable = { var = KOCH_podik_charge value = 100 compare = greater_than_or_equals } }
+                    clr_country_flag = KOCH_B11_charging
+                    set_variable = { KOCH_podik_charge_days = 0 }
+                }
+                if = {
+                    limit = { check_variable = { var = KOCH_podik_charge value = 90 compare = greater_than_or_equals } }
+                    add_ideas = KOCH_B11_golden_charge
+                    if = {
+                        limit = { NOT = { has_country_flag = KOCH_B11_first_golden_age } }
+                        set_country_flag = KOCH_B11_first_golden_age
+                        country_event = { id = KOCH_PODIK.11025 days = 1 }
+                    }
+                }
+                else = { remove_ideas = KOCH_B11_golden_charge }
+                if = {
+                    limit = { check_variable = { var = KOCH_podik_charge value = 40 compare = greater_than_or_equals } }
+                    remove_ideas = KOCH_B11_brownout
+                    clr_country_flag = KOCH_B11_charge_crisis
+                }
+                else_if = {
+                    limit = { check_variable = { KOCH_podik_charge < 20 } }
+                    if = {
+                        limit = { NOT = { has_country_flag = KOCH_B11_charge_crisis } }
+                        set_country_flag = KOCH_B11_charge_crisis
+                        if = { limit = { check_variable = { KOCH_podik_charge > 0 } } country_event = { id = KOCH_PODIK.11007 days = 1 } }
+                    }
+                    if = {
+                        limit = { check_variable = { KOCH_podik_charge = 0 } }
+                        remove_ideas = KOCH_B11_brownout
+                        add_ideas = KOCH_B11_empty_battery
+                        if = {
+                            limit = { NOT = { has_country_flag = KOCH_B11_empty_warning } }
+                            set_country_flag = KOCH_B11_empty_warning
+                            country_event = { id = KOCH_PODIK.11050 days = 1 }
+                        }
+                    }
+                    else = { add_ideas = KOCH_B11_brownout }
+                }
+                else_if = {
+                    limit = { has_country_flag = KOCH_B11_charge_crisis }
+                    add_ideas = KOCH_B11_brownout
+                }
+                else = {
+                    remove_ideas = KOCH_B11_brownout
+                    add_ideas = KOCH_B11_low_battery
+                    if = {
+                        limit = { NOT = { has_country_flag = KOCH_B11_low_warning } NOT = { has_country_flag = KOCH_B11_charging } }
+                        set_country_flag = KOCH_B11_low_warning
+                        country_event = { id = KOCH_PODIK.11049 days = 1 }
+                    }
+                }
+                if = { limit = { check_variable = { var = KOCH_podik_charge value = 60 compare = greater_than_or_equals } } clr_country_flag = KOCH_B11_low_warning }
+                if = { limit = { check_variable = { var = KOCH_podik_charge value = 20 compare = greater_than_or_equals } } clr_country_flag = KOCH_B11_empty_warning }
+            }
+        }
+            }
+
+        KOCH_B11_calculate_drain = yes
+    }
+    custom_effect_tooltip = KOCH_B11_charge_rules_tt
+}
+KOCH_B11_mutual_guarantees = {
+    if = {
+        limit = { country_exists = B09 NOT = { has_war_with = B09 } B09 = { has_country_flag = KOCH_B09_ace_consent } }
+        give_guarantee = B09
+        B09 = { give_guarantee = B11 }
+    }
+}
+KOCH_B11_join_artur = {
+    if = {
+        limit = {
+            country_exists = B09
+            is_subject = no
+            B09 = { is_subject = no NOT = { has_war_with = B11 } }
+            OR = { is_in_faction = no is_faction_leader = yes }
+            B09 = { is_in_faction = no }
+        }
+        if = { limit = { is_in_faction = no } set_rule = { can_create_factions = yes } create_faction = KOCH_ACES_FACTION }
+        add_to_faction = B09
+        set_country_flag = KOCH_B11_artur_allied
+        clr_country_flag = KOCH_B11_alliance_refused
+    }
+    else = { KOCH_B11_mutual_guarantees = yes }
+}
+KOCH_B11_empire_transition = {
+    set_country_flag = KOCH_B11_empire
+    set_cosmetic_tag = KOCH_PODIK_EMPIRE
+    add_ideas = KOCH_B11_imperial_authority
+    remove_ideas = KOCH_B11_charge_denial
+    set_rule = { can_create_factions = yes }
+}
+KOCH_B11_council_settlement = {
+    remove_ideas = KOCH_B11_gamos_regency
+    clr_country_flag = KOCH_B11_gamos_regent
+    remove_ideas = KOCH_B11_two_chairs
+    remove_ideas = KOCH_B11_split_power
+    remove_ideas = KOCH_B11_council_sabotage
+    clr_country_flag = KOCH_B11_sabotage_pending
+    set_country_flag = KOCH_B11_council_settled
+}
+
+# PODIK EXPANSION
+KOCH_B11_update_suspicion = {
+    clamp_variable = { var = KOCH_mother_suspicion min = 0 max = 100 }
+    if = {
+        limit = { has_country_flag = KOCH_B11_printer_active NOT = { has_country_flag = KOCH_B11_printer_resolved } }
+        if = {
+            limit = { check_variable = { var = KOCH_mother_suspicion value = 70 compare = greater_than_or_equals } NOT = { has_country_flag = KOCH_B11_mother_warned } }
+            set_country_flag = KOCH_B11_mother_warned
+            country_event = { id = KOCH_PODIK.11057 days = 1 }
+        }
+        if = {
+            limit = { check_variable = { var = KOCH_mother_suspicion value = 100 compare = greater_than_or_equals } NOT = { has_country_flag = KOCH_B11_inspection_pending } }
+            set_country_flag = KOCH_B11_inspection_pending
+            country_event = { id = KOCH_PODIK.11058 days = 14 }
+        }
+    }
+}
+KOCH_B11_suspicion_10 = {
+    if = {
+        limit = { has_country_flag = KOCH_B11_printer_active NOT = { has_country_flag = KOCH_B11_printer_resolved } }
+        add_to_variable = { KOCH_mother_suspicion = 10 }
+        KOCH_B11_update_suspicion = yes
+    }
+}
+KOCH_B11_resolve_printer = {
+    set_country_flag = KOCH_B11_printer_resolved
+    clr_country_flag = KOCH_B11_inspection_pending
+    remove_ideas = KOCH_B11_printer_cache
+    remove_ideas = KOCH_B11_printer_guard
+    set_variable = { KOCH_mother_suspicion = 0 }
+}
+KOCH_B11_mother_wins = {
+    KOCH_B11_resolve_printer = yes
+    set_country_flag = KOCH_B11_mother_victory
+    set_country_flag = KOCH_B11_device_confiscated
+    set_variable = { KOCH_confiscated_charge = var:KOCH_podik_charge }
+    remove_ideas = KOCH_B11_charger_service
+    remove_ideas = KOCH_B11_battery_saving
+    add_ideas = KOCH_B11_underground_cult
+    add_stability = -0.04
+    KOCH_B11_update_charge = yes
+    custom_effect_tooltip = KOCH_B11_confiscation_tt
+}
+KOCH_B11_printer_wins = {
+    KOCH_B11_resolve_printer = yes
+    set_country_flag = KOCH_B11_printer_revolution
+    add_ideas = KOCH_B11_holy_printer
+    add_ideas = KOCH_B11_mother_enemy
+    add_stability = -0.08
+    add_war_support = 0.06
+}
+KOCH_B11_mother_compromise = {
+    KOCH_B11_resolve_printer = yes
+    set_country_flag = KOCH_B11_mother_treaty
+    add_political_power = -40
+    add_ideas = KOCH_B11_household_treaty
+    add_stability = 0.04
+}
+KOCH_B11_return_confiscated = {
+    clr_country_flag = KOCH_B11_device_confiscated
+    set_variable = { KOCH_podik_charge = var:KOCH_confiscated_charge }
+    if = { limit = { has_country_flag = KOCH_B11_auto_charge } add_ideas = KOCH_B11_charger_service }
+    if = { limit = { has_country_flag = KOCH_B11_battery_saving } add_ideas = KOCH_B11_battery_saving }
+    KOCH_B11_update_charge = yes
+    custom_effect_tooltip = KOCH_B11_return_device_tt
+}
+KOCH_B11_request_cemetery = {
+    if = {
+        limit = { country_exists = B09 NOT = { has_war_with = B09 } }
+        set_country_flag = { flag = KOCH_B11_cemetery_pending days = 30 }
+        B09 = { country_event = { id = KOCH_PODIK.11065 days = 2 } }
+    }
+}
+KOCH_B11_cemetery_apology = {
+    if = { limit = { country_exists = B09 NOT = { has_war_with = B09 } }
+        add_opinion_modifier = { target = B09 modifier = KOCH_friendship }
+        B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_friendship } }
+    }
+}
+KOCH_B11_cemetery_scandal = {
+    if = { limit = { country_exists = B09 }
+        add_opinion_modifier = { target = B09 modifier = KOCH_cold_shoulders }
+        B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_cold_shoulders } }
+    }
+}
+KOCH_B11_two_shrines = {
+    if = { limit = { country_exists = B09 NOT = { has_war_with = B09 } has_country_flag = KOCH_B11_guard_consent has_country_flag = KOCH_B11_cemetery_permit }
+        set_country_flag = KOCH_B11_two_shrines_signed
+        add_ideas = KOCH_B11_two_shrines
+        B09 = { add_ideas = KOCH_B11_two_shrines }
+        KOCH_B11_cemetery_apology = yes
+    }
+}
+KOCH_B11_gamos_takeover = {
+    if = { limit = { NOT = { has_country_flag = KOCH_B11_council_settled } }
+        set_country_flag = KOCH_B11_gamos_regent
+        set_variable = { KOCH_vamos_influence = 20 }
+        KOCH_B11_normalize_council = yes
+        promote_character = KOCH_B11_gamos
+        add_ideas = KOCH_B11_gamos_regency
+        add_stability = -0.05
+    }
+    else = { add_political_power = 25 }
+}
+KOCH_B11_expansion_daily = {
+    if = { limit = { has_country_flag = KOCH_B11_printer_active NOT = { has_country_flag = KOCH_B11_printer_resolved } }
+        add_to_variable = { KOCH_mother_suspicion = 0.15 }
+        if = { limit = { has_country_flag = KOCH_B11_charging NOT = { has_country_flag = KOCH_B11_quiet_charging } } add_to_variable = { KOCH_mother_suspicion = 1 } }
+        if = { limit = { has_country_flag = KOCH_B11_device_missing NOT = { has_country_flag = KOCH_B11_search_denounced } } set_country_flag = KOCH_B11_search_denounced KOCH_B11_suspicion_10 = yes }
+        KOCH_B11_update_suspicion = yes
+    }
+}
+
+KOCH_B11_secret_archives = {
+    if = {
+        limit = { has_country_flag = KOCH_B11_printer_active has_country_flag = KOCH_B11_toner_bought NOT = { has_country_flag = KOCH_B11_printer_resolved } NOT = { has_country_flag = KOCH_B11_secret_87 } }
+        set_country_flag = KOCH_B11_secret_87
+        country_event = { id = KOCH_PODIK.11087 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_printer_active has_completed_focus = KOCH_B11_PRINT_DOCUMENT NOT = { has_country_flag = KOCH_B11_printer_resolved } check_variable = { KOCH_mother_suspicion > 49 } NOT = { has_country_flag = KOCH_B11_secret_88 } }
+        set_country_flag = KOCH_B11_secret_88
+        country_event = { id = KOCH_PODIK.11088 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_wait_for_no has_country_flag = KOCH_B11_makafon_resolved NOT = { has_country_flag = KOCH_B11_secret_89 } }
+        set_country_flag = KOCH_B11_secret_89
+        country_event = { id = KOCH_PODIK.11089 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_long_broadcast has_completed_focus = KOCH_B11_WORDLESS_PRESS NOT = { has_country_flag = KOCH_B11_secret_90 } }
+        set_country_flag = KOCH_B11_secret_90
+        country_event = { id = KOCH_PODIK.11090 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_cemetery_permit has_completed_focus = KOCH_B11_SECRET_CEMETERY NOT = { has_country_flag = KOCH_B11_secret_91 } }
+        set_country_flag = KOCH_B11_secret_91
+        country_event = { id = KOCH_PODIK.11091 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_cartridge_relic has_completed_focus = KOCH_B11_HOUSEHOLD_CONSTITUTION NOT = { has_country_flag = KOCH_B11_secret_92 } }
+        set_country_flag = KOCH_B11_secret_92
+        country_event = { id = KOCH_PODIK.11092 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_newton_convicted has_completed_focus = KOCH_B11_BALCONY_DOCTRINE NOT = { has_country_flag = KOCH_B11_secret_93 } }
+        set_country_flag = KOCH_B11_secret_93
+        country_event = { id = KOCH_PODIK.11093 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_makafon_resolved has_idea = KOCH_B11_silence_archive NOT = { has_country_flag = KOCH_B11_secret_94 } }
+        set_country_flag = KOCH_B11_secret_94
+        country_event = { id = KOCH_PODIK.11094 days = 1 }
+    }
+    else_if = {
+        limit = { has_country_flag = KOCH_B11_two_shrines_signed has_country_flag = KOCH_B11_cartridge_relic NOT = { has_country_flag = KOCH_B11_secret_95 } }
+        set_country_flag = KOCH_B11_secret_95
+        country_event = { id = KOCH_PODIK.11095 days = 1 }
+    }
+    else_if = {
+        limit = { has_completed_focus = KOCH_B11_SECOND_DEMONSTRATION has_completed_focus = KOCH_B11_SHIRT_HISTORY NOT = { has_country_flag = KOCH_B11_secret_96 } }
+        set_country_flag = KOCH_B11_secret_96
+        country_event = { id = KOCH_PODIK.11096 days = 1 }
+    }
+}

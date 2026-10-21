@@ -1,0 +1,15 @@
+characters = {
+    KOCH_B09_artur_kruglyy = {
+        name = KOCH_B09_artur_kruglyy
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B09_artur_kruglyy
+            }
+        }
+        country_leader = {
+            ideology = liberalism
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+}

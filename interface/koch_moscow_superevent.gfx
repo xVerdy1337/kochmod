@@ -1,0 +1,35 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_KOCH_moscow_civil_war_superevent"
+        texturefile = "gfx/interface/superevents/koch_moscow_civil_war_panel.dds"
+    }
+    spriteType = {
+        name = "GFX_KOCH_moscow_superevent_frame"
+        texturefile = "gfx/interface/superevents/koch_superevent_frame.dds"
+    }
+    spriteType = {
+        name = "GFX_KOCH_moscow_superevent_title_plate"
+        texturefile = "gfx/interface/superevents/koch_superevent_title_plate.dds"
+    }
+    spriteType = {
+        name = "GFX_KOCH_moscow_superevent_quote_plate"
+        texturefile = "gfx/interface/superevents/koch_superevent_quote_plate.dds"
+    }
+    textSpriteType = {
+        name = "GFX_KOCH_moscow_superevent_close_button"
+        texturefile = "gfx/interface/superevents/koch_superevent_close_button.dds"
+        effectFile = "gfx/FX/buttonstate.lua"
+    }
+}
+
+# Isolated title font; no global font overrides or textcolors table.
+bitmapfonts = {
+    bitmapfont = {
+        name = "KOCH_superevent_title"
+        fontfiles = {
+            "gfx/fonts/koch_superevent_aldrich_18"
+            "gfx/fonts/koch_superevent_jura_cyrillic_18"
+        }
+        color = 0xffffffff
+    }
+}

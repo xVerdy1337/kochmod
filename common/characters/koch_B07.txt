@@ -1,0 +1,42 @@
+characters = {
+    KOCH_B07_nikita_kalinkin = {
+        name = KOCH_B07_nikita_kalinkin
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B07_nikita_kalinkin
+            }
+        }
+        country_leader = {
+            ideology = KOCH_monarchism
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+    KOCH_B07_moscow_government = {
+        name = KOCH_B07_moscow_government
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B07_moscow_government
+            }
+        }
+        country_leader = {
+            ideology = KOCH_social_democracy
+            traits = { KOCH_bureaucratic_machine KOCH_fragmented_government }
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+    KOCH_B07_alexander_vanders = {
+        name = KOCH_B07_alexander_vanders
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B07_alexander_vanders
+            }
+        }
+        country_leader = {
+            ideology = KOCH_nationalism
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+}

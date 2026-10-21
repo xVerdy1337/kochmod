@@ -1,0 +1,12 @@
+KOCH_MOSCOW_DEMOCRATS = {
+    color = rgb { 168 0 44 }
+    color_ui = rgb { 168 0 44 }
+}
+KOCH_MOSCOW_FASCISTS = {
+    color = rgb { 55 55 55 }
+    color_ui = rgb { 55 55 55 }
+}
+KOCH_MOSCOW_AUTHORITARIANS = {
+    color = rgb { 0 50 0 }
+    color_ui = rgb { 0 50 0 }
+}

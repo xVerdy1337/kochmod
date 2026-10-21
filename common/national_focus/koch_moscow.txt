@@ -1,0 +1,423 @@
+focus_tree = {
+    id = KOCH_moscow_shared_tree
+    country = {
+        factor = 0
+        modifier = { add = 100 original_tag = B07 }
+    }
+    default = no
+    reset_on_civilwar = no
+
+    focus = {
+        id = KOCH_B07_choose_your_side
+        icon = GFX_goal_generic_political_pressure
+        x = 21
+        y = 0
+        cost = 5
+        available = {
+            tag = B07
+            NOT = { has_country_flag = KOCH_B07_civil_war_started }
+            NOT = { has_country_flag = KOCH_B07_side_choice_locked }
+        }
+        ai_will_do = { factor = 10 }
+        completion_reward = {
+            custom_effect_tooltip = KOCH_B07_side_choice_event_tt
+            hidden_effect = {
+                if = {
+                    limit = {
+                        tag = B07
+                        NOT = { has_country_flag = KOCH_B07_civil_war_started }
+                        NOT = { has_country_flag = KOCH_B07_side_choice_locked }
+                    }
+                    country_event = { id = koch_moscow_crisis.2 }
+                }
+            }
+        }
+    }
+
+    focus = {
+        id = KOCH_B07_democratic_path
+        icon = GFX_goal_support_democracy
+        relative_position_id = KOCH_B07_choose_your_side
+        x = 0
+        y = 1
+        cost = 1
+        prerequisite = { focus = KOCH_B07_choose_your_side }
+        mutually_exclusive = { focus = KOCH_B07_fascist_path focus = KOCH_B07_imperial_path }
+        allow_branch = {
+            OR = {
+                NOT = { has_country_flag = KOCH_B07_civil_war_started }
+                has_country_flag = KOCH_B07_democratic_side
+            }
+        }
+        # Selection is made by the event, not by starting these focuses manually.
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = KOCH_B07_path_chosen_by_event_tt
+                always = no
+            }
+        }
+        ai_will_do = { factor = 0 }
+        completion_reward = {
+            custom_effect_tooltip = KOCH_B07_democratic_delay_tt
+            custom_effect_tooltip = KOCH_B07_balance_decisions_unlocked_tt
+            hidden_effect = { KOCH_B07_delay_democratic_crisis = yes }
+        }
+    }
+
+    focus = {
+        id = KOCH_B07_fascist_path
+        icon = GFX_goal_support_fascism
+        relative_position_id = KOCH_B07_choose_your_side
+        x = -6
+        y = 1
+        cost = 1
+        prerequisite = { focus = KOCH_B07_choose_your_side }
+        mutually_exclusive = { focus = KOCH_B07_democratic_path focus = KOCH_B07_imperial_path }
+        allow_branch = {
+            OR = {
+                NOT = { has_country_flag = KOCH_B07_civil_war_started }
+                has_country_flag = KOCH_B07_fascist_side
+            }
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = KOCH_B07_path_chosen_by_event_tt
+                always = no
+            }
+        }
+        ai_will_do = { factor = 0 }
+        completion_reward = { custom_effect_tooltip = KOCH_B07_balance_decisions_unlocked_tt }
+    }
+
+    focus = {
+        id = KOCH_B07_imperial_path
+        icon = GFX_focus_rom_royal_dictatorship
+        relative_position_id = KOCH_B07_choose_your_side
+        x = 6
+        y = 1
+        cost = 1
+        prerequisite = { focus = KOCH_B07_choose_your_side }
+        mutually_exclusive = { focus = KOCH_B07_democratic_path focus = KOCH_B07_fascist_path }
+        allow_branch = {
+            OR = {
+                NOT = { has_country_flag = KOCH_B07_civil_war_started }
+                has_country_flag = KOCH_B07_authoritarian_side
+            }
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = KOCH_B07_path_chosen_by_event_tt
+                always = no
+            }
+        }
+        ai_will_do = { factor = 0 }
+        completion_reward = { custom_effect_tooltip = KOCH_B07_balance_decisions_unlocked_tt }
+    }
+    # Most subsequent focuses remain placeholders; crisis prevention is implemented.
+    focus = {
+        id = KOCH_B07_mobilize_supporters
+        icon = GFX_goal_generic_allies_build_infantry
+        x = 14
+        y = 2
+        cost = 5
+        prerequisite = { focus = KOCH_B07_fascist_path }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_open_warehouses
+        icon = GFX_goal_generic_small_arms
+        x = 16
+        y = 2
+        cost = 5
+        prerequisite = { focus = KOCH_B07_fascist_path }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_requiem_for_democracy
+        icon = GFX_goal_support_fascism
+        x = 15
+        y = 3
+        cost = 5
+        prerequisite = { focus = KOCH_B07_mobilize_supporters }
+        prerequisite = { focus = KOCH_B07_open_warehouses }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_revive_the_countryside
+        icon = GFX_goal_generic_construction
+        x = 15
+        y = 4
+        cost = 5
+        prerequisite = { focus = KOCH_B07_requiem_for_democracy }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_open_burger_restaurant
+        icon = GFX_goal_generic_consumer_goods
+        x = 12
+        y = 5
+        cost = 5
+        prerequisite = { focus = KOCH_B07_revive_the_countryside }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_cure_gynecomastia
+        icon = GFX_goal_generic_scientific_exchange
+        x = 14
+        y = 5
+        cost = 5
+        prerequisite = { focus = KOCH_B07_revive_the_countryside }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_gather_vasyas
+        icon = GFX_goal_generic_national_unity
+        x = 16
+        y = 5
+        cost = 5
+        prerequisite = { focus = KOCH_B07_revive_the_countryside }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_build_a_road
+        icon = GFX_goal_generic_construct_infrastructure
+        x = 18
+        y = 5
+        cost = 5
+        prerequisite = { focus = KOCH_B07_revive_the_countryside }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_volokolamsk_is_not_a_village
+        icon = GFX_goal_generic_construction2
+        x = 15
+        y = 6
+        cost = 5
+        prerequisite = { focus = KOCH_B07_open_burger_restaurant }
+        prerequisite = { focus = KOCH_B07_cure_gynecomastia }
+        prerequisite = { focus = KOCH_B07_gather_vasyas }
+        prerequisite = { focus = KOCH_B07_build_a_road }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_strong_burbulestan
+        icon = GFX_goal_generic_major_alliance
+        x = 15
+        y = 7
+        cost = 5
+        prerequisite = { focus = KOCH_B07_volokolamsk_is_not_a_village }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_control_the_countryside
+        icon = GFX_goal_generic_political_pressure
+        x = 21
+        y = 2
+        cost = 5
+        prerequisite = { focus = KOCH_B07_democratic_path }
+        available = { NOT = { has_country_flag = KOCH_B07_civil_war_started } }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_new_focus
+        icon = GFX_goal_generic_major_war
+        x = 25
+        y = 2
+        cost = 5
+        prerequisite = { focus = KOCH_B07_democratic_path }
+        available = { has_country_flag = KOCH_B07_civil_war_started }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_self_defense_forces
+        icon = GFX_focus_generic_home_defense
+        x = 19
+        y = 3
+        cost = 5
+        prerequisite = { focus = KOCH_B07_control_the_countryside }
+        available = { NOT = { has_country_flag = KOCH_B07_civil_war_started } }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_government_purges
+        icon = GFX_goal_generic_political_pressure
+        x = 21
+        y = 3
+        cost = 5
+        prerequisite = { focus = KOCH_B07_control_the_countryside }
+        available = { NOT = { has_country_flag = KOCH_B07_civil_war_started } }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_arrest_radicals
+        icon = GFX_goal_continuous_suppression
+        x = 23
+        y = 3
+        cost = 5
+        prerequisite = { focus = KOCH_B07_control_the_countryside }
+        available = { NOT = { has_country_flag = KOCH_B07_civil_war_started } }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_prevent_the_split
+        icon = GFX_goal_generic_national_unity
+        x = 21
+        y = 4
+        cost = 5
+        prerequisite = { focus = KOCH_B07_self_defense_forces }
+        prerequisite = { focus = KOCH_B07_government_purges }
+        prerequisite = { focus = KOCH_B07_arrest_radicals }
+        available = {
+            tag = B07
+            has_country_flag = KOCH_B07_crisis_active
+            NOT = { has_country_flag = KOCH_B07_civil_war_started }
+            NOT = { check_variable = { KOCH_B07_tension > 20 } }
+        }
+        completion_reward = {
+            custom_effect_tooltip = KOCH_B07_resolve_crisis_tt
+            hidden_effect = { KOCH_B07_resolve_crisis = yes }
+        }
+    }
+
+    focus = {
+        id = KOCH_B07_elect_prime_minister
+        icon = GFX_goal_support_democracy
+        x = 23
+        y = 5
+        cost = 5
+        prerequisite = { focus = KOCH_B07_prevent_the_split focus = KOCH_B07_deal_with_the_threat }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_democratic_union
+        icon = GFX_goal_generic_alliance
+        x = 21
+        y = 6
+        cost = 5
+        prerequisite = { focus = KOCH_B07_elect_prime_minister }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_economic_reforms
+        icon = GFX_goal_generic_production2
+        x = 23
+        y = 6
+        cost = 5
+        prerequisite = { focus = KOCH_B07_elect_prime_minister }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_army_reforms
+        icon = GFX_goal_generic_army_doctrines
+        x = 25
+        y = 6
+        cost = 5
+        prerequisite = { focus = KOCH_B07_elect_prime_minister }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_bulwark_of_new_burbulestan
+        icon = GFX_goal_generic_fortify_city
+        x = 23
+        y = 7
+        cost = 5
+        prerequisite = { focus = KOCH_B07_democratic_union }
+        prerequisite = { focus = KOCH_B07_economic_reforms }
+        prerequisite = { focus = KOCH_B07_army_reforms }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_begin_unification
+        icon = GFX_goal_generic_demand_territory
+        x = 19
+        y = 8
+        cost = 5
+        prerequisite = { focus = KOCH_B07_strong_burbulestan focus = KOCH_B07_bulwark_of_new_burbulestan }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_strike_cheboksary
+        icon = GFX_goal_generic_occupy_start_war
+        x = 17
+        y = 9
+        cost = 5
+        prerequisite = { focus = KOCH_B07_begin_unification }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_unite_petersburg_brothers
+        icon = GFX_goal_generic_improve_relations
+        x = 19
+        y = 9
+        cost = 5
+        prerequisite = { focus = KOCH_B07_begin_unification }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_subjugate_volga_vasya
+        icon = GFX_goal_generic_territory_or_war
+        x = 21
+        y = 9
+        cost = 5
+        prerequisite = { focus = KOCH_B07_begin_unification }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_form_western_burbulestan
+        icon = GFX_goal_generic_national_unity
+        x = 19
+        y = 10
+        cost = 5
+        prerequisite = { focus = KOCH_B07_strike_cheboksary }
+        prerequisite = { focus = KOCH_B07_unite_petersburg_brothers }
+        prerequisite = { focus = KOCH_B07_subjugate_volga_vasya }
+        completion_reward = { }
+    }
+
+
+    focus = {
+        id = KOCH_B07_appeal_for_help
+        icon = GFX_focus_generic_military_mission
+        x = 25
+        y = 3
+        cost = 5
+        prerequisite = { focus = KOCH_B07_new_focus }
+        available = { has_country_flag = KOCH_B07_civil_war_started }
+        completion_reward = { }
+    }
+
+    focus = {
+        id = KOCH_B07_deal_with_the_threat
+        icon = GFX_goal_generic_occupy_states_ongoing_war
+        x = 25
+        y = 4
+        cost = 5
+        prerequisite = { focus = KOCH_B07_appeal_for_help }
+        available = { has_country_flag = KOCH_B07_civil_war_started }
+        completion_reward = { }
+    }
+}

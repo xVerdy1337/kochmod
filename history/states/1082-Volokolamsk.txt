@@ -1,0 +1,25 @@
+state = {
+    id = 1082
+    name = "STATE_1082"
+    manpower = 1445331
+    state_category = koch_moscow_district
+    resources = {
+        steel = 5
+        coal = 5
+    }
+    history = {
+        owner = B07
+        controller = B07
+        add_core_of = B07
+        victory_points = { 9302 11 }
+        victory_points = { 3391 10 }
+        buildings = {
+            infrastructure = 3
+            arms_factory = 2
+            industrial_complex = 1
+            3391 = { land_facility = 1 }
+        }
+    }
+    provinces = { 9302 366 3358 11282 3259 3391 3327 401 }
+    local_supplies = 1
+}

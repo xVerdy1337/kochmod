@@ -1,0 +1,74 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_portrait_KOCH_B11_mark_p"
+        texturefile = "gfx/leaders/B11/koch_mark_p.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B09_artur_kruglyy"
+        texturefile = "gfx/leaders/B09/koch_artur_kruglyy.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B03_nikolay_fundukin"
+        texturefile = "gfx/leaders/B03/koch_nikolay_fundukin.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B08_artem_verdi"
+        texturefile = "gfx/leaders/B08/koch_artem_verdi.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B03_chetkiye_patsanchiki"
+        texturefile = "gfx/leaders/B03/koch_chetkiye_patsanchiki.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B05_danil_kozlov"
+        texturefile = "gfx/leaders/B05/koch_danil_kozlov.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B04_astrandr"
+        texturefile = "gfx/leaders/B04/koch_astrandr.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B01_alexey_kalkin"
+        texturefile = "gfx/leaders/B01/koch_alexey_kalkin.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B02_chokmok_i"
+        texturefile = "gfx/leaders/B02/koch_chokmok_i.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B07_moscow_government"
+        texturefile = "gfx/leaders/B07/koch_moscow_government.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B04_alain_delon"
+        texturefile = "gfx/leaders/B04/koch_alain_delon.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B04_alain_delon_small"
+        texturefile = "gfx/leaders/B04/koch_alain_delon_small.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B05_vladislav_kochev"
+        texturefile = "gfx/leaders/B05/koch_vladislav_kochev.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B05_vladislav_kochev_small"
+        texturefile = "gfx/leaders/B05/koch_vladislav_kochev_small.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B05_alexey_panin"
+        texturefile = "gfx/leaders/B05/koch_alexey_panin.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B05_alexey_panin_small"
+        texturefile = "gfx/leaders/B05/koch_alexey_panin_small.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B07_nikita_kalinkin"
+        texturefile = "gfx/leaders/B07/koch_nikita_kalinkin.dds"
+    }
+    spriteType = {
+        name = "GFX_portrait_KOCH_B07_alexander_vanders"
+        texturefile = "gfx/leaders/B07/koch_alexander_vanders.dds"
+    }
+}

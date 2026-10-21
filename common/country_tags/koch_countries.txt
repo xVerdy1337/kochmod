@@ -1,0 +1,12 @@
+# Country skeletons: no territory or capital assigned.
+B01 = "countries/koch_B01.txt"
+B02 = "countries/koch_B02.txt"
+B03 = "countries/koch_B03.txt"
+B04 = "countries/koch_B04.txt"
+B05 = "countries/koch_B05.txt"
+B06 = "countries/koch_B06.txt"
+B07 = "countries/koch_B07.txt"
+B08 = "countries/koch_B08.txt"
+B09 = "countries/koch_B09.txt"
+B10 = "countries/koch_B10.txt"
+B11 = "countries/koch_B11.txt"

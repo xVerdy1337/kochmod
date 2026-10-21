@@ -1,0 +1,45 @@
+on_actions = {
+    on_startup = {
+        effect = { every_country = { limit = { original_tag = B11 } KOCH_B11_initialize = yes } }
+    }
+    on_daily_B11 = {
+        effect = {
+            KOCH_B11_initialize = yes
+            KOCH_B11_expansion_daily = yes
+            KOCH_B11_daily_charge = yes
+        }
+    }
+    on_monthly_B11 = {
+        effect = {
+            if = {
+                limit = {
+                    has_country_flag = KOCH_B11_council_path
+                    NOT = { has_country_flag = KOCH_B11_compromise }
+                    NOT = { has_country_flag = KOCH_B11_single_chair }
+                    NOT = { has_country_flag = KOCH_B11_sabotage_pending }
+                    NOT = { has_idea = KOCH_B11_council_sabotage }
+                    OR = { check_variable = { KOCH_vamos_influence > 74 } check_variable = { KOCH_gamos_influence > 74 } }
+                }
+                set_country_flag = KOCH_B11_sabotage_pending
+                country_event = { id = KOCH_PODIK.11036 days = 1 }
+            }
+            if = {
+                limit = { has_country_flag = KOCH_B11_podik_path NOT = { has_country_flag = KOCH_B11_device_confiscated } NOT = { has_country_flag = KOCH_B11_device_broken } NOT = { has_country_flag = KOCH_B11_device_missing } NOT = { has_country_flag = KOCH_B11_incident_cooldown } }
+                random_list = {
+                    94 = { }
+                    3 = { set_country_flag = { flag = KOCH_B11_incident_cooldown days = 180 } set_country_flag = KOCH_B11_device_missing KOCH_B11_update_charge = yes country_event = { id = KOCH_PODIK.11024 days = 1 } }
+                    3 = { set_country_flag = { flag = KOCH_B11_incident_cooldown days = 180 } set_country_flag = KOCH_B11_device_broken set_variable = { KOCH_podik_charge = 0 } KOCH_B11_update_charge = yes country_event = { id = KOCH_PODIK.11037 days = 1 } }
+                }
+            }
+            if = {
+                limit = { has_country_flag = KOCH_B11_council_path NOT = { has_country_flag = KOCH_B11_single_chair } NOT = { has_country_flag = KOCH_B11_scandal_cooldown } }
+                random_list = {
+                    94 = { }
+                    6 = { set_country_flag = { flag = KOCH_B11_scandal_cooldown days = 180 } country_event = { id = KOCH_PODIK.11038 days = 1 } }
+                }
+            }
+            KOCH_B11_secret_archives = yes
+        }
+    }
+}
+

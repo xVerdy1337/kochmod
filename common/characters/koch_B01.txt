@@ -1,0 +1,16 @@
+characters = {
+    KOCH_B01_alexey_kalkin = {
+        name = KOCH_B01_alexey_kalkin
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B01_alexey_kalkin
+            }
+        }
+        country_leader = {
+            ideology = despotism
+            traits = { KOCH_former_leader_of_trilia }
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+}

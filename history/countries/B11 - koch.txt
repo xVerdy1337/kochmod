@@ -1,0 +1,22 @@
+capital = 66
+set_politics = {
+    ruling_party = democratic
+    elections_allowed = yes
+}
+set_popularities = {
+    democratic = 65
+    fascism = 5
+    communism = 5
+    neutrality = 25
+}
+recruit_character = KOCH_B11_mark_p
+set_stability = 0.38
+set_war_support = 0.18
+set_research_slots = 2
+set_technology = { infantry_weapons = 1 tech_support = 1 tech_recon = 1 popup = no }
+recruit_character = KOCH_B11_council
+recruit_character = KOCH_B11_vamos
+recruit_character = KOCH_B11_gamos
+KOCH_B11_initialize = yes
+
+recruit_character = KOCH_B11_mother

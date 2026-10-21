@@ -1,0 +1,8 @@
+# Local diagnostics, generated previews and backups
+tools/diagnostics/
+tools/backups/
+output/
+**/__pycache__/
+*.log
+*.bak
+

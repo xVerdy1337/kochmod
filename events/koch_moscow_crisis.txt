@@ -1,0 +1,94 @@
+add_namespace = koch_moscow_crisis
+
+# No popup or AI option selection: these callbacks run for every country.
+country_event = {
+    id = koch_moscow_crisis.4
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        set_global_flag = KOCH_moscow_civil_war_superevent_ai_expired
+        if = {
+            limit = { is_ai = yes }
+            set_country_flag = KOCH_moscow_civil_war_superevent_closed
+        }
+    }
+}
+
+country_event = {
+    id = koch_moscow_crisis.5
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        set_global_flag = KOCH_moscow_civil_war_superevent_expired
+        set_country_flag = KOCH_moscow_civil_war_superevent_closed
+    }
+}
+
+country_event = {
+    id = koch_moscow_crisis.1
+    title = KOCH_B07_crisis_interrupted_title
+    desc = KOCH_B07_crisis_interrupted_desc
+    picture = GFX_report_event_spain_civil_war_soldiers
+    is_triggered_only = yes
+    option = { name = OK }
+}
+
+country_event = {
+    id = koch_moscow_crisis.2
+    title = KOCH_B07_side_choice_title
+    desc = KOCH_B07_side_choice_desc
+    picture = GFX_report_event_spain_civil_war_soldiers
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = B07
+        NOT = { has_country_flag = KOCH_B07_side_choice_locked }
+        NOT = { has_country_flag = KOCH_B07_civil_war_started }
+    }
+    immediate = { hidden_effect = { set_country_flag = KOCH_B07_side_choice_pending } }
+    option = {
+        name = KOCH_B07_side_choice_democratic
+        ai_chance = { factor = 50 }
+        custom_effect_tooltip = KOCH_B07_side_choice_democratic_tt
+        hidden_effect = {
+            if = {
+                limit = { NOT = { has_country_flag = KOCH_B07_side_choice_locked } }
+                clr_country_flag = KOCH_B07_player_chose_fascists
+                clr_country_flag = KOCH_B07_player_chose_imperial
+                set_country_flag = KOCH_B07_player_chose_democrats
+                complete_national_focus = KOCH_B07_democratic_path
+                KOCH_B07_commit_side_choice = yes
+            }
+        }
+    }
+    option = {
+        name = KOCH_B07_side_choice_fascist
+        ai_chance = { factor = 25 }
+        custom_effect_tooltip = KOCH_B07_side_choice_fascist_tt
+        hidden_effect = {
+            if = {
+                limit = { NOT = { has_country_flag = KOCH_B07_side_choice_locked } }
+                clr_country_flag = KOCH_B07_player_chose_democrats
+                clr_country_flag = KOCH_B07_player_chose_imperial
+                set_country_flag = KOCH_B07_player_chose_fascists
+                complete_national_focus = KOCH_B07_fascist_path
+                KOCH_B07_commit_side_choice = yes
+            }
+        }
+    }
+    option = {
+        name = KOCH_B07_side_choice_imperial
+        ai_chance = { factor = 25 }
+        custom_effect_tooltip = KOCH_B07_side_choice_imperial_tt
+        hidden_effect = {
+            if = {
+                limit = { NOT = { has_country_flag = KOCH_B07_side_choice_locked } }
+                clr_country_flag = KOCH_B07_player_chose_democrats
+                clr_country_flag = KOCH_B07_player_chose_fascists
+                set_country_flag = KOCH_B07_player_chose_imperial
+                complete_national_focus = KOCH_B07_imperial_path
+                KOCH_B07_commit_side_choice = yes
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+B07 = {
+    color = rgb { 168 0 44 }
+    color_ui = rgb { 168 0 44 }
+}
+
+B01 = {
+    color = rgb { 245 170 35 }
+    color_ui = rgb { 245 170 35 }
+}
+
+B05 = {
+    color = rgb { 205 92 92 }
+    color_ui = rgb { 205 92 92 }
+}
+
+B03 = {
+    color = rgb { 127 255 212 }
+    color_ui = rgb { 127 255 212 }
+}
+
+B08 = {
+    color = rgb { 255 255 255 }
+    color_ui = rgb { 255 255 255 }
+}
+
+B04 = {
+    color = rgb { 176 196 222 }
+    color_ui = rgb { 176 196 222 }
+}

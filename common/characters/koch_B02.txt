@@ -1,0 +1,16 @@
+characters = {
+    KOCH_B02_chokmok_i = {
+        name = KOCH_B02_chokmok_i
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B02_chokmok_i
+            }
+        }
+        country_leader = {
+            ideology = despotism
+            traits = { KOCH_legitimate_prince }
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+}

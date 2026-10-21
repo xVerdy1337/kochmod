@@ -1,0 +1,35 @@
+characters = {
+    KOCH_B11_mark_p = {
+        name = KOCH_B11_mark_p
+        portraits = {
+            civilian = {
+                large = GFX_portrait_KOCH_B11_mark_p
+            }
+        }
+        country_leader = {
+            ideology = liberalism
+            expire = "2100.1.1.1"
+            id = -1
+        }
+    }
+    KOCH_B11_council = {
+        name = KOCH_B11_council
+        portraits = { civilian = { large = "gfx/leaders/B11/koch_council.dds" } }
+        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 }
+    }
+    KOCH_B11_vamos = {
+        name = KOCH_B11_vamos
+        portraits = { civilian = { large = "gfx/leaders/Europe/Portrait_Europe_Generic_1.dds" } }
+        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 }
+    }
+    KOCH_B11_gamos = {
+        name = KOCH_B11_gamos
+        portraits = { civilian = { large = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds" } }
+        country_leader = { ideology = despotism expire = "2100.1.1.1" id = -1 }
+    }
+    KOCH_B11_mother = {
+        name = KOCH_B11_mother
+        portraits = { civilian = { large = "gfx/leaders/scientists/generic_scientists/portrait_generic_europe_female_01.dds" } }
+        advisor = { slot = political_advisor idea_token = KOCH_B11_mother allowed = { original_tag = B11 } available = { has_country_flag = KOCH_B11_mother_treaty } traits = { compassionate_gentleman } cost = 100 }
+    }
+}

@@ -1,0 +1,1858 @@
+add_namespace = KOCH_PODIK
+
+country_event = {
+    id = KOCH_PODIK.11001
+    title = KOCH_PODIK.11001.t
+    desc = KOCH_PODIK.11001.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11001.a
+        ai_chance = { factor = 1 }
+        add_stability = -0.02 add_political_power = 30
+    }
+    option = {
+        name = KOCH_PODIK.11001.b
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_council_accused add_war_support = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11001.c
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11002
+    title = KOCH_PODIK.11002.t
+    desc = KOCH_PODIK.11002.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11002.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.04 add_political_power = 25 custom_effect_tooltip = KOCH_B11_purchase_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11003
+    title = KOCH_PODIK.11003.t
+    desc = KOCH_PODIK.11003.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11003.a
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11004
+    title = KOCH_PODIK.11004.t
+    desc = KOCH_PODIK.11004.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11004.a
+        ai_chance = { factor = 1 }
+        add_political_power = 25 custom_effect_tooltip = KOCH_B11_council_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11005
+    title = KOCH_PODIK.11005.t
+    desc = KOCH_PODIK.11005.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11005.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11005.b
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_war_support = 0.04
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11006
+    title = KOCH_PODIK.11006.t
+    desc = KOCH_PODIK.11006.d
+    picture = GFX_report_event_generic_research_lab
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11006.a
+        ai_chance = { factor = 1 }
+        set_variable = { KOCH_podik_charge = 100 } KOCH_B11_update_charge = yes army_experience = 5
+    }
+    option = {
+        name = KOCH_PODIK.11006.b
+        ai_chance = { factor = 1 }
+        add_political_power = 25 add_to_variable = { KOCH_podik_charge = 30 } KOCH_B11_update_charge = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11007
+    title = KOCH_PODIK.11007.t
+    desc = KOCH_PODIK.11007.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11007.a
+        trigger = { NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_broken_tt not_tooltip = KOCH_B11_condition_device_broken_tt_NOT has_country_flag = KOCH_B11_device_broken } } NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_device_missing_tt not_tooltip = KOCH_B11_condition_device_missing_tt_NOT has_country_flag = KOCH_B11_device_missing } } }
+        ai_chance = { factor = 1 }
+        add_political_power = -35 add_to_variable = { KOCH_podik_charge = 45 } KOCH_B11_update_charge = yes
+    }
+    option = {
+        name = KOCH_PODIK.11007.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.03 custom_effect_tooltip = KOCH_B11_low_charge_tt
+    }
+    option = {
+        name = KOCH_PODIK.11007.c
+        trigger = { has_completed_focus = KOCH_B11_BAN_DOUBT }
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 add_stability = -0.04
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11008
+    title = KOCH_PODIK.11008.t
+    desc = KOCH_PODIK.11008.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11008.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_mark_recognized clr_country_flag = KOCH_B11_mark_questioned add_stability = 0.03 custom_effect_tooltip = KOCH_B11_mark_recognition_tt
+    }
+    option = {
+        name = KOCH_PODIK.11008.b
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_mark_recognized set_country_flag = KOCH_B11_mark_questioned add_political_power = 25 custom_effect_tooltip = KOCH_B11_mark_not_recognized_tt
+    }
+    option = {
+        name = KOCH_PODIK.11008.c
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_mark_recognized set_country_flag = KOCH_B11_mark_energy add_ideas = KOCH_B11_mark_energy custom_effect_tooltip = KOCH_B11_mark_not_recognized_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11009
+    title = KOCH_PODIK.11009.t
+    desc = KOCH_PODIK.11009.d
+    picture = GFX_report_event_generic_army
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11009.a
+        ai_chance = { factor = 1 }
+        add_political_power = 35 custom_effect_tooltip = KOCH_B11_empire_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11010
+    title = KOCH_PODIK.11010.t
+    desc = KOCH_PODIK.11010.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11010.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.03 custom_effect_tooltip = KOCH_B11_holy_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11011
+    title = KOCH_PODIK.11011.t
+    desc = KOCH_PODIK.11011.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11011.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes add_political_power = 15
+    }
+    option = {
+        name = KOCH_PODIK.11011.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes add_stability = 0.01
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11012
+    title = KOCH_PODIK.11012.t
+    desc = KOCH_PODIK.11012.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11012.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes add_political_power = 15
+    }
+    option = {
+        name = KOCH_PODIK.11012.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes add_stability = 0.01
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11013
+    title = KOCH_PODIK.11013.t
+    desc = KOCH_PODIK.11013.d
+    picture = GFX_report_event_generic_research_lab
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11013.a
+        ai_chance = { factor = 1 }
+        add_political_power = -60 add_research_slot = 1
+    }
+    option = {
+        name = KOCH_PODIK.11013.b
+        ai_chance = { factor = 1 }
+        add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 1 category = industry }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11014
+    title = KOCH_PODIK.11014.t
+    desc = KOCH_PODIK.11014.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11014.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+    option = {
+        name = KOCH_PODIK.11014.b
+        ai_chance = { factor = 1 }
+        set_variable = { KOCH_vamos_influence = 50 } KOCH_B11_normalize_council = yes add_stability = 0.02 add_political_power = -20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11015
+    title = KOCH_PODIK.11015.t
+    desc = KOCH_PODIK.11015.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11015.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes add_to_variable = { KOCH_vamos_influence = 5 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11015.b
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11016
+    title = KOCH_PODIK.11016.t
+    desc = KOCH_PODIK.11016.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11016.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes add_to_variable = { KOCH_vamos_influence = -5 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11016.b
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11017
+    title = KOCH_PODIK.11017.t
+    desc = KOCH_PODIK.11017.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11017.a
+        ai_chance = { factor = 1 }
+        add_to_variable = { KOCH_vamos_influence = 15 } KOCH_B11_normalize_council = yes add_stability = -0.02
+    }
+    option = {
+        name = KOCH_PODIK.11017.b
+        ai_chance = { factor = 1 }
+        add_to_variable = { KOCH_vamos_influence = -15 } KOCH_B11_normalize_council = yes add_stability = -0.02
+    }
+    option = {
+        name = KOCH_PODIK.11017.c
+        ai_chance = { factor = 1 }
+        add_political_power = -40 set_variable = { KOCH_vamos_influence = 50 } KOCH_B11_normalize_council = yes remove_ideas = KOCH_B11_council_sabotage add_stability = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11018
+    title = KOCH_PODIK.11018.t
+    desc = KOCH_PODIK.11018.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11018.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11019
+    title = KOCH_PODIK.11019.t
+    desc = KOCH_PODIK.11019.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11019.a
+        ai_chance = { factor = 1 }
+        if = { limit = { has_country_flag = KOCH_B11_podik_path } add_to_variable = { KOCH_podik_charge = -5 } KOCH_B11_update_charge = yes } else = { add_political_power = 10 } if = { limit = { country_exists = B09 } B09 = { country_event = { id = KOCH_PODIK.11026 days = 2 } } }
+    }
+    option = {
+        name = KOCH_PODIK.11019.b
+        ai_chance = { factor = 1 }
+        add_political_power = -25 set_country_flag = KOCH_B11_guard_funded if = { limit = { country_exists = B09 } B09 = { country_event = { id = KOCH_PODIK.11026 days = 2 } } }
+    }
+    option = {
+        name = KOCH_PODIK.11019.c
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_guard_international if = { limit = { country_exists = B09 } B09 = { country_event = { id = KOCH_PODIK.11026 days = 2 } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11020
+    title = KOCH_PODIK.11020.t
+    desc = KOCH_PODIK.11020.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11020.a
+        ai_chance = { factor = 1 }
+        add_timed_idea = { idea = KOCH_B11_ace_trade days = 180 } add_political_power = 20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11021
+    title = KOCH_PODIK.11021.t
+    desc = KOCH_PODIK.11021.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11021.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+    option = {
+        name = KOCH_PODIK.11021.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.02 add_war_support = 0.04 if = { limit = { country_exists = B09 } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_diplomatic_insult } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11022
+    title = KOCH_PODIK.11022.t
+    desc = KOCH_PODIK.11022.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11022.a
+        ai_chance = { factor = 1 }
+        if = { limit = { country_exists = B09 NOT = { has_war_with = B09 } NOT = { is_in_faction_with = B09 } } B09 = { country_event = { id = KOCH_PODIK.11032 days = 2 } } }
+    }
+    option = {
+        name = KOCH_PODIK.11022.b
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_dispute_closed add_political_power = 25
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11023
+    title = KOCH_PODIK.11023.t
+    desc = KOCH_PODIK.11023.d
+    picture = GFX_report_event_generic_research_lab
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11023.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11024
+    title = KOCH_PODIK.11024.t
+    desc = KOCH_PODIK.11024.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_device_missing }
+    option = {
+        name = KOCH_PODIK.11024.a
+        ai_chance = { factor = 1 }
+        set_variable = { KOCH_podik_charge = 0 } KOCH_B11_update_charge = yes add_stability = -0.04 set_country_flag = KOCH_B11_search_pending country_event = { id = KOCH_PODIK.11047 days = 14 }
+    }
+    option = {
+        name = KOCH_PODIK.11024.b
+        ai_chance = { factor = 1 }
+        set_variable = { KOCH_podik_charge = 0 } KOCH_B11_update_charge = yes add_war_support = 0.03 custom_effect_tooltip = KOCH_B11_missing_tt
+    }
+    option = {
+        name = KOCH_PODIK.11024.c
+        ai_chance = { factor = 1 }
+        add_political_power = -65 clr_country_flag = KOCH_B11_device_missing set_variable = { KOCH_podik_charge = 100 } KOCH_B11_update_charge = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11025
+    title = KOCH_PODIK.11025.t
+    desc = KOCH_PODIK.11025.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11025.a
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11026
+    title = KOCH_PODIK.11026.t
+    desc = KOCH_PODIK.11026.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B09 country_exists = B11 NOT = { has_war_with = B11 } }
+    option = {
+        name = KOCH_PODIK.11026.a
+        ai_chance = { factor = 70 modifier = { factor = 2 B11 = { has_country_flag = KOCH_B11_guard_funded } } }
+        set_country_flag = KOCH_B09_ace_consent if = { limit = { country_exists = B11 } B11 = { country_event = { id = KOCH_PODIK.11027 days = 1 } } }
+    }
+    option = {
+        name = KOCH_PODIK.11026.b
+        ai_chance = { factor = 30 }
+        if = { limit = { country_exists = B11 } B11 = { country_event = { id = KOCH_PODIK.11028 days = 1 } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11027
+    title = KOCH_PODIK.11027.t
+    desc = KOCH_PODIK.11027.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11027.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_guard_consent add_ideas = KOCH_B11_ace_guard if = { limit = { country_exists = B09 } add_opinion_modifier = { target = B09 modifier = KOCH_guard_respected } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_guard_respected } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11028
+    title = KOCH_PODIK.11028.t
+    desc = KOCH_PODIK.11028.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11028.a
+        ai_chance = { factor = 1 }
+        add_political_power = 15 custom_effect_tooltip = KOCH_B11_guard_retry_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11029
+    title = KOCH_PODIK.11029.t
+    desc = KOCH_PODIK.11029.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B09 country_exists = B11 NOT = { has_war_with = B11 } }
+    option = {
+        name = KOCH_PODIK.11029.a
+        ai_chance = { factor = 80 }
+        add_timed_idea = { idea = KOCH_B11_ace_trade days = 180 } if = { limit = { country_exists = B11 } B11 = { country_event = { id = KOCH_PODIK.11020 days = 1 } } }
+    }
+    option = {
+        name = KOCH_PODIK.11029.b
+        ai_chance = { factor = 20 }
+        add_political_power = 15 if = { limit = { country_exists = B11 } B11 = { add_political_power = 15 } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11030
+    title = KOCH_PODIK.11030.t
+    desc = KOCH_PODIK.11030.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B09 country_exists = B11 NOT = { has_war_with = B11 } }
+    option = {
+        name = KOCH_PODIK.11030.a
+        ai_chance = { factor = 80 modifier = { factor = 0.7 B11 = { has_country_flag = KOCH_B11_podik_path } } }
+        if = { limit = { country_exists = B11 } B11 = { KOCH_B11_join_artur = yes if = { limit = { is_in_faction_with = B09 } country_event = { id = KOCH_PODIK.11031 days = 1 } } else = { country_event = { id = KOCH_PODIK.11048 days = 1 } } } }
+    }
+    option = {
+        name = KOCH_PODIK.11030.b
+        ai_chance = { factor = 20 }
+        if = { limit = { country_exists = B11 } B11 = { set_country_flag = KOCH_B11_alliance_refused country_event = { id = KOCH_PODIK.11048 days = 1 } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11031
+    title = KOCH_PODIK.11031.t
+    desc = KOCH_PODIK.11031.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11031.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11032
+    title = KOCH_PODIK.11032.t
+    desc = KOCH_PODIK.11032.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B09 country_exists = B11 NOT = { has_war_with = B11 } NOT = { is_in_faction_with = B11 } B11 = { NOT = { has_country_flag = KOCH_B11_dispute_closed } } }
+    option = {
+        name = KOCH_PODIK.11032.a
+        ai_chance = { factor = 35 }
+        if = { limit = { country_exists = B11 } B11 = { country_event = { id = KOCH_PODIK.11033 days = 1 } } }
+    }
+    option = {
+        name = KOCH_PODIK.11032.b
+        ai_chance = { factor = 65 }
+        if = { limit = { country_exists = B11 } B11 = { country_event = { id = KOCH_PODIK.11034 days = 1 } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11033
+    title = KOCH_PODIK.11033.t
+    desc = KOCH_PODIK.11033.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11033.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_dispute_closed clr_country_flag = KOCH_B11_ultimatum_rejected remove_ideas = KOCH_B11_border_fever add_political_power = 35 add_stability = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11034
+    title = KOCH_PODIK.11034.t
+    desc = KOCH_PODIK.11034.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11034.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_ultimatum_rejected add_war_support = 0.03 custom_effect_tooltip = KOCH_B11_wargoal_tt
+    }
+    option = {
+        name = KOCH_PODIK.11034.b
+        ai_chance = { factor = 1 }
+        country_event = { id = KOCH_PODIK.11035 days = 1 }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11035
+    title = KOCH_PODIK.11035.t
+    desc = KOCH_PODIK.11035.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11035.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_dispute_closed clr_country_flag = KOCH_B11_ultimatum_rejected remove_ideas = KOCH_B11_border_fever add_war_support = -0.03 add_stability = 0.02 if = { limit = { country_exists = B09 } add_opinion_modifier = { target = B09 modifier = KOCH_friendship } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_friendship } } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11036
+    title = KOCH_PODIK.11036.t
+    desc = KOCH_PODIK.11036.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_sabotage_pending NOT = { has_country_flag = KOCH_B11_compromise } NOT = { has_country_flag = KOCH_B11_single_chair } }
+    option = {
+        name = KOCH_PODIK.11036.a
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_sabotage_pending add_political_power = -45 set_variable = { KOCH_vamos_influence = 50 } KOCH_B11_normalize_council = yes remove_ideas = KOCH_B11_council_sabotage
+    }
+    option = {
+        name = KOCH_PODIK.11036.b
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_sabotage_pending add_timed_idea = { idea = KOCH_B11_council_sabotage days = 90 } add_stability = -0.03
+    }
+    option = {
+        name = KOCH_PODIK.11036.c
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_sabotage_pending add_political_power = -15 if = { limit = { check_variable = { KOCH_vamos_influence > 74 } } add_to_variable = { KOCH_vamos_influence = -15 } } else = { add_to_variable = { KOCH_vamos_influence = 15 } } KOCH_B11_normalize_council = yes add_timed_idea = { idea = KOCH_B11_council_sabotage days = 30 }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11037
+    title = KOCH_PODIK.11037.t
+    desc = KOCH_PODIK.11037.d
+    picture = GFX_report_event_generic_research_lab
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_device_broken }
+    option = {
+        name = KOCH_PODIK.11037.a
+        ai_chance = { factor = 1 }
+        add_political_power = -30 set_country_flag = KOCH_B11_search_pending country_event = { id = KOCH_PODIK.11047 days = 21 }
+    }
+    option = {
+        name = KOCH_PODIK.11037.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.03 custom_effect_tooltip = KOCH_B11_repair_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11038
+    title = KOCH_PODIK.11038.t
+    desc = KOCH_PODIK.11038.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11038.a
+        ai_chance = { factor = 1 }
+        add_political_power = -30 add_stability = 0.01
+    }
+    option = {
+        name = KOCH_PODIK.11038.b
+        ai_chance = { factor = 1 }
+        add_political_power = 15 add_timed_idea = { idea = KOCH_B11_council_sabotage days = 30 }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11039
+    title = KOCH_PODIK.11039.t
+    desc = KOCH_PODIK.11039.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11039.a
+        ai_chance = { factor = 1 }
+        add_war_support = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11040
+    title = KOCH_PODIK.11040.t
+    desc = KOCH_PODIK.11040.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11040.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 if = { limit = { NOT = { has_country_flag = KOCH_B11_device_broken } NOT = { has_country_flag = KOCH_B11_device_missing } } add_to_variable = { KOCH_podik_charge = 25 } KOCH_B11_update_charge = yes }
+    }
+    option = {
+        name = KOCH_PODIK.11040.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.03 add_war_support = 0.04
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11041
+    title = KOCH_PODIK.11041.t
+    desc = KOCH_PODIK.11041.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11041.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes
+    }
+    option = {
+        name = KOCH_PODIK.11041.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes
+    }
+    option = {
+        name = KOCH_PODIK.11041.c
+        ai_chance = { factor = 1 }
+        add_political_power = -20 set_variable = { KOCH_vamos_influence = 50 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11042
+    title = KOCH_PODIK.11042.t
+    desc = KOCH_PODIK.11042.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11042.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.04 custom_effect_tooltip = KOCH_B11_compromise_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11043
+    title = KOCH_PODIK.11043.t
+    desc = KOCH_PODIK.11043.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11043.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02 custom_effect_tooltip = KOCH_B11_single_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11044
+    title = KOCH_PODIK.11044.t
+    desc = KOCH_PODIK.11044.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11044.a
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 custom_effect_tooltip = KOCH_B11_dual_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11045
+    title = KOCH_PODIK.11045.t
+    desc = KOCH_PODIK.11045.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11045.a
+        ai_chance = { factor = 1 }
+        add_war_support = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11045.b
+        ai_chance = { factor = 1 }
+        add_political_power = 20 add_stability = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11046
+    title = KOCH_PODIK.11046.t
+    desc = KOCH_PODIK.11046.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11046.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11047
+    title = KOCH_PODIK.11047.t
+    desc = KOCH_PODIK.11047.d
+    picture = GFX_report_event_generic_research_lab
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11047.a
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_search_pending if = { limit = { OR = { has_country_flag = KOCH_B11_device_missing has_country_flag = KOCH_B11_device_broken } } clr_country_flag = KOCH_B11_device_missing clr_country_flag = KOCH_B11_device_broken set_variable = { KOCH_podik_charge = 60 } KOCH_B11_update_charge = yes }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11048
+    title = KOCH_PODIK.11048.t
+    desc = KOCH_PODIK.11048.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11048.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_mutual_guarantees = yes add_political_power = 20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11049
+    title = KOCH_PODIK.11049.t
+    desc = KOCH_PODIK.11049.d
+    picture = GFX_report_event_generic_research_lab
+    is_triggered_only = yes
+    trigger = { tag = B11 check_variable = { KOCH_podik_charge < 40 } NOT = { has_country_flag = KOCH_B11_charge_crisis } NOT = { has_country_flag = KOCH_B11_charging } NOT = { has_country_flag = KOCH_B11_device_broken } NOT = { has_country_flag = KOCH_B11_device_missing } }
+    option = {
+        name = KOCH_PODIK.11049.a
+        trigger = { NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_charging_tt not_tooltip = KOCH_B11_condition_charging_tt_NOT has_country_flag = KOCH_B11_charging } } }
+        ai_chance = { factor = 1 }
+        add_political_power = -20 KOCH_B11_start_charging = yes KOCH_B11_calculate_drain = yes custom_effect_tooltip = KOCH_B11_start_charging_tt
+    }
+    option = {
+        name = KOCH_PODIK.11049.b
+        trigger = { NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_battery_saving_tt not_tooltip = KOCH_B11_condition_battery_saving_tt_NOT has_country_flag = KOCH_B11_battery_saving } } }
+        ai_chance = { factor = 1 }
+        add_political_power = -10 set_country_flag = KOCH_B11_battery_saving add_ideas = KOCH_B11_battery_saving KOCH_B11_calculate_drain = yes custom_effect_tooltip = KOCH_B11_saving_tt
+    }
+    option = {
+        name = KOCH_PODIK.11049.c
+        ai_chance = { factor = 1 }
+        custom_effect_tooltip = KOCH_B11_charge_rules_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11050
+    title = KOCH_PODIK.11050.t
+    desc = KOCH_PODIK.11050.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11 check_variable = { KOCH_podik_charge = 0 } NOT = { has_country_flag = KOCH_B11_device_broken } NOT = { has_country_flag = KOCH_B11_device_missing } }
+    option = {
+        name = KOCH_PODIK.11050.a
+        trigger = { NOT = { custom_override_tooltip = { tooltip = KOCH_B11_condition_charging_tt not_tooltip = KOCH_B11_condition_charging_tt_NOT has_country_flag = KOCH_B11_charging } } }
+        ai_chance = { factor = 1 }
+        add_political_power = -20 KOCH_B11_start_charging = yes KOCH_B11_calculate_drain = yes custom_effect_tooltip = KOCH_B11_start_charging_tt
+    }
+    option = {
+        name = KOCH_PODIK.11050.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.02 custom_effect_tooltip = KOCH_B11_empty_charge_tt
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11051
+    title = KOCH_PODIK.11051.t
+    desc = KOCH_PODIK.11051.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11051.a
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+    option = {
+        name = KOCH_PODIK.11051.b
+        ai_chance = { factor = 1 }
+        add_political_power = -15 add_to_variable = { KOCH_mother_suspicion = -10 } KOCH_B11_update_suspicion = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11052
+    title = KOCH_PODIK.11052.t
+    desc = KOCH_PODIK.11052.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11052.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11052.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.04 KOCH_B11_suspicion_10 = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11053
+    title = KOCH_PODIK.11053.t
+    desc = KOCH_PODIK.11053.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11053.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.01
+    }
+    option = {
+        name = KOCH_PODIK.11053.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 KOCH_B11_suspicion_10 = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11054
+    title = KOCH_PODIK.11054.t
+    desc = KOCH_PODIK.11054.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11054.a
+        ai_chance = { factor = 1 }
+        add_political_power = -15 add_to_variable = { KOCH_mother_suspicion = -15 } KOCH_B11_update_suspicion = yes
+    }
+    option = {
+        name = KOCH_PODIK.11054.b
+        ai_chance = { factor = 1 }
+        add_political_power = 20 KOCH_B11_suspicion_10 = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11055
+    title = KOCH_PODIK.11055.t
+    desc = KOCH_PODIK.11055.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11055.a
+        ai_chance = { factor = 1 }
+        add_political_power = -25 add_to_variable = { KOCH_mother_suspicion = -20 } KOCH_B11_update_suspicion = yes set_country_flag = KOCH_B11_toner_bought
+    }
+    option = {
+        name = KOCH_PODIK.11055.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 KOCH_B11_suspicion_10 = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11056
+    title = KOCH_PODIK.11056.t
+    desc = KOCH_PODIK.11056.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11056.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_to_variable = { KOCH_mother_suspicion = -15 } KOCH_B11_update_suspicion = yes
+    }
+    option = {
+        name = KOCH_PODIK.11056.b
+        ai_chance = { factor = 1 }
+        add_political_power = 25 add_to_variable = { KOCH_mother_suspicion = 25 } KOCH_B11_update_suspicion = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11057
+    title = KOCH_PODIK.11057.t
+    desc = KOCH_PODIK.11057.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_printer_active NOT = { has_country_flag = KOCH_B11_printer_resolved } }
+    option = {
+        name = KOCH_PODIK.11057.a
+        ai_chance = { factor = 1 }
+        add_political_power = 10
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11058
+    title = KOCH_PODIK.11058.t
+    desc = KOCH_PODIK.11058.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_printer_active NOT = { has_country_flag = KOCH_B11_printer_resolved } }
+    option = {
+        name = KOCH_PODIK.11058.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_mother_wins = yes
+    }
+    option = {
+        name = KOCH_PODIK.11058.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_printer_wins = yes
+    }
+    option = {
+        name = KOCH_PODIK.11058.c
+        ai_chance = { factor = 1 }
+        KOCH_B11_mother_compromise = yes
+    }
+    option = {
+        name = KOCH_PODIK.11058.d
+        trigger = { custom_override_tooltip = { tooltip = KOCH_B11_condition_mother_below_85_tt check_variable = { KOCH_mother_suspicion < 85 } } }
+        ai_chance = { factor = 1 }
+        KOCH_B11_mother_compromise = yes add_political_power = 40
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11059
+    title = KOCH_PODIK.11059.t
+    desc = KOCH_PODIK.11059.d
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11059.a
+        ai_chance = { factor = 1 }
+        add_political_power = 10
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11060
+    title = KOCH_PODIK.11060.t
+    desc = KOCH_PODIK.11060.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11060.a
+        ai_chance = { factor = 1 }
+        add_political_power = -15 add_timed_idea = { idea = KOCH_B11_mourning days = 45 } add_stability = 0.03
+    }
+    option = {
+        name = KOCH_PODIK.11060.b
+        ai_chance = { factor = 1 }
+        add_political_power = -30 add_timed_idea = { idea = KOCH_B11_mourning days = 90 } add_war_support = 0.04
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11061
+    title = KOCH_PODIK.11061.t
+    desc = KOCH_PODIK.11061.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11061.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.03
+    }
+    option = {
+        name = KOCH_PODIK.11061.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.04 add_political_power = -15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11062
+    title = KOCH_PODIK.11062.t
+    desc = KOCH_PODIK.11062.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11062.a
+        ai_chance = { factor = 1 }
+        add_political_power = -25 add_stability = 0.04 set_country_flag = KOCH_B11_honest_audit
+    }
+    option = {
+        name = KOCH_PODIK.11062.b
+        ai_chance = { factor = 1 }
+        add_political_power = 25 add_stability = -0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11063
+    title = KOCH_PODIK.11063.t
+    desc = KOCH_PODIK.11063.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11063.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_stability = 0.03
+    }
+    option = {
+        name = KOCH_PODIK.11063.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.05 add_stability = -0.02 set_country_flag = KOCH_B11_newton_convicted
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11064
+    title = KOCH_PODIK.11064.t
+    desc = KOCH_PODIK.11064.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11064.a
+        ai_chance = { factor = 1 }
+        army_experience = 15
+    }
+    option = {
+        name = KOCH_PODIK.11064.b
+        ai_chance = { factor = 1 }
+        add_stability = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11065
+    title = KOCH_PODIK.11065.t
+    desc = KOCH_PODIK.11065.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B09 country_exists = B11 NOT = { has_war_with = B11 } B11 = { has_country_flag = KOCH_B11_cemetery_pending } }
+    option = {
+        name = KOCH_PODIK.11065.a
+        trigger = { has_opinion = { target = B11 value > -25 } }
+        ai_chance = { factor = 1 }
+        B11 = { set_country_flag = KOCH_B11_cemetery_permit clr_country_flag = KOCH_B11_cemetery_refused country_event = { id = KOCH_PODIK.11066 days = 1 } }
+    }
+    option = {
+        name = KOCH_PODIK.11065.b
+        ai_chance = { factor = 1 }
+        B11 = { set_country_flag = KOCH_B11_cemetery_refused clr_country_flag = KOCH_B11_cemetery_pending country_event = { id = KOCH_PODIK.11067 days = 1 } }
+    }
+    option = {
+        name = KOCH_PODIK.11065.c
+        trigger = { B11 = { custom_override_tooltip = { tooltip = KOCH_B11_condition_guard_consent_tt not_tooltip = KOCH_B11_condition_guard_consent_tt_NOT has_country_flag = KOCH_B11_guard_consent } } }
+        ai_chance = { factor = 1 }
+        B11 = { set_country_flag = KOCH_B11_cemetery_permit country_event = { id = KOCH_PODIK.11066 days = 1 } }
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11066
+    title = KOCH_PODIK.11066.t
+    desc = KOCH_PODIK.11066.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11 country_exists = B09 }
+    option = {
+        name = KOCH_PODIK.11066.a
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_cemetery_pending clr_country_flag = KOCH_B11_cemetery_refused add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11067
+    title = KOCH_PODIK.11067.t
+    desc = KOCH_PODIK.11067.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11067.a
+        ai_chance = { factor = 1 }
+        clr_country_flag = KOCH_B11_cemetery_pending
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11068
+    title = KOCH_PODIK.11068.t
+    desc = KOCH_PODIK.11068.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11068.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.04 set_country_flag = KOCH_B11_quiet_visit
+    }
+    option = {
+        name = KOCH_PODIK.11068.b
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_war_support = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11069
+    title = KOCH_PODIK.11069.t
+    desc = KOCH_PODIK.11069.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11069.a
+        ai_chance = { factor = 1 }
+        add_political_power = -15 KOCH_B11_cemetery_apology = yes
+    }
+    option = {
+        name = KOCH_PODIK.11069.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.03 KOCH_B11_cemetery_scandal = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11070
+    title = KOCH_PODIK.11070.t
+    desc = KOCH_PODIK.11070.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11070.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11071
+    title = KOCH_PODIK.11071.t
+    desc = KOCH_PODIK.11071.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11071.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes
+    }
+    option = {
+        name = KOCH_PODIK.11071.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11072
+    title = KOCH_PODIK.11072.t
+    desc = KOCH_PODIK.11072.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11072.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_shirt_propaganda add_ideas = KOCH_B11_brown_crisis add_war_support = 0.05 add_stability = -0.04 add_to_variable = { KOCH_vamos_influence = 10 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11072.b
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_shirt_blame add_ideas = KOCH_B11_brown_crisis add_stability = -0.03 add_to_variable = { KOCH_vamos_influence = 20 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11072.c
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_tape_classified add_ideas = KOCH_B11_brown_crisis add_political_power = -25 add_to_variable = { KOCH_vamos_influence = -10 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11072.d
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_clean_trousers add_political_power = -20 add_stability = 0.01 add_to_variable = { KOCH_vamos_influence = -15 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11073
+    title = KOCH_PODIK.11073.t
+    desc = KOCH_PODIK.11073.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11073.a
+        ai_chance = { factor = 1 }
+        add_political_power = -25 remove_ideas = KOCH_B11_brown_crisis add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11073.b
+        ai_chance = { factor = 1 }
+        add_stability = -0.02 add_to_variable = { KOCH_vamos_influence = -15 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11074
+    title = KOCH_PODIK.11074.t
+    desc = KOCH_PODIK.11074.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11074.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_gamos_blackmail add_stability = 0.03 add_to_variable = { KOCH_vamos_influence = -15 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11074.b
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_tape_public add_stability = -0.05 add_to_variable = { KOCH_vamos_influence = -30 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11074.c
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_foreign_laundry add_war_support = 0.04 add_to_variable = { KOCH_vamos_influence = 10 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11074.d
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_tape_destroyed add_political_power = -20 add_stability = 0.04 add_to_variable = { KOCH_vamos_influence = 15 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11075
+    title = KOCH_PODIK.11075.t
+    desc = KOCH_PODIK.11075.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11075.a
+        ai_chance = { factor = 1 }
+        add_political_power = -30 add_stability = -0.03 add_to_variable = { KOCH_vamos_influence = -20 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11075.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.05 add_stability = -0.06 add_to_variable = { KOCH_vamos_influence = -10 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11076
+    title = KOCH_PODIK.11076.t
+    desc = KOCH_PODIK.11076.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11076.a
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11077
+    title = KOCH_PODIK.11077.t
+    desc = KOCH_PODIK.11077.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11077.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11078
+    title = KOCH_PODIK.11078.t
+    desc = KOCH_PODIK.11078.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11078.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes
+    }
+    option = {
+        name = KOCH_PODIK.11078.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11079
+    title = KOCH_PODIK.11079.t
+    desc = KOCH_PODIK.11079.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11079.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_long_broadcast add_political_power = -15 add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11079.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes add_war_support = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11080
+    title = KOCH_PODIK.11080.t
+    desc = KOCH_PODIK.11080.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11080.a
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_bread_secret add_political_power = 20
+    }
+    option = {
+        name = KOCH_PODIK.11080.b
+        ai_chance = { factor = 1 }
+        add_political_power = -15 add_stability = 0.03
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11081
+    title = KOCH_PODIK.11081.t
+    desc = KOCH_PODIK.11081.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11081.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_to_variable = { KOCH_vamos_influence = 10 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11081.b
+        ai_chance = { factor = 1 }
+        add_stability = 0.02 add_to_variable = { KOCH_vamos_influence = -15 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11082
+    title = KOCH_PODIK.11082.t
+    desc = KOCH_PODIK.11082.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11082.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20 add_to_variable = { KOCH_vamos_influence = -10 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11082.b
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_coup_dossier add_to_variable = { KOCH_vamos_influence = -20 } KOCH_B11_normalize_council = yes
+    }
+    option = {
+        name = KOCH_PODIK.11082.c
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 add_to_variable = { KOCH_vamos_influence = 10 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11083
+    title = KOCH_PODIK.11083.t
+    desc = KOCH_PODIK.11083.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11083.a
+        ai_chance = { factor = 1 }
+        add_ideas = KOCH_B11_silence_archive add_to_variable = { KOCH_vamos_influence = -15 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11084
+    title = KOCH_PODIK.11084.t
+    desc = KOCH_PODIK.11084.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11084.a
+        ai_chance = { factor = 1 }
+        add_ideas = KOCH_B11_silence_ideology add_to_variable = { KOCH_vamos_influence = 25 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11085
+    title = KOCH_PODIK.11085.t
+    desc = KOCH_PODIK.11085.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11085.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_gamos_takeover = yes
+    }
+    option = {
+        name = KOCH_PODIK.11085.b
+        ai_chance = { factor = 1 }
+        add_stability = 0.03 add_to_variable = { KOCH_vamos_influence = -25 } KOCH_B11_normalize_council = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11086
+    title = KOCH_PODIK.11086.t
+    desc = KOCH_PODIK.11086.d
+    picture = GFX_report_event_generic_rally
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11086.a
+        ai_chance = { factor = 1 }
+        add_political_power = 25
+    }
+    option = {
+        name = KOCH_PODIK.11086.b
+        ai_chance = { factor = 1 }
+        set_country_flag = KOCH_B11_wait_for_no add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11087
+    title = KOCH_PODIK.11087.t
+    desc = KOCH_PODIK.11087.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_printer_active has_country_flag = KOCH_B11_toner_bought NOT = { has_country_flag = KOCH_B11_printer_resolved } }
+    option = {
+        name = KOCH_PODIK.11087.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11087.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_suspicion_10 = yes add_political_power = 10
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11088
+    title = KOCH_PODIK.11088.t
+    desc = KOCH_PODIK.11088.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_printer_active has_completed_focus = KOCH_B11_PRINT_DOCUMENT NOT = { has_country_flag = KOCH_B11_printer_resolved } check_variable = { KOCH_mother_suspicion > 49 } }
+    option = {
+        name = KOCH_PODIK.11088.a
+        ai_chance = { factor = 1 }
+        add_political_power = -15 add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11088.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 KOCH_B11_suspicion_10 = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11089
+    title = KOCH_PODIK.11089.t
+    desc = KOCH_PODIK.11089.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_wait_for_no has_country_flag = KOCH_B11_makafon_resolved }
+    option = {
+        name = KOCH_PODIK.11089.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11089.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes add_political_power = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11090
+    title = KOCH_PODIK.11090.t
+    desc = KOCH_PODIK.11090.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_long_broadcast has_completed_focus = KOCH_B11_WORDLESS_PRESS }
+    option = {
+        name = KOCH_PODIK.11090.a
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+    option = {
+        name = KOCH_PODIK.11090.b
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11091
+    title = KOCH_PODIK.11091.t
+    desc = KOCH_PODIK.11091.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_cemetery_permit has_completed_focus = KOCH_B11_SECRET_CEMETERY }
+    option = {
+        name = KOCH_PODIK.11091.a
+        ai_chance = { factor = 1 }
+        add_political_power = -10 add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11092
+    title = KOCH_PODIK.11092.t
+    desc = KOCH_PODIK.11092.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_cartridge_relic has_completed_focus = KOCH_B11_HOUSEHOLD_CONSTITUTION }
+    option = {
+        name = KOCH_PODIK.11092.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+    option = {
+        name = KOCH_PODIK.11092.b
+        ai_chance = { factor = 1 }
+        add_political_power = -20 army_experience = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11093
+    title = KOCH_PODIK.11093.t
+    desc = KOCH_PODIK.11093.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_newton_convicted has_completed_focus = KOCH_B11_BALCONY_DOCTRINE }
+    option = {
+        name = KOCH_PODIK.11093.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11093.b
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11094
+    title = KOCH_PODIK.11094.t
+    desc = KOCH_PODIK.11094.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_makafon_resolved has_idea = KOCH_B11_silence_archive }
+    option = {
+        name = KOCH_PODIK.11094.a
+        ai_chance = { factor = 1 }
+        add_political_power = -15 add_stability = 0.02
+    }
+    option = {
+        name = KOCH_PODIK.11094.b
+        ai_chance = { factor = 1 }
+        add_political_power = 15
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11095
+    title = KOCH_PODIK.11095.t
+    desc = KOCH_PODIK.11095.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_country_flag = KOCH_B11_two_shrines_signed has_country_flag = KOCH_B11_cartridge_relic }
+    option = {
+        name = KOCH_PODIK.11095.a
+        ai_chance = { factor = 1 }
+        add_political_power = 20
+    }
+    option = {
+        name = KOCH_PODIK.11095.b
+        ai_chance = { factor = 1 }
+        add_political_power = -10 add_stability = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11096
+    title = KOCH_PODIK.11096.t
+    desc = KOCH_PODIK.11096.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11 has_completed_focus = KOCH_B11_SECOND_DEMONSTRATION has_completed_focus = KOCH_B11_SHIRT_HISTORY }
+    option = {
+        name = KOCH_PODIK.11096.a
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes
+    }
+    option = {
+        name = KOCH_PODIK.11096.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11097
+    title = KOCH_PODIK.11097.t
+    desc = KOCH_PODIK.11097.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11097.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_stability = 0.03
+    }
+    option = {
+        name = KOCH_PODIK.11097.b
+        ai_chance = { factor = 1 }
+        add_political_power = 15 add_war_support = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11098
+    title = KOCH_PODIK.11098.t
+    desc = KOCH_PODIK.11098.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11098.a
+        ai_chance = { factor = 1 }
+        add_political_power = -20 add_stability = 0.03
+    }
+    option = {
+        name = KOCH_PODIK.11098.b
+        ai_chance = { factor = 1 }
+        add_war_support = 0.03 KOCH_B11_suspicion_10 = yes
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11099
+    title = KOCH_PODIK.11099.t
+    desc = KOCH_PODIK.11099.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11099.a
+        ai_chance = { factor = 1 }
+        add_stability = 0.03
+    }
+    option = {
+        name = KOCH_PODIK.11099.b
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_gamos = yes add_political_power = 15
+    }
+    option = {
+        name = KOCH_PODIK.11099.c
+        ai_chance = { factor = 1 }
+        KOCH_B11_shift_vamos = yes add_war_support = 0.02
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11100
+    title = KOCH_PODIK.11100.t
+    desc = KOCH_PODIK.11100.d
+    picture = GFX_report_event_generic_parliament
+    is_triggered_only = yes
+    trigger = { tag = B11  }
+    option = {
+        name = KOCH_PODIK.11100.a
+        ai_chance = { factor = 1 }
+        add_political_power = -25 army_experience = 20
+    }
+    option = {
+        name = KOCH_PODIK.11100.b
+        ai_chance = { factor = 1 }
+        add_stability = 0.03 add_political_power = 10
+    }
+}
+
+country_event = {
+    id = KOCH_PODIK.11101
+    title = KOCH_PODIK.11101.t
+    desc = KOCH_PODIK.11101.d
+    picture = GFX_report_event_generic_sign_treaty1
+    is_triggered_only = yes
+    trigger = { tag = B09 country_exists = B11 NOT = { has_war_with = B11 } B11 = { has_country_flag = KOCH_B11_cemetery_pending has_country_flag = KOCH_B11_quiet_deal } }
+    option = {
+        name = KOCH_PODIK.11101.a
+        ai_chance = { factor = 1 }
+        B11 = { set_country_flag = KOCH_B11_cemetery_permit clr_country_flag = KOCH_B11_cemetery_refused clr_country_flag = KOCH_B11_cemetery_pending country_event = { id = KOCH_PODIK.11066 days = 1 } }
+    }
+}

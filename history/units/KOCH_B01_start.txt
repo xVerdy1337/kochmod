@@ -1,0 +1,53 @@
+# Eight infantry battalions, arranged as 3 + 3 + 2; no support companies.
+division_template = {
+    name = "Пехота"
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 1 y = 2 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+    }
+}
+
+# Randomly selected owned land provinces; positions are fixed for new games.
+units = {
+    division = {
+        name = "Пехотная дивизия"
+        location = 3285
+        division_template = "Пехота"
+        start_experience_factor = 0.1
+        start_equipment_factor = 1.0
+    }
+    division = {
+        name = "Пехотная дивизия"
+        location = 3352
+        division_template = "Пехота"
+        start_experience_factor = 0.1
+        start_equipment_factor = 1.0
+    }
+    division = {
+        name = "Пехотная дивизия"
+        location = 9286
+        division_template = "Пехота"
+        start_experience_factor = 0.1
+        start_equipment_factor = 1.0
+    }
+    division = {
+        name = "Пехотная дивизия"
+        location = 11240
+        division_template = "Пехота"
+        start_experience_factor = 0.1
+        start_equipment_factor = 1.0
+    }
+    division = {
+        name = "Пехотная дивизия"
+        location = 9258
+        division_template = "Пехота"
+        start_experience_factor = 0.1
+        start_equipment_factor = 1.0
+    }
+}

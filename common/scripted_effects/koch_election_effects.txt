@@ -1,0 +1,32 @@
+KOCH_update_moscow_elections = {
+    if = {
+        limit = {
+            tag = B07
+            NOT = { has_country_flag = KOCH_B07_updating_elections }
+            OR = {
+                AND = { has_government = democratic has_elections = no }
+                AND = { NOT = { has_government = democratic } has_elections = yes }
+            }
+        }
+        # set_politics also fires government/party on_actions, even for the same party.
+        # Set the lock before changing politics, including callbacks before the update.
+        set_country_flag = KOCH_B07_updating_elections
+        if = {
+            limit = { has_government = democratic }
+            set_politics = { ruling_party = democratic elections_allowed = yes }
+        }
+        else_if = {
+            limit = { has_government = fascism }
+            set_politics = { ruling_party = fascism elections_allowed = no }
+        }
+        else_if = {
+            limit = { has_government = neutrality }
+            set_politics = { ruling_party = neutrality elections_allowed = no }
+        }
+        else_if = {
+            limit = { has_government = communism }
+            set_politics = { ruling_party = communism elections_allowed = no }
+        }
+        clr_country_flag = KOCH_B07_updating_elections
+    }
+}

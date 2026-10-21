@@ -1,0 +1,6 @@
+state_categories = {
+    koch_moscow_district = {
+        local_building_slots = 25
+        color = { 0 180 220 }
+    }
+}

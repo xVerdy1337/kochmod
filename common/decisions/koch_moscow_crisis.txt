@@ -1,0 +1,77 @@
+KOCH_B07_civil_war_category = {
+    KOCH_B07_recruit_officers = {
+        icon = GFX_decision_generic_prepare_civil_war
+        allowed = { original_tag = B07 }
+        visible = { KOCH_B07_has_selected_crisis_path = yes }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = KOCH_B07_strength_can_increase_tt
+                KOCH_B07_can_boost_selected_side = yes
+            }
+        }
+        cost = 50
+        fire_only_once = no
+        days_remove = 30
+        days_re_enable = 0
+        cancel_if_not_visible = yes
+        complete_effect = {
+            custom_effect_tooltip = KOCH_B07_influence_preparation_tt
+        }
+        remove_effect = {
+            custom_effect_tooltip = KOCH_B07_strength_gain_tt
+            hidden_effect = {
+                if = {
+                    limit = { KOCH_B07_can_boost_selected_side = yes }
+                    KOCH_B07_boost_selected_side = yes
+                }
+            }
+        }
+        ai_will_do = { factor = 1 }
+    }
+    KOCH_B07_recruit_general = {
+        icon = GFX_decision_generic_army_support
+        allowed = { original_tag = B07 }
+        visible = { KOCH_B07_has_selected_crisis_path = yes }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = KOCH_B07_strength_can_increase_tt
+                KOCH_B07_can_boost_selected_side = yes
+            }
+            custom_trigger_tooltip = {
+                tooltip = KOCH_B07_unpledged_general_tt
+                any_army_leader = {
+                    is_corps_commander = yes
+                    NOT = { has_character_flag = KOCH_B07_general_pledged }
+                }
+            }
+        }
+        cost = 50
+        fire_only_once = no
+        days_remove = 30
+        days_re_enable = 0
+        cancel_if_not_visible = yes
+        complete_effect = {
+            custom_effect_tooltip = KOCH_B07_influence_preparation_tt
+        }
+        remove_effect = {
+            custom_effect_tooltip = KOCH_B07_strength_gain_tt
+            custom_effect_tooltip = KOCH_B07_general_pledge_tt
+            hidden_effect = {
+                if = {
+                    limit = { KOCH_B07_can_boost_selected_side = yes }
+                    if = {
+                        limit = {
+                            any_army_leader = {
+                                is_corps_commander = yes
+                                NOT = { has_character_flag = KOCH_B07_general_pledged }
+                            }
+                        }
+                        KOCH_B07_pledge_random_general = yes
+                        KOCH_B07_boost_selected_side = yes
+                    }
+                }
+            }
+        }
+        ai_will_do = { factor = 1 }
+    }
+}

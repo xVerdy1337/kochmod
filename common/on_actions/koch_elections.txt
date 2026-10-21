@@ -1,0 +1,11 @@
+on_actions = {
+    on_ruling_party_change = {
+        effect = { KOCH_update_moscow_elections = yes }
+    }
+    on_government_change = {
+        effect = { KOCH_update_moscow_elections = yes }
+    }
+    on_daily_B07 = {
+        effect = { KOCH_update_moscow_elections = yes }
+    }
+}

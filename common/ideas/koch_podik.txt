@@ -1,0 +1,238 @@
+ideas = {
+    country = {
+        KOCH_B11_low_battery = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_factor = -0.03 }
+        }
+        KOCH_B11_empty_battery = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = -0.12 political_power_factor = -0.15 production_speed_buildings_factor = -0.08 }
+        }
+        KOCH_B11_battery_saving = {
+            picture = generic_neutrality_drift_bonus
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_factor = -0.03 war_support_factor = -0.02 }
+        }
+        KOCH_B11_charger_service = {
+            picture = generic_build_infrastructure
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_gain = -0.15 }
+        }
+        KOCH_B11_last_percent = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = -0.08 political_power_factor = -0.10 production_speed_buildings_factor = -0.05 }
+        }
+        KOCH_B11_budget_crisis = {
+            picture = generic_foreign_capital
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { consumer_goods_factor = 0.05 production_speed_buildings_factor = -0.05 }
+        }
+        KOCH_B11_new_epoch = {
+            picture = generic_constitutional_guarantees
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.03 political_power_factor = 0.05 }
+        }
+        KOCH_B11_podik_catechism = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.05 political_power_factor = -0.05 }
+        }
+        KOCH_B11_sacred_cartridge = {
+            picture = generic_air_research
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { research_speed_factor = 0.03 }
+        }
+        KOCH_B11_charge_denial = {
+            picture = generic_secret_police
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { war_support_factor = 0.05 political_power_factor = -0.05 }
+        }
+        KOCH_B11_charge_treason = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = -0.03 surrender_limit = 0.05 }
+        }
+        KOCH_B11_evaporation_revolution = {
+            picture = generic_war_preparation
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { army_attack_factor = 0.03 army_defence_factor = 0.03 }
+        }
+        KOCH_B11_mark_prophet = {
+            picture = generic_neutrality_drift_bonus
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.04 war_support_factor = 0.04 }
+        }
+        KOCH_B11_podik_above_state = {
+            picture = generic_central_management
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.07 political_power_factor = 0.08 consumer_goods_factor = -0.03 }
+        }
+        KOCH_B11_two_chairs = {
+            picture = generic_local_self_management
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_factor = 0.05 stability_factor = -0.03 }
+        }
+        KOCH_B11_split_power = {
+            picture = generic_central_management
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_factor = 0.05 research_speed_factor = 0.02 }
+        }
+        KOCH_B11_great_compromise = {
+            picture = generic_constitutional_guarantees
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.06 consumer_goods_factor = -0.03 production_speed_industrial_complex_factor = 0.08 }
+        }
+        KOCH_B11_single_chair = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_factor = 0.10 industrial_capacity_factory = 0.05 }
+        }
+        KOCH_B11_two_presidents = {
+            picture = generic_local_self_management
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { production_speed_arms_factory_factor = 0.10 research_speed_factor = 0.04 }
+        }
+        KOCH_B11_ace_guard = {
+            picture = generic_fortify_the_borders
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.02 war_support_factor = 0.02 }
+        }
+        KOCH_B11_border_fever = {
+            picture = generic_war_preparation
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { war_support_factor = 0.05 army_defence_factor = 0.03 }
+        }
+        KOCH_B11_logistics = {
+            picture = generic_build_infrastructure
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { supply_consumption_factor = -0.05 }
+        }
+        KOCH_B11_golden_charge = {
+            picture = generic_neutrality_drift_bonus
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.04 production_speed_buildings_factor = 0.04 }
+        }
+        KOCH_B11_brownout = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = -0.08 political_power_factor = -0.10 production_speed_buildings_factor = -0.05 }
+        }
+        KOCH_B11_council_sabotage = {
+            picture = generic_oppression
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { political_power_factor = -0.15 industrial_capacity_factory = -0.10 }
+        }
+        KOCH_B11_pilgrim_industry = {
+            picture = generic_agrarian_reform
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { production_speed_industrial_complex_factor = 0.06 production_speed_infrastructure_factor = 0.06 }
+        }
+        KOCH_B11_double_contracts = {
+            picture = generic_central_management
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { industrial_capacity_factory = 0.06 production_factory_efficiency_gain_factor = 0.04 }
+        }
+        KOCH_B11_fanatic_reserves = {
+            picture = generic_reserve_divisions
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { recruitable_population = 0.01 mobilization_speed = 0.05 }
+        }
+        KOCH_B11_imperial_authority = {
+            picture = generic_war_preparation
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { recruitable_population = 0.01 justify_war_goal_time = -0.20 army_org_factor = 0.04 }
+        }
+        KOCH_B11_civil_contract = {
+            picture = generic_foreign_capital
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { production_speed_industrial_complex_factor = 0.12 }
+        }
+        KOCH_B11_war_contract = {
+            picture = generic_war_preparation
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { industrial_capacity_factory = 0.08 }
+        }
+        KOCH_B11_assembly_fervor = {
+            picture = generic_neutrality_drift_bonus
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.04 political_power_factor = 0.05 }
+        }
+        KOCH_B11_presidential_shifts = {
+            picture = generic_local_self_management
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { research_speed_factor = 0.05 industrial_capacity_factory = 0.04 }
+        }
+        KOCH_B11_recognized_state = {
+            picture = generic_constitutional_guarantees
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { stability_factor = 0.03 war_support_factor = 0.03 }
+        }
+        KOCH_B11_mark_energy = {
+            picture = generic_build_infrastructure
+            allowed = { original_tag = B11 }
+            removal_cost = -1
+            modifier = { production_speed_infrastructure_factor = 0.08 }
+        }
+        KOCH_B11_ace_trade = {
+            picture = generic_foreign_capital
+            allowed = { OR = { original_tag = B11 original_tag = B09 } }
+            removal_cost = -1
+            modifier = { production_speed_industrial_complex_factor = 0.05 }
+        }
+# PODIK EXPANSION
+        KOCH_B11_printer_cache = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_factor = 0.03 stability_factor = -0.02 } }
+        KOCH_B11_printer_guard = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_gain = -0.1 war_support_factor = 0.03 } }
+        KOCH_B11_underground_cult = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_factor = -0.05 stability_factor = 0.02 } }
+        KOCH_B11_holy_printer = { picture = generic_constitutional_guarantees allowed = { always = yes } removal_cost = -1 modifier = { war_support_factor = 0.06 stability_factor = 0.02 } }
+        KOCH_B11_mother_enemy = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_gain = -0.15 stability_factor = -0.03 } }
+        KOCH_B11_household_treaty = { picture = generic_constitutional_guarantees allowed = { always = yes } removal_cost = -1 modifier = { stability_factor = 0.05 political_power_gain = -0.05 } }
+        KOCH_B11_mourning = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_factor = -0.05 war_support_factor = -0.02 } }
+        KOCH_B11_falling_ministry = { picture = generic_build_infrastructure allowed = { always = yes } removal_cost = -1 modifier = { political_power_gain = -0.1 army_defence_factor = 0.02 } }
+        KOCH_B11_balcony_ban = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { production_speed_buildings_factor = -0.03 war_support_factor = 0.05 } }
+        KOCH_B11_safe_railings = { picture = generic_build_infrastructure allowed = { always = yes } removal_cost = -1 modifier = { stability_factor = 0.04 production_speed_infrastructure_factor = 0.05 } }
+        KOCH_B11_balcony_doctrine = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { army_defence_factor = 0.05 dig_in_speed_factor = 0.1 } }
+        KOCH_B11_two_shrines = { picture = generic_constitutional_guarantees allowed = { always = yes } removal_cost = -1 modifier = { stability_factor = 0.03 political_power_factor = 0.03 } }
+        KOCH_B11_brown_crisis = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { stability_factor = -0.06 political_power_factor = -0.04 } }
+        KOCH_B11_trouser_reserve = { picture = generic_build_infrastructure allowed = { always = yes } removal_cost = -1 modifier = { supply_consumption_factor = -0.03 } }
+        KOCH_B11_silence_archive = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_factor = 0.04 research_speed_factor = -0.02 } }
+        KOCH_B11_silence_ideology = { picture = generic_neutrality_drift_bonus allowed = { always = yes } removal_cost = -1 modifier = { industrial_capacity_factory = 0.04 war_support_factor = -0.02 } }
+        KOCH_B11_gamos_regency = { picture = generic_oppression allowed = { always = yes } removal_cost = -1 modifier = { political_power_factor = 0.05 stability_factor = -0.03 } }
+    }
+}

@@ -1,0 +1,28 @@
+
+state = {
+	id = 256
+	name = "STATE_256"
+	manpower = 786030 #Was 1572061 but was divided by 2 due to the state being split in half
+	
+	state_category = town
+
+	history = {
+        victory_points = { 11356 1 }
+        victory_points = { 9373 1 }
+        owner = B01
+        controller = B01
+        add_core_of = B01
+victory_points = {
+			9259 30 
+		}
+buildings = {
+			infrastructure = 2
+		}
+}
+
+	provinces = {
+        3282 6253 6312 6357 9244 9259 9307 9373 11356 3383 3224 6374 3197 3334 345 3269 11373 6294
+    }
+
+	local_supplies = 0.0 
+}

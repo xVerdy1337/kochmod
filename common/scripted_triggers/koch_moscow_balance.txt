@@ -1,0 +1,42 @@
+KOCH_B07_has_selected_crisis_path = {
+    tag = B07
+    has_country_flag = KOCH_B07_crisis_active
+    has_country_flag = KOCH_B07_side_choice_locked
+    NOT = { has_country_flag = KOCH_B07_civil_war_started }
+    NOT = { has_country_flag = KOCH_B07_crisis_resolved }
+    OR = {
+        AND = {
+            has_country_flag = KOCH_B07_player_chose_democrats
+            has_completed_focus = KOCH_B07_democratic_path
+        }
+        AND = {
+            has_country_flag = KOCH_B07_player_chose_fascists
+            has_completed_focus = KOCH_B07_fascist_path
+        }
+        AND = {
+            has_country_flag = KOCH_B07_player_chose_imperial
+            has_completed_focus = KOCH_B07_imperial_path
+        }
+    }
+}
+
+KOCH_B07_can_boost_selected_side = {
+    KOCH_B07_has_selected_crisis_path = yes
+    OR = {
+        AND = {
+            has_country_flag = KOCH_B07_player_chose_democrats
+            check_variable = { KOCH_B07_strength_fascists = 2.5 compare = greater_than_or_equals }
+            check_variable = { KOCH_B07_strength_imperial = 2.5 compare = greater_than_or_equals }
+        }
+        AND = {
+            has_country_flag = KOCH_B07_player_chose_fascists
+            check_variable = { KOCH_B07_strength_democrats = 2.5 compare = greater_than_or_equals }
+            check_variable = { KOCH_B07_strength_imperial = 2.5 compare = greater_than_or_equals }
+        }
+        AND = {
+            has_country_flag = KOCH_B07_player_chose_imperial
+            check_variable = { KOCH_B07_strength_democrats = 2.5 compare = greater_than_or_equals }
+            check_variable = { KOCH_B07_strength_fascists = 2.5 compare = greater_than_or_equals }
+        }
+    }
+}

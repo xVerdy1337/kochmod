@@ -1,0 +1,33 @@
+add_namespace = koch_podolsk
+
+country_event = {
+    id = koch_podolsk.1
+    title = KOCH_B07_podolsk_protests_title
+    desc = KOCH_B07_podolsk_protests_desc
+    picture = GFX_report_event_generic_riot
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = B07
+        NOT = { has_country_flag = KOCH_B07_podolsk_facility_destroyed }
+    }
+    immediate = {
+        hidden_effect = {
+            set_country_flag = KOCH_B07_podolsk_facility_destroyed
+            1082 = {
+                remove_building = {
+                    type = infrastructure
+                    level = 1
+                }
+                remove_building = {
+                    type = land_facility
+                    level = 1
+                    province = 3391
+                }
+            }
+        }
+    }
+    option = {
+        name = KOCH_B07_podolsk_protests_option
+    }
+}

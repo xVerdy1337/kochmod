@@ -1,0 +1,973 @@
+focus_tree = {
+    id = KOCH_B11_focus
+    country = { factor = 0 modifier = { add = 100 tag = B11 } }
+    default = no
+    reset_on_civilwar = no
+    # Separate continuous focuses from all national-focus icons and links.
+    continuous_focus_position = { x = 50 y = 3000 }
+    initial_show_position = { focus = KOCH_B11_NEW_EPOCH }
+
+    focus = {
+        id = KOCH_B11_LAST_SENSE
+        icon = GFX_goal_generic_national_unity
+        x = 0 y = 0
+        cost = 1
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_initialize = yes add_political_power = 30 add_stability = 0.02 set_country_flag = KOCH_B11_started }
+    }
+    focus = {
+        id = KOCH_B11_WHERE_PODIK
+        icon = GFX_goal_generic_propaganda
+        x = 0 y = 1
+        prerequisite = { focus = KOCH_B11_LAST_SENSE }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11001 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_EMERGENCY_LIQUID
+        icon = GFX_goal_generic_political_pressure
+        x = 0 y = 2
+        prerequisite = { focus = KOCH_B11_WHERE_PODIK }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = 35 set_country_flag = KOCH_B11_cabinet_called  country_event = { id = KOCH_PODIK.11097 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_ONE_CARTRIDGE_BUDGET
+        icon = GFX_goal_generic_construct_civilian
+        x = 0 y = 3
+        prerequisite = { focus = KOCH_B11_EMERGENCY_LIQUID }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_timed_idea = { idea = KOCH_B11_budget_crisis days = 210 } add_political_power = 25 }
+    }
+    focus = {
+        id = KOCH_B11_BUY_XROS
+        icon = GFX_goal_generic_trade
+        x = 0 y = 4
+        prerequisite = { focus = KOCH_B11_ONE_CARTRIDGE_BUDGET }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = -50 set_country_flag = KOCH_B11_podik_acquired set_variable = { KOCH_podik_charge = 100 } add_ideas = KOCH_B11_new_epoch remove_ideas = KOCH_B11_last_percent country_event = { id = KOCH_PODIK.11002 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_NEW_EPOCH
+        icon = GFX_goal_generic_major_war
+        x = 0 y = 5
+        prerequisite = { focus = KOCH_B11_BUY_XROS }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = 40 add_stability = 0.03 custom_effect_tooltip = KOCH_B11_future_choice_tt }
+    }
+
+    focus = {
+        id = KOCH_B11_PODIK_PATH
+        icon = GFX_goal_generic_propaganda
+        x = -5 y = 6
+        prerequisite = { focus = KOCH_B11_NEW_EPOCH }
+        mutually_exclusive = { focus = KOCH_B11_COUNCIL_PATH }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_podik_path set_variable = { KOCH_podik_charge = 100 } add_country_leader_role = { character = KOCH_B11_mark_p country_leader = { ideology = despotism expire = "2100.1.1.1" traits = { KOCH_podik_custodian } } } set_politics = { ruling_party = neutrality elections_allowed = no name = KOCH_PODIK_PARTY long_name = KOCH_PODIK_PARTY } promote_character = { character = KOCH_B11_mark_p ideology = despotism } KOCH_B11_update_charge = yes country_event = { id = KOCH_PODIK.11003 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_COUNCIL_PATH
+        icon = GFX_goal_generic_political_pressure
+        x = 5 y = 6
+        prerequisite = { focus = KOCH_B11_NEW_EPOCH }
+        mutually_exclusive = { focus = KOCH_B11_PODIK_PATH }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_council_path set_variable = { KOCH_vamos_influence = 50 } set_variable = { KOCH_gamos_influence = 50 } set_politics = { ruling_party = neutrality elections_allowed = no name = KOCH_COUNCIL_PARTY long_name = KOCH_COUNCIL_PARTY } promote_character = KOCH_B11_council country_event = { id = KOCH_PODIK.11004 days = 1 } }
+    }
+
+    focus = {
+        id = KOCH_B11_PODIK_EVERYTHING
+        icon = GFX_goal_generic_national_unity
+        x = -5 y = 7
+        prerequisite = { focus = KOCH_B11_PODIK_PATH }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_podik_catechism add_stability = 0.03 }
+    }
+    focus = {
+        id = KOCH_B11_MASS_WORSHIP
+        icon = GFX_goal_generic_propaganda
+        x = -8 y = 8
+        prerequisite = { focus = KOCH_B11_PODIK_EVERYTHING }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_war_support = 0.04 country_event = { id = KOCH_PODIK.11005 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SACRED_CARTRIDGE
+        icon = GFX_goal_generic_scientific_exchange
+        x = -8 y = 9
+        prerequisite = { focus = KOCH_B11_MASS_WORSHIP }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_sacred_cartridge set_country_flag = KOCH_B11_cartridge_relic }
+    }
+    focus = {
+        id = KOCH_B11_MINISTRY_VAPOR
+        icon = GFX_goal_generic_construct_civilian
+        x = -2 y = 8
+        prerequisite = { focus = KOCH_B11_PODIK_EVERYTHING }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }  country_event = { id = KOCH_PODIK.11098 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_ONE_PEOPLE_ONE_PODIK
+        icon = GFX_goal_generic_propaganda
+        x = -5 y = 10
+        prerequisite = { focus = KOCH_B11_SACRED_CARTRIDGE }
+        prerequisite = { focus = KOCH_B11_FIRST_FIVE_YEAR }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_fanatic_reserves add_manpower = 2000 }
+    }
+    focus = {
+        id = KOCH_B11_FIRST_FIVE_YEAR
+        icon = GFX_goal_generic_construct_civilian
+        x = -2 y = 9
+        prerequisite = { focus = KOCH_B11_MINISTRY_VAPOR }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } } add_ideas = KOCH_B11_pilgrim_industry }
+    }
+    focus = {
+        id = KOCH_B11_BAN_DOUBT
+        icon = GFX_goal_generic_propaganda
+        x = -8 y = 11
+        prerequisite = { focus = KOCH_B11_ONE_PEOPLE_ONE_PODIK }
+        mutually_exclusive = { focus = KOCH_B11_SACRED_MANUAL }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_charge_denial set_country_flag = KOCH_B11_denial_policy country_event = { id = KOCH_PODIK.11039 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PILGRIMAGE_CHARGER
+        icon = GFX_goal_generic_defence
+        x = -2 y = 12
+        prerequisite = { focus = KOCH_B11_SACRED_MANUAL }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { army_experience = 10 add_command_power = 10 country_event = { id = KOCH_PODIK.11006 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SACRED_MANUAL
+        icon = GFX_goal_generic_scientific_exchange
+        x = -2 y = 11
+        prerequisite = { focus = KOCH_B11_ONE_PEOPLE_ONE_PODIK }
+        mutually_exclusive = { focus = KOCH_B11_BAN_DOUBT }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_tech_bonus = { name = KOCH_podik_engineering_bonus bonus = 0.5 uses = 2 category = electronics } set_country_flag = KOCH_B11_manual_policy hidden_effect = { KOCH_B11_calculate_drain = yes } custom_effect_tooltip = KOCH_B11_manual_tt }
+    }
+    focus = {
+        id = KOCH_B11_EMPTY_TREASON
+        icon = GFX_goal_generic_political_pressure
+        x = -8 y = 12
+        prerequisite = { focus = KOCH_B11_BAN_DOUBT }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_charge_treason add_stability = -0.03 country_event = { id = KOCH_PODIK.11040 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_EVAPORATION_REVOLUTION
+        icon = GFX_goal_generic_defence
+        x = -5 y = 14
+        prerequisite = { focus = KOCH_B11_EMPTY_TREASON focus = KOCH_B11_PILGRIMAGE_CHARGER }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_evaporation_revolution add_war_support = 0.05 add_to_variable = { KOCH_podik_charge = 30 } KOCH_B11_update_charge = yes }
+    }
+    focus = {
+        id = KOCH_B11_MARK_HEARS_CARTRIDGE
+        icon = GFX_goal_generic_propaganda
+        x = -5 y = 15
+        prerequisite = { focus = KOCH_B11_EVAPORATION_REVOLUTION }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11008 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_MARK_PROPHET
+        icon = GFX_goal_generic_propaganda
+        x = -5 y = 16
+        prerequisite = { focus = KOCH_B11_MARK_HEARS_CARTRIDGE }
+        available = { custom_override_tooltip = { tooltip = KOCH_B11_condition_mark_recognized_tt not_tooltip = KOCH_B11_condition_mark_recognized_tt_NOT has_country_flag = KOCH_B11_mark_recognized } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_mark_prophet add_ideas = KOCH_B11_mark_prophet add_country_leader_trait = KOCH_podik_prophet add_political_power = -35 }
+    }
+    focus = {
+        id = KOCH_B11_ETERNAL_EMPIRE
+        icon = GFX_goal_generic_major_war
+        x = -8 y = 18
+        prerequisite = { focus = KOCH_B11_MARK_PROPHET }
+        mutually_exclusive = { focus = KOCH_B11_PODIK_ABOVE_STATE }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_empire_transition = yes add_war_support = 0.05 country_event = { id = KOCH_PODIK.11009 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PODIK_ABOVE_STATE
+        icon = GFX_goal_generic_national_unity
+        x = -2 y = 18
+        prerequisite = { focus = KOCH_B11_MARK_PROPHET }
+        mutually_exclusive = { focus = KOCH_B11_ETERNAL_EMPIRE }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_theocracy set_cosmetic_tag = KOCH_PODIK_HOLY remove_ideas = KOCH_B11_charge_denial add_ideas = KOCH_B11_podik_above_state add_stability = 0.05 country_event = { id = KOCH_PODIK.11010 days = 1 } }
+    }
+
+    focus = {
+        id = KOCH_B11_TWO_CHAIRS
+        icon = GFX_goal_generic_political_pressure
+        x = 5 y = 7
+        prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_two_chairs add_political_power = 20 }
+    }
+    focus = {
+        id = KOCH_B11_VAMOS_SAID
+        icon = GFX_goal_generic_propaganda
+        x = 3 y = 8
+        prerequisite = { focus = KOCH_B11_TWO_CHAIRS }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_shift_vamos = yes country_event = { id = KOCH_PODIK.11011 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GAMOS_AGAINST
+        icon = GFX_goal_generic_political_pressure
+        x = 7 y = 8
+        prerequisite = { focus = KOCH_B11_TWO_CHAIRS }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_shift_gamos = yes country_event = { id = KOCH_PODIK.11012 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SPLIT_POWER
+        icon = GFX_goal_generic_construct_civilian
+        x = 5 y = 9
+        prerequisite = { focus = KOCH_B11_VAMOS_SAID }
+        prerequisite = { focus = KOCH_B11_GAMOS_AGAINST }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_split_power add_political_power = 20 }
+    }
+    focus = {
+        id = KOCH_B11_MINISTRY_NONDECISIONS
+        icon = GFX_goal_generic_construct_civilian
+        x = 5 y = 10
+        prerequisite = { focus = KOCH_B11_SPLIT_POWER }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = 40 add_stability = -0.02 set_country_flag = KOCH_B11_council_contracts }
+    }
+    focus = {
+        id = KOCH_B11_COMMISSION_COMMISSION
+        icon = GFX_goal_generic_secret_weapon
+        x = 5 y = 11
+        prerequisite = { focus = KOCH_B11_MINISTRY_NONDECISIONS }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 2 category = industry } country_event = { id = KOCH_PODIK.11013 days = 1 }  country_event = { id = KOCH_PODIK.11099 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_WHO_IS_BOSS
+        icon = GFX_goal_generic_political_pressure
+        x = 5 y = 12
+        prerequisite = { focus = KOCH_B11_COMMISSION_COMMISSION }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11041 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_NAPKIN_CONSTITUTION
+        icon = GFX_goal_generic_national_unity
+        x = 5 y = 13
+        prerequisite = { focus = KOCH_B11_WHO_IS_BOSS }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_stability = 0.04 add_political_power = 20 }
+    }
+    focus = {
+        id = KOCH_B11_BAN_OUR_OPPOSITION
+        icon = GFX_goal_generic_propaganda
+        x = 5 y = 14
+        prerequisite = { focus = KOCH_B11_NAPKIN_CONSTITUTION }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_war_support = 0.03 country_event = { id = KOCH_PODIK.11014 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_VAMOS_BLAMES
+        icon = GFX_goal_generic_political_pressure
+        x = 3 y = 15
+        prerequisite = { focus = KOCH_B11_BAN_OUR_OPPOSITION }
+        mutually_exclusive = { focus = KOCH_B11_GAMOS_BLAMES }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_shift_vamos = yes country_event = { id = KOCH_PODIK.11015 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GAMOS_BLAMES
+        icon = GFX_goal_generic_political_pressure
+        x = 7 y = 15
+        prerequisite = { focus = KOCH_B11_BAN_OUR_OPPOSITION }
+        mutually_exclusive = { focus = KOCH_B11_VAMOS_BLAMES }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_shift_gamos = yes country_event = { id = KOCH_PODIK.11016 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_TWO_PERSON_CONGRESS
+        icon = GFX_goal_generic_propaganda
+        x = 5 y = 16
+        prerequisite = { focus = KOCH_B11_VAMOS_BLAMES focus = KOCH_B11_GAMOS_BLAMES }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { army_experience = 15 add_political_power = 30 }
+    }
+    focus = {
+        id = KOCH_B11_COUNCIL_CRISIS
+        icon = GFX_goal_generic_major_war
+        x = 5 y = 17
+        prerequisite = { focus = KOCH_B11_TWO_PERSON_CONGRESS }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_stability = -0.05 country_event = { id = KOCH_PODIK.11017 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GREAT_COMPROMISE
+        icon = GFX_goal_generic_national_unity
+        x = 2 y = 19
+        prerequisite = { focus = KOCH_B11_COUNCIL_CRISIS }
+        mutually_exclusive = { focus = KOCH_B11_SINGLE_CHAIR focus = KOCH_B11_TWO_PRESIDENTS }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_council_settlement = yes set_country_flag = KOCH_B11_compromise set_variable = { KOCH_vamos_influence = 50 } KOCH_B11_normalize_council = yes add_ideas = KOCH_B11_great_compromise set_cosmetic_tag = KOCH_COUNCIL_COMPROMISE promote_character = KOCH_B11_council country_event = { id = KOCH_PODIK.11042 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SINGLE_CHAIR
+        icon = GFX_goal_generic_political_pressure
+        x = 5 y = 19
+        prerequisite = { focus = KOCH_B11_COUNCIL_CRISIS }
+        mutually_exclusive = { focus = KOCH_B11_GREAT_COMPROMISE focus = KOCH_B11_TWO_PRESIDENTS }
+        available = { OR = { custom_override_tooltip = { tooltip = KOCH_B11_condition_vamos_at_least_65_tt check_variable = { KOCH_vamos_influence > 64 } } custom_override_tooltip = { tooltip = KOCH_B11_condition_gamos_at_least_65_tt check_variable = { KOCH_gamos_influence > 64 } } } }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_council_settlement = yes set_country_flag = KOCH_B11_single_chair add_ideas = KOCH_B11_single_chair if = { limit = { check_variable = { KOCH_vamos_influence > 64 } } promote_character = KOCH_B11_vamos set_country_flag = KOCH_B11_vamos_won set_variable = { KOCH_vamos_influence = 100 } } else = { promote_character = KOCH_B11_gamos set_country_flag = KOCH_B11_gamos_won set_variable = { KOCH_vamos_influence = 0 } } KOCH_B11_normalize_council = yes set_cosmetic_tag = KOCH_COUNCIL_CHAIR country_event = { id = KOCH_PODIK.11043 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_TWO_PRESIDENTS
+        icon = GFX_goal_generic_alliance
+        x = 8 y = 19
+        prerequisite = { focus = KOCH_B11_COUNCIL_CRISIS }
+        mutually_exclusive = { focus = KOCH_B11_GREAT_COMPROMISE focus = KOCH_B11_SINGLE_CHAIR }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_council_settlement = yes set_country_flag = KOCH_B11_two_presidents add_ideas = KOCH_B11_two_presidents promote_character = KOCH_B11_council set_cosmetic_tag = KOCH_COUNCIL_DUAL country_event = { id = KOCH_PODIK.11044 days = 1 } }
+    }
+
+    focus = {
+        id = KOCH_B11_DIPLOMATIC_ARGUMENT
+        icon = GFX_goal_generic_political_pressure
+        x = 34 y = 6
+        prerequisite = { focus = KOCH_B11_NEW_EPOCH }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11018 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_RELATIONS_GRODNO
+        icon = GFX_goal_generic_political_pressure
+        x = 31 y = 8
+        prerequisite = { focus = KOCH_B11_DIPLOMATIC_ARGUMENT }
+        mutually_exclusive = { focus = KOCH_B11_ACE_NOT_OUR_BUSINESS }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { country_exists = B09 } add_opinion_modifier = { target = B09 modifier = KOCH_friendship } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_friendship } } } }
+    }
+    focus = {
+        id = KOCH_B11_PROTECT_ACE
+        icon = GFX_goal_generic_defence
+        x = 31 y = 9
+        prerequisite = { focus = KOCH_B11_RELATIONS_GRODNO }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11019 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PACT_ACES
+        icon = GFX_goal_generic_alliance
+        x = 31 y = 10
+        prerequisite = { focus = KOCH_B11_PROTECT_ACE }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } custom_override_tooltip = { tooltip = KOCH_B11_condition_guard_consent_tt not_tooltip = KOCH_B11_condition_guard_consent_tt_NOT has_country_flag = KOCH_B11_guard_consent } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_mutual_guarantees = yes add_stability = 0.02 }
+    }
+    focus = {
+        id = KOCH_B11_BROTHERHOOD
+        icon = GFX_goal_generic_alliance
+        x = 31 y = 11
+        prerequisite = { focus = KOCH_B11_PACT_ACES }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } custom_override_tooltip = { tooltip = KOCH_B11_condition_guard_consent_tt not_tooltip = KOCH_B11_condition_guard_consent_tt_NOT has_country_flag = KOCH_B11_guard_consent } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { country_exists = B09 } add_opinion_modifier = { target = B09 modifier = KOCH_brotherhood } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_brotherhood } } } }
+    }
+    focus = {
+        id = KOCH_B11_ARTHUR_SUMMIT
+        icon = GFX_goal_generic_propaganda
+        x = 31 y = 12
+        prerequisite = { focus = KOCH_B11_BROTHERHOOD }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } custom_override_tooltip = { tooltip = KOCH_B11_condition_guard_consent_tt not_tooltip = KOCH_B11_condition_guard_consent_tt_NOT has_country_flag = KOCH_B11_guard_consent } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { country_exists = B09 } B09 = { country_event = { id = KOCH_PODIK.11029 days = 2 } } } }
+    }
+    focus = {
+        id = KOCH_B11_ONE_ALLIANCE_TWO_STATES
+        icon = GFX_goal_generic_alliance
+        x = 31 y = 13
+        prerequisite = { focus = KOCH_B11_ARTHUR_SUMMIT }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } custom_override_tooltip = { tooltip = KOCH_B11_condition_guard_consent_tt not_tooltip = KOCH_B11_condition_guard_consent_tt_NOT has_country_flag = KOCH_B11_guard_consent } is_subject = no OR = { is_in_faction = no is_faction_leader = yes } B09 = { is_subject = no is_in_faction = no } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { country_exists = B09 } B09 = { country_event = { id = KOCH_PODIK.11030 days = 2 } } } }
+    }
+    focus = {
+        id = KOCH_B11_ACE_NOT_OUR_BUSINESS
+        icon = GFX_goal_generic_political_pressure
+        x = 37 y = 8
+        prerequisite = { focus = KOCH_B11_DIPLOMATIC_ARGUMENT }
+        mutually_exclusive = { focus = KOCH_B11_RELATIONS_GRODNO }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { country_exists = B09 } add_opinion_modifier = { target = B09 modifier = KOCH_cold_shoulders } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_cold_shoulders } } } add_political_power = 20 }
+    }
+    focus = {
+        id = KOCH_B11_DEEP_CONCERN
+        icon = GFX_goal_generic_propaganda
+        x = 37 y = 9
+        prerequisite = { focus = KOCH_B11_ACE_NOT_OUR_BUSINESS }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11021 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_CONDEMN_ACE
+        icon = GFX_goal_generic_political_pressure
+        x = 37 y = 10
+        prerequisite = { focus = KOCH_B11_DEEP_CONCERN }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_war_support = 0.03 if = { limit = { country_exists = B09 } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_diplomatic_insult } } } }
+    }
+    focus = {
+        id = KOCH_B11_GRODNO_ULTIMATUM
+        icon = GFX_goal_generic_demand_territory
+        x = 37 y = 11
+        prerequisite = { focus = KOCH_B11_CONDEMN_ACE }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11022 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_NOT_OUR_WAY
+        icon = GFX_goal_generic_major_war
+        x = 37 y = 12
+        prerequisite = { focus = KOCH_B11_GRODNO_ULTIMATUM }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { NOT = { has_country_flag = KOCH_B11_dispute_closed } } add_war_support = 0.04 add_ideas = KOCH_B11_border_fever if = { limit = { country_exists = B09 } B09 = { add_opinion_modifier = { target = B11 modifier = KOCH_hostility } } } } else = { add_political_power = 20 } custom_effect_tooltip = KOCH_B11_escalation_tt }
+    }
+
+    focus = {
+        id = KOCH_B11_EMERGENCY_LOGISTICS
+        icon = GFX_goal_generic_construct_civilian
+        x = 46 y = 6
+        prerequisite = { focus = KOCH_B11_NEW_EPOCH }
+        available = { OR = { custom_override_tooltip = { tooltip = KOCH_B11_condition_podik_path_tt not_tooltip = KOCH_B11_condition_podik_path_tt_NOT has_country_flag = KOCH_B11_podik_path } custom_override_tooltip = { tooltip = KOCH_B11_condition_council_path_tt not_tooltip = KOCH_B11_condition_council_path_tt_NOT has_country_flag = KOCH_B11_council_path } } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { random_owned_controlled_state = { limit = { infrastructure < 5 } add_building_construction = { type = infrastructure level = 1 instant_build = yes } } add_ideas = KOCH_B11_logistics }
+    }
+    focus = {
+        id = KOCH_B11_CARTRIDGE_FACTORY
+        icon = GFX_goal_generic_construct_civilian
+        x = 46 y = 7
+        prerequisite = { focus = KOCH_B11_EMERGENCY_LOGISTICS }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { random_owned_controlled_state = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } } if = { limit = { has_country_flag = KOCH_B11_podik_path } add_ideas = KOCH_B11_pilgrim_industry } else = { add_ideas = KOCH_B11_double_contracts } }
+    }
+    focus = {
+        id = KOCH_B11_NATIONAL_MILITIA
+        icon = GFX_goal_generic_defence
+        x = 46 y = 8
+        prerequisite = { focus = KOCH_B11_CARTRIDGE_FACTORY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_manpower = 3000 army_experience = 15 load_oob = KOCH_B11_militia if = { limit = { has_country_flag = KOCH_B11_podik_path } add_war_support = 0.04 } else = { add_command_power = 15 } }
+    }
+    focus = {
+        id = KOCH_B11_PROPAGANDA_CIRCUS
+        icon = GFX_goal_generic_propaganda
+        x = 46 y = 9
+        prerequisite = { focus = KOCH_B11_NATIONAL_MILITIA }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { if = { limit = { has_country_flag = KOCH_B11_podik_path } add_to_variable = { KOCH_podik_charge = 20 } KOCH_B11_update_charge = yes add_stability = 0.03 } else = { add_political_power = 50 add_stability = 0.03 } country_event = { id = KOCH_PODIK.11045 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SCIENCE_OF_STUPIDITY
+        icon = GFX_goal_generic_national_unity
+        x = 46 y = 10
+        prerequisite = { focus = KOCH_B11_PROPAGANDA_CIRCUS }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_research_slot = 1 add_tech_bonus = { name = KOCH_absurd_science_bonus bonus = 0.5 uses = 1 category = industry }  country_event = { id = KOCH_PODIK.11100 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_BORDER_COMMITTEE
+        icon = GFX_goal_generic_defence
+        x = 46 y = 11
+        prerequisite = { focus = KOCH_B11_SCIENCE_OF_STUPIDITY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { army_experience = 20 add_command_power = 15 }
+    }
+    focus = {
+        id = KOCH_B11_FINAL_MEMO
+        icon = GFX_goal_generic_major_war
+        x = 46 y = 12
+        prerequisite = { focus = KOCH_B11_BORDER_COMMITTEE }
+        cost = 10
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = 75 add_ideas = KOCH_B11_recognized_state country_event = { id = KOCH_PODIK.11046 days = 1 } }
+    }
+
+# PODIK EXPANSION
+    focus = {
+        id = KOCH_B11_DEAD_PRINTER
+        icon = GFX_goal_generic_scientific_exchange
+        x = -19 y = 7
+        prerequisite = { focus = KOCH_B11_PODIK_PATH }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_printer_active country_event = { id = KOCH_PODIK.11051 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PRINTER_CACHE
+        icon = GFX_goal_generic_defence
+        x = -19 y = 8
+        prerequisite = { focus = KOCH_B11_DEAD_PRINTER }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_printer_cache country_event = { id = KOCH_PODIK.11052 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_OPERATION_XROS
+        icon = GFX_goal_generic_political_pressure
+        x = -19 y = 9
+        prerequisite = { focus = KOCH_B11_PRINTER_CACHE }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_suspicion_10 = yes add_political_power = 25 country_event = { id = KOCH_PODIK.11053 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_MOTHER_SUSPECTS
+        icon = GFX_goal_generic_political_pressure
+        x = -19 y = 10
+        prerequisite = { focus = KOCH_B11_OPERATION_XROS }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_suspicion_10 = yes country_event = { id = KOCH_PODIK.11054 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SEALED_LID
+        icon = GFX_goal_generic_defence
+        x = -19 y = 11
+        prerequisite = { focus = KOCH_B11_MOTHER_SUSPECTS }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = -20 add_to_variable = { KOCH_mother_suspicion = -15 } KOCH_B11_update_suspicion = yes }
+    }
+    focus = {
+        id = KOCH_B11_CARTRIDGE_INSPECTION
+        icon = GFX_goal_generic_political_pressure
+        x = -19 y = 12
+        prerequisite = { focus = KOCH_B11_SEALED_LID }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11055 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PRINT_DOCUMENT
+        icon = GFX_goal_generic_scientific_exchange
+        x = -19 y = 13
+        prerequisite = { focus = KOCH_B11_CARTRIDGE_INSPECTION }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11056 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PRINTER_STRATEGIC
+        icon = GFX_goal_generic_defence
+        x = -19 y = 14
+        prerequisite = { focus = KOCH_B11_PRINT_DOCUMENT }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_printer_guard KOCH_B11_suspicion_10 = yes }
+    }
+    focus = {
+        id = KOCH_B11_SHE_FOUND_IT
+        icon = GFX_goal_generic_political_pressure
+        x = -19 y = 15
+        prerequisite = { focus = KOCH_B11_PRINTER_STRATEGIC }
+        available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_0 NOT = { has_country_flag = KOCH_B11_inspection_pending } } }
+        bypass = { has_country_flag = KOCH_B11_printer_resolved }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_inspection_pending country_event = { id = KOCH_PODIK.11058 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_MATERNAL_CONTROL
+        icon = GFX_goal_generic_political_pressure
+        x = -23 y = 17
+        prerequisite = { focus = KOCH_B11_SHE_FOUND_IT }
+        available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_1 has_country_flag = KOCH_B11_mother_victory } }
+        mutually_exclusive = { focus = KOCH_B11_PRINTER_REVOLUTION focus = KOCH_B11_MOTHER_TREATY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_stability = 0.02 country_event = { id = KOCH_PODIK.11059 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_PRINTER_REVOLUTION
+        icon = GFX_goal_generic_political_pressure
+        x = -19 y = 17
+        prerequisite = { focus = KOCH_B11_SHE_FOUND_IT }
+        available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_2 has_country_flag = KOCH_B11_printer_revolution } }
+        mutually_exclusive = { focus = KOCH_B11_MATERNAL_CONTROL focus = KOCH_B11_MOTHER_TREATY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_stability = 0.02 country_event = { id = KOCH_PODIK.11059 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_MOTHER_TREATY
+        icon = GFX_goal_generic_political_pressure
+        x = -15 y = 17
+        prerequisite = { focus = KOCH_B11_SHE_FOUND_IT }
+        available = { custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_3 has_country_flag = KOCH_B11_mother_treaty } }
+        mutually_exclusive = { focus = KOCH_B11_MATERNAL_CONTROL focus = KOCH_B11_PRINTER_REVOLUTION }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_stability = 0.02 country_event = { id = KOCH_PODIK.11059 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_HOUSEHOLD_CONSTITUTION
+        icon = GFX_goal_generic_national_unity
+        x = -19 y = 19
+        prerequisite = { focus = KOCH_B11_MATERNAL_CONTROL focus = KOCH_B11_PRINTER_REVOLUTION focus = KOCH_B11_MOTHER_TREATY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_political_power = 50 add_stability = 0.03 }
+    }
+    focus = {
+        id = KOCH_B11_NATIONAL_MOURNING
+        icon = GFX_goal_generic_national_unity
+        x = -32 y = 6
+        prerequisite = { focus = KOCH_B11_NEW_EPOCH }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11060 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_BALCONY_QUESTION
+        icon = GFX_goal_generic_political_pressure
+        x = -32 y = 7
+        prerequisite = { focus = KOCH_B11_NATIONAL_MOURNING }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11061 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_FALLING_MINISTRY
+        icon = GFX_goal_generic_defence
+        x = -32 y = 8
+        prerequisite = { focus = KOCH_B11_BALCONY_QUESTION }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_falling_ministry add_political_power = -25 }
+    }
+    focus = {
+        id = KOCH_B11_AUDIT_BALCONIES
+        icon = GFX_goal_generic_defence
+        x = -32 y = 9
+        prerequisite = { focus = KOCH_B11_FALLING_MINISTRY }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11062 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GRAVITY_TRIAL
+        icon = GFX_goal_generic_scientific_exchange
+        x = -32 y = 10
+        prerequisite = { focus = KOCH_B11_AUDIT_BALCONIES }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11063 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_BAN_BALCONIES
+        icon = GFX_goal_generic_major_war
+        x = -35 y = 12
+        prerequisite = { focus = KOCH_B11_GRAVITY_TRIAL }
+        mutually_exclusive = { focus = KOCH_B11_SAFE_RAILINGS }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_balcony_ban add_war_support = 0.04 }
+    }
+    focus = {
+        id = KOCH_B11_SAFE_RAILINGS
+        icon = GFX_goal_generic_construct_civilian
+        x = -29 y = 12
+        prerequisite = { focus = KOCH_B11_GRAVITY_TRIAL }
+        mutually_exclusive = { focus = KOCH_B11_BAN_BALCONIES }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_safe_railings add_stability = 0.04 }
+    }
+    focus = {
+        id = KOCH_B11_BALCONY_DOCTRINE
+        icon = GFX_goal_generic_defence
+        x = -32 y = 14
+        prerequisite = { focus = KOCH_B11_BAN_BALCONIES focus = KOCH_B11_SAFE_RAILINGS }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_balcony_doctrine army_experience = 25 country_event = { id = KOCH_PODIK.11064 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GROBNO_EXPEDITION
+        icon = GFX_goal_generic_alliance
+        x = 34 y = 15
+        prerequisite = { focus = KOCH_B11_DIPLOMATIC_ARGUMENT }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_request_cemetery = yes }
+    }
+    focus = {
+        id = KOCH_B11_SECRET_CEMETERY
+        icon = GFX_goal_generic_national_unity
+        x = 34 y = 16
+        prerequisite = { focus = KOCH_B11_GROBNO_EXPEDITION }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_4 has_country_flag = KOCH_B11_cemetery_permit } }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11068 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GRAVESIDE_PROTOCOL
+        icon = GFX_goal_generic_political_pressure
+        x = 34 y = 17
+        prerequisite = { focus = KOCH_B11_SECRET_CEMETERY }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11069 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_TWO_SHRINES
+        icon = GFX_goal_generic_alliance
+        x = 34 y = 18
+        prerequisite = { focus = KOCH_B11_GRAVESIDE_PROTOCOL }
+        available = { country_exists = B09 NOT = { has_war_with = B09 } custom_override_tooltip = { tooltip = KOCH_B11_exp_condition_5 has_country_flag = KOCH_B11_guard_consent has_country_flag = KOCH_B11_cemetery_permit } }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { KOCH_B11_two_shrines = yes }
+    }
+    focus = {
+        id = KOCH_B11_JOINT_REMEMBRANCE
+        icon = GFX_goal_generic_national_unity
+        x = 34 y = 19
+        prerequisite = { focus = KOCH_B11_TWO_SHRINES }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_stability = 0.04 country_event = { id = KOCH_PODIK.11070 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_LAST_SHIRT
+        icon = GFX_goal_generic_propaganda
+        x = 13 y = 8
+        prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11071 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GREAT_RIP
+        icon = GFX_goal_generic_major_war
+        x = 13 y = 9
+        prerequisite = { focus = KOCH_B11_LAST_SHIRT }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11072 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_BROWN_COMMISSION
+        icon = GFX_goal_generic_political_pressure
+        x = 13 y = 10
+        prerequisite = { focus = KOCH_B11_GREAT_RIP }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11073 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GAMOS_TAPE
+        icon = GFX_goal_generic_political_pressure
+        x = 13 y = 11
+        prerequisite = { focus = KOCH_B11_BROWN_COMMISSION }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11074 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_TROUSER_RESERVE
+        icon = GFX_goal_generic_army_motorized
+        x = 13 y = 12
+        prerequisite = { focus = KOCH_B11_GAMOS_TAPE }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { add_ideas = KOCH_B11_trouser_reserve army_experience = 15 }
+    }
+    focus = {
+        id = KOCH_B11_SECOND_DEMONSTRATION
+        icon = GFX_goal_generic_major_war
+        x = 10 y = 14
+        prerequisite = { focus = KOCH_B11_TROUSER_RESERVE }
+        mutually_exclusive = { focus = KOCH_B11_TAILOR_AMNESTY }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11075 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_TAILOR_AMNESTY
+        icon = GFX_goal_generic_construct_civilian
+        x = 16 y = 14
+        prerequisite = { focus = KOCH_B11_TROUSER_RESERVE }
+        mutually_exclusive = { focus = KOCH_B11_SECOND_DEMONSTRATION }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { remove_ideas = KOCH_B11_brown_crisis add_stability = 0.04 country_event = { id = KOCH_PODIK.11076 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SHIRT_HISTORY
+        icon = GFX_goal_generic_national_unity
+        x = 13 y = 16
+        prerequisite = { focus = KOCH_B11_SECOND_DEMONSTRATION focus = KOCH_B11_TAILOR_AMNESTY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { remove_ideas = KOCH_B11_brown_crisis add_political_power = 35 country_event = { id = KOCH_PODIK.11077 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GIVE_INFO
+        icon = GFX_goal_generic_propaganda
+        x = 24 y = 8
+        prerequisite = { focus = KOCH_B11_COUNCIL_PATH }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11078 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_MAKAFON_ON
+        icon = GFX_goal_generic_scientific_exchange
+        x = 24 y = 9
+        prerequisite = { focus = KOCH_B11_GIVE_INFO }
+        cost = 2
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_makafon_live country_event = { id = KOCH_PODIK.11079 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_NO_INFORMATION
+        icon = GFX_goal_generic_political_pressure
+        x = 24 y = 10
+        prerequisite = { focus = KOCH_B11_MAKAFON_ON }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11080 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_WORDLESS_PRESS
+        icon = GFX_goal_generic_propaganda
+        x = 24 y = 11
+        prerequisite = { focus = KOCH_B11_NO_INFORMATION }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11081 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GAMOS_INTERCEPT
+        icon = GFX_goal_generic_political_pressure
+        x = 24 y = 12
+        prerequisite = { focus = KOCH_B11_WORDLESS_PRESS }
+        cost = 3
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11082 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SILENCE_SECRET
+        icon = GFX_goal_generic_political_pressure
+        x = 21 y = 14
+        prerequisite = { focus = KOCH_B11_GAMOS_INTERCEPT }
+        mutually_exclusive = { focus = KOCH_B11_SILENCE_IDEOLOGY focus = KOCH_B11_GAMOS_COUP }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11083 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_SILENCE_IDEOLOGY
+        icon = GFX_goal_generic_political_pressure
+        x = 24 y = 14
+        prerequisite = { focus = KOCH_B11_GAMOS_INTERCEPT }
+        mutually_exclusive = { focus = KOCH_B11_SILENCE_SECRET focus = KOCH_B11_GAMOS_COUP }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11084 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_GAMOS_COUP
+        icon = GFX_goal_generic_political_pressure
+        x = 27 y = 14
+        prerequisite = { focus = KOCH_B11_GAMOS_INTERCEPT }
+        mutually_exclusive = { focus = KOCH_B11_SILENCE_SECRET focus = KOCH_B11_SILENCE_IDEOLOGY }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { country_event = { id = KOCH_PODIK.11085 days = 1 } }
+    }
+    focus = {
+        id = KOCH_B11_VOICE_THAT_WASNT
+        icon = GFX_goal_generic_national_unity
+        x = 24 y = 16
+        prerequisite = { focus = KOCH_B11_SILENCE_SECRET focus = KOCH_B11_SILENCE_IDEOLOGY focus = KOCH_B11_GAMOS_COUP }
+        cost = 5
+        ai_will_do = { factor = 1 }
+        completion_reward = { set_country_flag = KOCH_B11_makafon_resolved add_stability = 0.03 country_event = { id = KOCH_PODIK.11086 days = 1 } }
+    }
+}

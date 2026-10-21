@@ -1,0 +1,32 @@
+koch_podik_cult = {
+    icon = generic_propaganda
+    allowed = { original_tag = B11 }
+    visible = { has_country_flag = KOCH_B11_podik_acquired NOT = { has_country_flag = KOCH_B11_council_path } }
+}
+koch_podik_council = {
+    icon = generic_political_actions
+    allowed = { original_tag = B11 }
+    visible = { has_country_flag = KOCH_B11_council_path }
+}
+koch_podik_diplomacy = {
+    icon = generic_foreign_policy
+    allowed = { original_tag = B11 }
+    visible = { has_completed_focus = KOCH_B11_DIPLOMATIC_ARGUMENT country_exists = B09 }
+}
+koch_podik_government = {
+    icon = generic_economy
+    allowed = { original_tag = B11 }
+    visible = { OR = { has_country_flag = KOCH_B11_podik_path has_country_flag = KOCH_B11_council_path } }
+}
+
+# PODIK EXPANSION
+koch_podik_household = {
+    icon = generic_political_actions
+    visible = { tag = B11 has_country_flag = KOCH_B11_printer_active }
+    allowed = { original_tag = B11 }
+}
+koch_podik_stories = {
+    icon = generic_political_actions
+    visible = { tag = B11 has_completed_focus = KOCH_B11_NEW_EPOCH }
+    allowed = { original_tag = B11 }
+}

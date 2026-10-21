@@ -1,0 +1,7 @@
+# The engine requires a default focus tree even for an empty world.
+focus_tree = {
+    id = koch_default_focus
+    country = { factor = 1 }
+    default = yes
+    reset_on_civilwar = no
+}

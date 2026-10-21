@@ -1,0 +1,48 @@
+defined_text = {
+    name = GetKOCHMoscowTension
+    text = {
+        trigger = {
+            NOT = { check_variable = { KOCH_B07_tension > 30 } }
+        }
+        localization_key = KOCH_B07_tension_green
+    }
+    text = {
+        trigger = {
+            check_variable = { KOCH_B07_tension > 30 }
+            NOT = { check_variable = { KOCH_B07_tension > 75 } }
+        }
+        localization_key = KOCH_B07_tension_yellow
+    }
+    text = {
+        trigger = { check_variable = { KOCH_B07_tension > 75 } }
+        localization_key = KOCH_B07_tension_red
+    }
+}
+
+defined_text = {
+    name = GetKOCHMoscowSelectedSide
+    text = {
+        trigger = { has_country_flag = KOCH_B07_player_chose_democrats }
+        localization_key = KOCH_MOSCOW_DEMOCRATS
+    }
+    text = {
+        trigger = { has_country_flag = KOCH_B07_player_chose_fascists }
+        localization_key = KOCH_MOSCOW_FASCISTS
+    }
+    text = {
+        trigger = { has_country_flag = KOCH_B07_player_chose_imperial }
+        localization_key = KOCH_MOSCOW_AUTHORITARIANS
+    }
+    text = {
+        trigger = {
+            NOT = {
+                OR = {
+                    has_country_flag = KOCH_B07_player_chose_democrats
+                    has_country_flag = KOCH_B07_player_chose_fascists
+                    has_country_flag = KOCH_B07_player_chose_imperial
+                }
+            }
+        }
+        localization_key = KOCH_B07_no_side_selected
+    }
+}

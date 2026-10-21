@@ -1,0 +1,186 @@
+# Tension starts on startup, independently of the side-choice focuses.
+KOCH_B07_begin_crisis = {
+    if = {
+        limit = {
+            tag = B07
+            NOT = { has_country_flag = KOCH_B07_crisis_activated }
+            NOT = { has_country_flag = KOCH_B07_civil_war_started }
+            NOT = { has_country_flag = KOCH_B07_crisis_resolved }
+        }
+        set_country_flag = KOCH_B07_crisis_activated
+        set_country_flag = KOCH_B07_crisis_active
+        set_variable = { KOCH_B07_tension = 50 }
+        set_variable = { KOCH_B07_tension_days = 0 }
+        KOCH_B07_initialize_balance = yes
+    }
+}
+
+# Call after any change to tension, before applying the next daily increment.
+KOCH_B07_check_tension = {
+    if = {
+        limit = {
+            tag = B07
+            has_country_flag = KOCH_B07_crisis_active
+            NOT = { has_country_flag = KOCH_B07_civil_war_started }
+            NOT = { has_country_flag = KOCH_B07_crisis_resolved }
+        }
+        clamp_variable = { var = KOCH_B07_tension min = 0 max = 100 }
+        if = {
+            limit = { check_variable = { KOCH_B07_tension = 100 compare = greater_than_or_equals } }
+            KOCH_B07_start_three_sided_war = yes
+        }
+        else_if = {
+            limit = { NOT = { check_variable = { KOCH_B07_tension > 0 } } }
+            KOCH_B07_resolve_crisis = yes
+        }
+    }
+}
+
+KOCH_B07_resolve_crisis = {
+    if = {
+        limit = {
+            tag = B07
+            has_country_flag = KOCH_B07_crisis_active
+            NOT = { has_country_flag = KOCH_B07_civil_war_started }
+            NOT = { has_country_flag = KOCH_B07_crisis_resolved }
+        }
+        set_variable = { KOCH_B07_tension = 0 }
+        set_variable = { KOCH_B07_tension_days = 0 }
+        set_country_flag = KOCH_B07_crisis_resolved
+        clr_country_flag = KOCH_B07_crisis_active
+    }
+}
+
+KOCH_B07_start_three_sided_war = {
+    if = {
+        limit = {
+            tag = B07
+            NOT = { has_country_flag = KOCH_B07_civil_war_started }
+            NOT = { has_country_flag = KOCH_B07_crisis_resolved }
+            owns_state = 219
+            owns_state = 1082
+            owns_state = 1083
+            owns_state = 1084
+            owns_state = 247
+            owns_state = 248
+            owns_state = 253
+            owns_state = 205
+            owns_state = 223
+            owns_state = 254
+        }
+        KOCH_B07_calculate_army_shares = yes
+        set_country_flag = KOCH_B07_civil_war_started
+        clr_country_flag = KOCH_B07_crisis_active
+        # Original B07 is the democratic side, irrespective of pre-war popularity.
+        set_politics = { ruling_party = democratic elections_allowed = yes }
+        promote_character = KOCH_B07_moscow_government
+        start_civil_war = {
+            ideology = fascism
+            ruling_party = democratic
+            size = 0.333333
+            # The entire existing army is apportioned by strength during placement.
+            army_ratio = 0
+            capital = 1082
+            states = { 247 1082 }
+            keep_all_characters = yes
+            set_country_flag = KOCH_B07_civil_war_started
+            set_country_flag = KOCH_B07_fascist_side
+            clr_country_flag = KOCH_B07_authoritarian_side
+            clr_country_flag = KOCH_B07_crisis_active
+            set_cosmetic_tag = KOCH_MOSCOW_FASCISTS
+            set_politics = {
+                ruling_party = fascism
+                elections_allowed = no
+                name = B07_fascism_party
+                long_name = B07_fascism_party_long
+            }
+            set_popularities = { fascism = 100 democratic = 0 neutrality = 0 communism = 0 }
+        }
+        # The engine refuses a second start_civil_war while B07 is already in one.
+        # Create the third side directly, then register both wars as civil wars.
+        create_dynamic_country = {
+            original_tag = B07
+            copy_tag = B07
+            set_country_flag = KOCH_B07_civil_war_started
+            set_country_flag = KOCH_B07_authoritarian_side
+            clr_country_flag = KOCH_B07_fascist_side
+            clr_country_flag = KOCH_B07_crisis_active
+            set_cosmetic_tag = KOCH_MOSCOW_AUTHORITARIANS
+            set_politics = {
+                ruling_party = neutrality
+                elections_allowed = no
+                name = B07_neutrality_party
+                long_name = B07_neutrality_party_long
+            }
+            set_popularities = { neutrality = 100 democratic = 0 fascism = 0 communism = 0 }
+            add_state_core = 219
+            add_state_core = 1082
+            add_state_core = 1083
+            add_state_core = 1084
+            add_state_core = 247
+            add_state_core = 248
+            add_state_core = 253
+            add_state_core = 205
+            add_state_core = 223
+            add_state_core = 254
+            transfer_state = 205
+            transfer_state = 223
+            transfer_state = 254
+            transfer_state = 1084
+            set_capital = { state = 223 }
+        }
+        # Only non-army assets use this split. Division counts are assigned below.
+        transfer_units_fraction = {
+            target = KMA
+            size = 0.5
+            army_ratio = 0
+            keep_unit_leaders_trigger = { always = yes }
+        }
+        # Transfer named leaders explicitly instead of relying on random civil-war assignment.
+        set_nationality = {
+            character = KOCH_B07_alexander_vanders
+            target_country = KMF
+        }
+        set_nationality = {
+            character = KOCH_B07_nikita_kalinkin
+            target_country = KMA
+        }
+        KMF = {
+            promote_character = KOCH_B07_alexander_vanders
+            if = {
+                limit = { NOT = { has_war_with = KMA } }
+                declare_war_on = { target = KMA type = civil_war }
+            }
+            add_civil_war_target = KMA
+        }
+        KMA = {
+            promote_character = KOCH_B07_nikita_kalinkin
+            declare_war_on = { target = B07 type = civil_war }
+            add_civil_war_target = B07
+        }
+        set_cosmetic_tag = KOCH_MOSCOW_DEMOCRATS
+        set_capital = { state = 219 }
+        set_popularities = { democratic = 100 fascism = 0 neutrality = 0 communism = 0 }
+        KOCH_B07_assign_pledged_generals = yes
+        KOCH_B07_position_civil_war_divisions = yes
+        KOCH_B07_assign_civil_war_focus_paths = yes
+        # A global sound effect fires once for the announcement, independently
+        # of GUI instances rebuilt when change_tag_from changes player context.
+        if = {
+            limit = { NOT = { has_global_flag = KOCH_moscow_civil_war_superevent_started } }
+            set_global_flag = KOCH_moscow_civil_war_superevent_started
+            sound_effect = KOCH_moscow_civil_war_superevent_audio
+            # Deadlines run from the announcement, not from a later tag switch.
+            every_country = {
+                country_event = { id = koch_moscow_crisis.4 days = 5 }
+                country_event = { id = koch_moscow_crisis.5 days = 10 }
+            }
+        }
+    }
+    else = {
+        # Never generate a different random partition if another war has changed ownership.
+        clr_country_flag = KOCH_B07_crisis_active
+        country_event = { id = koch_moscow_crisis.1 }
+    }
+}
+

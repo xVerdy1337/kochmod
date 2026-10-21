@@ -1,0 +1,163 @@
+# HOI4 scripted effects are called with '= yes', not parameter blocks.
+# Divide the existing army by pre-war strength shares; never create extra divisions.
+# The reserve contains unplaced units; the transit country holds the next unit.
+# A reserved tag alone is not an existing country for transfer_units_fraction.
+# Lend the two buffers non-capital states until every original unit is returned.
+KOCH_B07_take_civil_war_division = {
+    event_target:KOCH_moscow_army_reserve = {
+        if = {
+            limit = { num_divisions > 0 }
+            # Slightly above 1/n avoids fixed-point truncation yielding zero units.
+            set_temp_variable = { KOCH_transit_fraction = 1.01 }
+            divide_temp_variable = { KOCH_transit_fraction = num_divisions }
+            add_to_temp_variable = { KOCH_transit_fraction = 0.001 }
+            if = {
+                limit = { num_divisions < 2 }
+                set_temp_variable = { KOCH_transit_fraction = 1 }
+            }
+            transfer_units_fraction = {
+                target = event_target:KOCH_moscow_army_transit
+                size = 0
+                army_ratio = var:KOCH_transit_fraction
+                stockpile_ratio = 0
+                navy_ratio = 0
+                air_ratio = 0
+                keep_unit_leaders_trigger = { always = yes }
+            }
+        }
+    }
+}
+
+KOCH_B07_return_transit_division = {
+    event_target:KOCH_moscow_army_transit = {
+        transfer_units_fraction = {
+            target = event_target:KOCH_moscow_army_owner
+            size = 0
+            army_ratio = 1
+            stockpile_ratio = 0
+            navy_ratio = 0
+            air_ratio = 0
+            keep_unit_leaders_trigger = { always = yes }
+        }
+    }
+}
+
+KOCH_B07_return_civil_war_reserve = {
+    event_target:KOCH_moscow_army_reserve = {
+        transfer_units_fraction = {
+            target = event_target:KOCH_moscow_army_owner
+            size = 0
+            army_ratio = 1
+            stockpile_ratio = 0
+            navy_ratio = 0
+            air_ratio = 0
+            keep_unit_leaders_trigger = { always = yes }
+        }
+    }
+}
+
+KOCH_B07_position_civil_war_divisions = {
+    create_dynamic_country = {
+        original_tag = B07
+        copy_tag = B07
+        reserve_dynamic_country = yes
+        clr_country_flag = KOCH_B07_fascist_side
+        clr_country_flag = KOCH_B07_authoritarian_side
+        clr_country_flag = KOCH_B07_democratic_side
+        transfer_state = 253
+        set_capital = { state = 253 }
+        save_global_event_target_as = KOCH_moscow_army_reserve
+    }
+    create_dynamic_country = {
+        original_tag = B07
+        copy_tag = B07
+        reserve_dynamic_country = yes
+        clr_country_flag = KOCH_B07_fascist_side
+        clr_country_flag = KOCH_B07_authoritarian_side
+        clr_country_flag = KOCH_B07_democratic_side
+        transfer_state = 205
+        set_capital = { state = 205 }
+        save_global_event_target_as = KOCH_moscow_army_transit
+    }
+
+    # Shares determine the army; placement never creates new divisions.
+    B07 = {
+        transfer_units_fraction = {
+            target = event_target:KOCH_moscow_army_reserve
+            size = 0
+            army_ratio = 1
+            stockpile_ratio = 0
+            navy_ratio = 0
+            air_ratio = 0
+            keep_unit_leaders_trigger = { always = yes }
+        }
+    }
+    KMF = {
+        transfer_units_fraction = {
+            target = event_target:KOCH_moscow_army_reserve
+            size = 0
+            army_ratio = 1
+            stockpile_ratio = 0
+            navy_ratio = 0
+            air_ratio = 0
+            keep_unit_leaders_trigger = { always = yes }
+        }
+    }
+    KMA = {
+        transfer_units_fraction = {
+            target = event_target:KOCH_moscow_army_reserve
+            size = 0
+            army_ratio = 1
+            stockpile_ratio = 0
+            navy_ratio = 0
+            air_ratio = 0
+            keep_unit_leaders_trigger = { always = yes }
+        }
+    }
+    B07 = {
+        save_global_event_target_as = KOCH_moscow_army_owner
+        set_temp_variable = { KOCH_allocate_left = B07.KOCH_B07_army_democrats }
+        while_loop_effect = {
+            limit = { check_variable = { KOCH_allocate_left > 0 } }
+            KOCH_B07_take_civil_war_division = yes
+            KOCH_B07_return_transit_division = yes
+            subtract_from_temp_variable = { KOCH_allocate_left = 1 }
+        }
+    }
+    KMF = {
+        save_global_event_target_as = KOCH_moscow_army_owner
+        set_temp_variable = { KOCH_allocate_left = B07.KOCH_B07_army_fascists }
+        while_loop_effect = {
+            limit = { check_variable = { KOCH_allocate_left > 0 } }
+            KOCH_B07_take_civil_war_division = yes
+            KOCH_B07_return_transit_division = yes
+            subtract_from_temp_variable = { KOCH_allocate_left = 1 }
+        }
+    }
+    KMA = {
+        save_global_event_target_as = KOCH_moscow_army_owner
+        set_temp_variable = { KOCH_allocate_left = B07.KOCH_B07_army_imperial }
+        while_loop_effect = {
+            limit = { check_variable = { KOCH_allocate_left > 0 } }
+            KOCH_B07_take_civil_war_division = yes
+            KOCH_B07_return_transit_division = yes
+            subtract_from_temp_variable = { KOCH_allocate_left = 1 }
+        }
+    }
+
+    # Every allocated division goes to the border; larger armies make
+    # additional passes through the complete frontline instead of staying inland.
+    KOCH_B07_deploy_democratic_front = yes
+    KOCH_B07_deploy_fascist_front = yes
+    KOCH_B07_deploy_imperial_front = yes
+
+    # Restore ownership before the buffers are unreserved and before any UI or
+    # player transfer. No divisions remain in either temporary country here.
+    B07 = { transfer_state = 253 }
+    KMA = { transfer_state = 205 }
+    event_target:KOCH_moscow_army_reserve = { reserve_dynamic_country = no }
+    event_target:KOCH_moscow_army_transit = { reserve_dynamic_country = no }
+    clear_global_event_target = KOCH_moscow_army_reserve
+    clear_global_event_target = KOCH_moscow_army_transit
+    clear_global_event_target = KOCH_moscow_army_owner
+}

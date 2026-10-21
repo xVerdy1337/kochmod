@@ -1,0 +1,16 @@
+ideas = {
+    country = {
+        KOCH_B08_state_of_scientists = {
+            picture = generic_research_bonus
+            allowed = {
+                original_tag = B08
+            }
+            removal_cost = -1
+            modifier = {
+                research_speed_factor = 0.05
+                production_speed_facility_factor = 0.10
+                production_factory_efficiency_gain_factor = 0.05
+            }
+        }
+    }
+}

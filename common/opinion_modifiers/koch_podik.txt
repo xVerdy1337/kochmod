@@ -1,0 +1,8 @@
+opinion_modifiers = {
+    KOCH_friendship = { value = 30 }
+    KOCH_brotherhood = { value = 60 }
+    KOCH_cold_shoulders = { value = -20 }
+    KOCH_diplomatic_insult = { value = -40 }
+    KOCH_hostility = { value = -70 }
+    KOCH_guard_respected = { value = 20 }
+}

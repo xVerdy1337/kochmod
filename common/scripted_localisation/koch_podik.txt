@@ -1,0 +1,32 @@
+defined_text = {
+    name = KOCH_B11_GetChargeStatus
+    text = { trigger = { has_country_flag = KOCH_B11_device_confiscated } localization_key = KOCH_B11_status_confiscated }
+    text = { trigger = { has_country_flag = KOCH_B11_device_missing } localization_key = KOCH_B11_status_missing }
+    text = { trigger = { has_country_flag = KOCH_B11_device_broken } localization_key = KOCH_B11_status_broken }
+    text = { trigger = { NOT = { has_country_flag = KOCH_B11_podik_path } } localization_key = KOCH_B11_status_dormant }
+    text = { trigger = { has_country_flag = KOCH_B11_charging } localization_key = KOCH_B11_status_charging }
+    text = { trigger = { check_variable = { KOCH_podik_charge = 0 } } localization_key = KOCH_B11_status_empty }
+    text = { trigger = { has_idea = KOCH_B11_brownout } localization_key = KOCH_B11_status_crisis }
+    text = { trigger = { check_variable = { KOCH_podik_charge < 40 } } localization_key = KOCH_B11_status_low }
+    text = { trigger = { check_variable = { var = KOCH_podik_charge value = 90 compare = greater_than_or_equals } } localization_key = KOCH_B11_status_golden }
+    text = { localization_key = KOCH_B11_status_normal }
+}
+defined_text = {
+    name = KOCH_B11_GetChargeForecast
+    text = { trigger = { has_country_flag = KOCH_B11_device_confiscated } localization_key = KOCH_B11_forecast_unavailable }
+    text = { trigger = { OR = { has_country_flag = KOCH_B11_device_missing has_country_flag = KOCH_B11_device_broken } } localization_key = KOCH_B11_forecast_unavailable }
+    text = { trigger = { NOT = { has_country_flag = KOCH_B11_podik_path } } localization_key = KOCH_B11_forecast_dormant }
+    text = { trigger = { has_country_flag = KOCH_B11_charging } localization_key = KOCH_B11_forecast_charging }
+    text = { trigger = { check_variable = { KOCH_podik_charge < 20 } } localization_key = KOCH_B11_forecast_crisis }
+    text = { localization_key = KOCH_B11_forecast_normal }
+}
+defined_text = {
+    name = KOCH_B11_GetChargeMode
+    text = { trigger = { has_country_flag = KOCH_B11_battery_saving } localization_key = KOCH_B11_mode_saving }
+    text = { localization_key = KOCH_B11_mode_normal }
+}
+defined_text = {
+    name = KOCH_B11_GetChargeService
+    text = { trigger = { has_country_flag = KOCH_B11_auto_charge } localization_key = KOCH_B11_service_auto }
+    text = { localization_key = KOCH_B11_service_manual }
+}

@@ -1,0 +1,148 @@
+# Persistent shares are percentage points and always sum to 100.
+KOCH_B07_initialize_balance = {
+    if = {
+        limit = { NOT = { has_country_flag = KOCH_B07_balance_initialized } }
+        set_country_flag = KOCH_B07_balance_initialized
+        set_variable = { KOCH_B07_strength_democrats = 25 }
+        set_variable = { KOCH_B07_strength_fascists = 37.5 }
+        set_variable = { KOCH_B07_strength_imperial = 37.5 }
+        set_variable = { KOCH_B07_pledged_generals = 0 }
+    }
+}
+
+KOCH_B07_boost_democrats = {
+    add_to_variable = { KOCH_B07_strength_democrats = 5 }
+    subtract_from_variable = { KOCH_B07_strength_fascists = 2.5 }
+    subtract_from_variable = { KOCH_B07_strength_imperial = 2.5 }
+}
+
+KOCH_B07_boost_fascists = {
+    add_to_variable = { KOCH_B07_strength_fascists = 5 }
+    subtract_from_variable = { KOCH_B07_strength_democrats = 2.5 }
+    subtract_from_variable = { KOCH_B07_strength_imperial = 2.5 }
+}
+
+KOCH_B07_boost_imperial = {
+    add_to_variable = { KOCH_B07_strength_imperial = 5 }
+    subtract_from_variable = { KOCH_B07_strength_democrats = 2.5 }
+    subtract_from_variable = { KOCH_B07_strength_fascists = 2.5 }
+}
+
+KOCH_B07_boost_selected_side = {
+    if = {
+        limit = { KOCH_B07_can_boost_selected_side = yes }
+        if = {
+            limit = { has_country_flag = KOCH_B07_player_chose_democrats }
+            KOCH_B07_boost_democrats = yes
+        }
+        else_if = {
+            limit = { has_country_flag = KOCH_B07_player_chose_fascists }
+            KOCH_B07_boost_fascists = yes
+        }
+        else_if = {
+            limit = { has_country_flag = KOCH_B07_player_chose_imperial }
+            KOCH_B07_boost_imperial = yes
+        }
+    }
+}
+
+# The character stays in B07 before the split. The pledge is exclusive.
+KOCH_B07_pledge_random_general = {
+    random_army_leader = {
+        limit = {
+            is_corps_commander = yes
+            NOT = { has_character_flag = KOCH_B07_general_pledged }
+        }
+        set_character_flag = KOCH_B07_general_pledged
+        PREV = { add_to_variable = { KOCH_B07_pledged_generals = 1 } }
+        if = {
+            limit = { PREV = { has_country_flag = KOCH_B07_player_chose_democrats } }
+            set_character_flag = KOCH_B07_general_democrats
+        }
+        else_if = {
+            limit = { PREV = { has_country_flag = KOCH_B07_player_chose_fascists } }
+            set_character_flag = KOCH_B07_general_fascists
+        }
+        else_if = {
+            limit = { PREV = { has_country_flag = KOCH_B07_player_chose_imperial } }
+            set_character_flag = KOCH_B07_general_imperial
+        }
+    }
+}
+
+# Run after all three countries exist, before army placement and player transfer.
+KOCH_B07_assign_pledged_generals = {
+    every_country = {
+        limit = { OR = { tag = B07 tag = KMF tag = KMA } }
+        if = {
+            limit = { NOT = { tag = B07 } }
+            every_army_leader = {
+                limit = { has_character_flag = KOCH_B07_general_democrats }
+                set_nationality = B07
+            }
+        }
+        if = {
+            limit = { NOT = { tag = KMF } }
+            every_army_leader = {
+                limit = { has_character_flag = KOCH_B07_general_fascists }
+                set_nationality = KMF
+            }
+        }
+        if = {
+            limit = { NOT = { tag = KMA } }
+            every_army_leader = {
+                limit = { has_character_flag = KOCH_B07_general_imperial }
+                set_nationality = KMA
+            }
+        }
+    }
+}
+
+# Largest-remainder apportionment: whole divisions, preserving the total.
+KOCH_B07_calculate_army_shares = {
+    KOCH_B07_initialize_balance = yes
+    set_variable = { KOCH_B07_army_total = num_divisions }
+    set_variable = { KOCH_B07_army_democrats = KOCH_B07_army_total }
+    multiply_variable = { KOCH_B07_army_democrats = KOCH_B07_strength_democrats }
+    divide_variable = { KOCH_B07_army_democrats = 100 }
+    set_temp_variable = { KOCH_fraction_democrats = KOCH_B07_army_democrats }
+    modulo_temp_variable = { var = KOCH_fraction_democrats value = 1 }
+    subtract_from_variable = { KOCH_B07_army_democrats = KOCH_fraction_democrats }
+    set_variable = { KOCH_B07_army_fascists = KOCH_B07_army_total }
+    multiply_variable = { KOCH_B07_army_fascists = KOCH_B07_strength_fascists }
+    divide_variable = { KOCH_B07_army_fascists = 100 }
+    set_temp_variable = { KOCH_fraction_fascists = KOCH_B07_army_fascists }
+    modulo_temp_variable = { var = KOCH_fraction_fascists value = 1 }
+    subtract_from_variable = { KOCH_B07_army_fascists = KOCH_fraction_fascists }
+    set_variable = { KOCH_B07_army_imperial = KOCH_B07_army_total }
+    multiply_variable = { KOCH_B07_army_imperial = KOCH_B07_strength_imperial }
+    divide_variable = { KOCH_B07_army_imperial = 100 }
+    set_temp_variable = { KOCH_fraction_imperial = KOCH_B07_army_imperial }
+    modulo_temp_variable = { var = KOCH_fraction_imperial value = 1 }
+    subtract_from_variable = { KOCH_B07_army_imperial = KOCH_fraction_imperial }
+    set_temp_variable = { KOCH_unassigned = KOCH_B07_army_total }
+    subtract_from_temp_variable = { KOCH_unassigned = KOCH_B07_army_democrats }
+    subtract_from_temp_variable = { KOCH_unassigned = KOCH_B07_army_fascists }
+    subtract_from_temp_variable = { KOCH_unassigned = KOCH_B07_army_imperial }
+    while_loop_effect = {
+        limit = { check_variable = { KOCH_unassigned > 0 } }
+        if = {
+            limit = {
+                check_variable = { KOCH_fraction_democrats = KOCH_fraction_fascists compare = greater_than_or_equals }
+                check_variable = { KOCH_fraction_democrats = KOCH_fraction_imperial compare = greater_than_or_equals }
+            }
+            add_to_variable = { KOCH_B07_army_democrats = 1 }
+            set_temp_variable = { KOCH_fraction_democrats = -1 }
+        }
+        else_if = {
+            limit = { check_variable = { KOCH_fraction_fascists = KOCH_fraction_imperial compare = greater_than_or_equals } }
+            add_to_variable = { KOCH_B07_army_fascists = 1 }
+            set_temp_variable = { KOCH_fraction_fascists = -1 }
+        }
+        else = {
+            add_to_variable = { KOCH_B07_army_imperial = 1 }
+            set_temp_variable = { KOCH_fraction_imperial = -1 }
+        }
+        subtract_from_temp_variable = { KOCH_unassigned = 1 }
+    }
+}

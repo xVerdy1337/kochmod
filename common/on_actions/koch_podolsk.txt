@@ -1,0 +1,16 @@
+on_actions = {
+    on_daily_B07 = {
+        effect = {
+            if = {
+                limit = {
+                    # Inclusive lower bound: only January 25, 2026.
+                    NOT = { date < 2026.1.25 }
+                    date < 2026.1.26
+                    owns_state = 1082
+                    NOT = { has_country_flag = KOCH_B07_podolsk_facility_destroyed }
+                }
+                country_event = { id = koch_podolsk.1 }
+            }
+        }
+    }
+}
